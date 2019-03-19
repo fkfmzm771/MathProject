@@ -30,8 +30,7 @@
 	display: block; 
 	width: 180px; 
 	height: 23px; 
-	margin: 0 auto; 
-	background: url(../images/tooplate_logo.png) top center no-repeat; 
+	margin: 0 auto;
 	text-indent: -10000px; 
 }
 
@@ -43,7 +42,7 @@
 #content {
 	float: right;
 	margin-top: 60px;
-	width: 502px;
+	width: 1000px;
 	height: 576px;	
 	padding: 10px;
 	background: url(../images/tooplate_main.png) no-repeat top left

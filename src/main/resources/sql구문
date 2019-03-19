@@ -1,0 +1,34 @@
+drop table gameGoing;
+
+create table gamegoing(
+    student_id varchar2(20) CONSTRAINT gamegoing_fk REFERENCES student
+    ,game1 number DEFAULT 0
+    ,game2 number DEFAULT 0
+    ,game3 number DEFAULT 0
+    ,game4 number DEFAULT 0
+    ,game5 number DEFAULT 0
+    ,game6 number DEFAULT 0
+    ,game7 number DEFAULT 0
+    ,game8 number DEFAULT 0
+    ,game9 number DEFAULT 0
+    ,game10 number DEFAULT 0
+    );
+
+
+
+   insert into gamegoing
+   values(
+       'aaa'
+       ,1
+       ,1
+       ,1
+       ,0
+       ,0
+       ,0
+       ,0
+       ,0
+       ,0
+       ,0
+   );
+
+   commit;

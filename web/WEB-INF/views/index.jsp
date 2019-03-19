@@ -14,7 +14,7 @@ http://www.tooplate.com/view/2024-vertiwood
 <title>Verti Wood Template</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="resources/tooplate_style.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/tooplate_style.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="resources/css/coda-slider.css" type="text/css" charset="utf-8" />
 
