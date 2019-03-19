@@ -4,14 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- code here -->
-		<!--<typeAlias type="global.sesoc.test.vo.Member" alias="member"/>-->
-		<!--<typeAlias type="global.sesoc.test.vo.Book" alias="Book"/>-->
+		<typeAlias type="Math.Spring.com.VO.Chart"  alias="Chart"/>
+		<typeAlias type="Math.Spring.com.VO.Doughnut" alias="Doughnut"/>
+		<typeAlias type="Math.Spring.com.VO.Student" alias="Student"/>
 	</typeAliases>
 	<mappers>
-		<!-- code here -->
-		<!--<mapper resource="mappers/memberMapper.xml"/>-->
-		<!--<mapper resource="mappers/bookMapper.xml"/>-->
+		<mapper resource="mappers/chartMapper.xml"></mapper>
+
 	</mappers>
 </configuration>
 
