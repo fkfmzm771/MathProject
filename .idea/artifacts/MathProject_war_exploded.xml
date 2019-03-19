@@ -24,7 +24,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="MathProject2/web/Web" />
+      <element id="javaee-facet-resources" facet="MathProject/web/Web" />
     </root>
   </artifact>
 </component>
