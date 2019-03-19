@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Math.Spring.com.DAO.ChartMapper">
+<insert id="regist" parameterType="Chart">
+	insert into chart(
+		studentnum
+		,studentid
+		,numberknow
+		,numberplus
+		,shapesknow
+		,lifeability
+	)values(
+		chart_seq.nextval
+		,#{studentId}
+		,#{numberKnow}
+		,#{numberPlus}
+		,#{shapesKnow}
+		,#{lifeAbility}
+	)
+</insert>
+
+<select id="doughnutSelect" parameterType="Student" resultType="Doughnut">
+	select
+   	 *
+	from
+   		 gamegoing
+	where
+    student_id = #{student_id}
+</select>
+
+</mapper>
