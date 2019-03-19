@@ -30,6 +30,7 @@ public class HomeController {
         if(rep.regist(chart) == 1) {
             return "T";
         }
+        //kjhjgf
         else return "N";
     }
 
