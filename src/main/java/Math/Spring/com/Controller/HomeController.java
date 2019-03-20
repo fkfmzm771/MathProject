@@ -17,6 +17,12 @@ public class HomeController {
     ChartRepository rep;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home() {
+
+        return "login";
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
 
         return "index";
@@ -30,7 +36,6 @@ public class HomeController {
         if(rep.regist(chart) == 1) {
             return "T";
         }
-        //kjhjgf
         else return "N";
     }
 
@@ -44,6 +49,4 @@ public class HomeController {
 
         return doughnut;
     }
-
-
 }

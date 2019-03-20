@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="Math.Spring.com.DAO.UserMapper">
+	<insert id="ParentsInsert" parameterType="Parents">
+		insert into parents
+		values (
+			#{parents_id},
+			#{parents_pw},
+			#{parents_name},
+			#{parents_email},
+			#{parents_nickname},
+			#{parents_phone}
+		)
+	</insert>
+	
+	<insert id="TeacherInsert" parameterType="Teacher">
+		insert into teacher
+		values (
+			#{teacher_id},
+			#{teacher_pw},
+			#{teacher_name},
+			#{teacher_email},
+			#{teacher_nickname},
+			#{teacher_phone}
+		)
+	</insert>
+	
+	<insert id="StudentInsert" parameterType="Student">
+		insert into student
+		values (
+			#{student_id},
+			#{student_pw},
+			#{student_name},
+			#{student_email},
+			#{student_nickname},
+			#{student_phone}
+		)
+	</insert>
+
+	<select id="ParentsSelectOne" parameterType="String" resultType="Parents">
+		select 
+			* 
+		from 
+			parents 
+		where parents_id = #{parents_id}
+	</select>
+	
+	<select id="TeacherSelectOne" parameterType="String" resultType="Teacher">
+		select 
+			* 
+		from 
+			teacher 
+		where teacher_id = #{teacher_id}
+	</select>
+	
+	<select id="StudentSelectOne" parameterType="String" resultType="Student">
+		select 
+			* 
+		from 
+			student 
+		where student_id = #{student_id}
+	</select>
+	
+	<update id="ParentsUpdate" parameterType="Parents">
+		UPDATE parents
+     	SET parents_pw = #{parents_pw},
+         	parents_name = #{parents_name},
+         	parents_email = #{parents_email},
+         	parents_nickname = #{parents_nickname},
+         	parents_phone = #{parents_phone}
+     	WHERE parents_id = #{parents_id}
+	</update>
+	
+	<update id="TeacherUpdate" parameterType="Teacher">
+		UPDATE teacher
+     	SET teacher_pw = #{teacher_pw},
+         	teacher_name = #{teacher_name},
+         	teacher_email = #{teacher_email},
+         	teacher_nickname = #{teacher_nickname},
+         	teacher_phone = #{teacher_phone}
+     	WHERE teacher_id = #{teacher_id}
+	</update>
+	
+	<update id="StudentUpdate" parameterType="Student">
+		UPDATE student
+     	SET student_pw = #{student_pw},
+         	student_name = #{student_name},
+         	student_email = #{student_email},
+         	student_nickname = #{student_nickname},
+         	student_phone = #{student_phone}
+     	WHERE student_id = #{student_id}
+	</update>
+</mapper>
