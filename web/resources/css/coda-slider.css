@@ -42,10 +42,10 @@
 #content {
 	float: right;
 	margin-top: 60px;
-	width: 1000px;
+	width: 500px;
 	height: 576px;	
 	padding: 10px;
-	background: url(../images/tooplate_main.png) no-repeat top left
+	background: url(../images/tooplate_main.png) no-repeat top right
 }
 
 .content_section {

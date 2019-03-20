@@ -139,8 +139,8 @@ http://www.tooplate.com/view/2024-vertiwood
 
             <div id="menu">
                 <ul class="navigation">
-                	<li><a href="modify" class="selected">${sessionScope.loginId }님</a></li>
-                    <li><a href="logout">로그아웃</a></li>
+                	<li><a href="#home" class="selected">회원가입</a></li>
+                    <li><a href="#about">로그인</a></li>
                     <li><a href="#services">게임시작</a></li>
                     <li><a href="#gallery">저장된게임불러오기</a></li>
                     <li><a href="#contact" class="last">통계</a></li>
@@ -153,8 +153,7 @@ http://www.tooplate.com/view/2024-vertiwood
         <div id="content">
        	  	<div class="scroll">
         	  <div class="scrollContainer">
-
-				  <div class="panel" id="home">
+                <div class="panel" id="home">
 				
                 	
             
