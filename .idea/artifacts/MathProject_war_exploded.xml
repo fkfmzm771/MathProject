@@ -7,6 +7,8 @@
           <element id="module-output" name="MathProject" />
           <element id="javaee-facet-classes" facet="MathProject2/web/Web" />
           <element id="module-output" name="MathProject2" />
+          <element id="javaee-facet-classes" facet="MathProject3/web/Web" />
+          <element id="module-output" name="MathProject3" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
@@ -24,7 +26,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="MathProject/web/Web" />
+      <element id="javaee-facet-resources" facet="MathProject3/web/Web" />
     </root>
   </artifact>
 </component>
