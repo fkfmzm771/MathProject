@@ -13,6 +13,7 @@
 	<mappers>
 		<mapper resource="mappers/chartMapper.xml"></mapper>
 		<mapper resource="mappers/UserMapper.xml"></mapper>
+		<mapper resource="mappers/FriendMapper.xml"></mapper>
 
 	</mappers>
 </configuration>
