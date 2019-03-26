@@ -92,7 +92,7 @@ $(document).ready(function () {
     // apply serialScroll to the slider - we chose this plugin because it 
     // supports// the indexed next and previous scroll along with hooking 
     // in to our navigation.
-    $('#slider').serialScroll(scrollOptions);
+    /*$('#slider').serialScroll(scrollOptions);*/
 
     // now apply localScroll to hook any other arbitrary links to trigger 
     // the effect

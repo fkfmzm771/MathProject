@@ -25,9 +25,8 @@ public class HomeController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
 
-        return "index";
+        return "selectwindow";
     }
-
 
     @RequestMapping(value = "chartregist", method = RequestMethod.GET)
     @ResponseBody
