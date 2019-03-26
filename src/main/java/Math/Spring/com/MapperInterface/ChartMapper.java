@@ -1,4 +1,4 @@
-package Math.Spring.com.DAO;
+package Math.Spring.com.MapperInterface;
 
 
 import Math.Spring.com.VO.Chart;

@@ -171,7 +171,7 @@ iframe {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background: url("../../resources/images/start.jpg");
+  background: url("../images/bg/bg_04.jpg");
   background-size: cover;
   position: relative;
   z-index: 1;
@@ -408,7 +408,7 @@ iframe {
 #rounded-btn-naver{
     float: right;
     margin-right: 20px;
-    background:url("../../resources/images/naver.png") ;
+    background:url("../images/login_image/naver.png") ;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #00d131;
@@ -417,7 +417,7 @@ iframe {
 #rounded-btn-google{
     float: left;
     margin-left:  20px;
-    background:url("../../resources/images/google.jpg") ;
+    background:url("../images/login_image/google.jpg") ;
     background-size: cover;
     background-repeat: no-repeat;
 }

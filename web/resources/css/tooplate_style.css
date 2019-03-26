@@ -14,7 +14,7 @@ body {
 	font-size: 12px;
 	line-height: 1.5em; 
 	background-color: #181617;
-	background-image: url(../images/forest_of_woe_by_tomtc_dbqrbj6-pre.jpg) ;
+	background-image: url(../images/bg/bg_02.jpg) ;
 	background-size: cover;
 	background-repeat: no-repeat;
 	
@@ -155,27 +155,27 @@ em { color: #ab6700; }
 }
 
 .service_list li .service_one { 
-	background: url(../images/onebit_08.png) center left no-repeat;
+	background: url(../images/icons/onebit_08.png) center left no-repeat;
 }
 
 .service_list li .service_two { 
-	background: url(../images/onebit_11.png) center left no-repeat;
+	background: url(../images/icons/onebit_11.png) center left no-repeat;
 }
 
 .service_list li .service_three { 
-	background: url(../images/onebit_17.png) center left no-repeat;
+	background: url(../images/icons/onebit_17.png) center left no-repeat;
 }
 
 .service_list li .service_four { 
-	background: url(../images/onebit_21.png) center left no-repeat;
+	background: url(../images/icons/onebit_21.png) center left no-repeat;
 }
 
 .service_list li .service_five { 
-	background: url(../images/onebit_12.png) center left no-repeat;
+	background: url(../images/icons/onebit_12.png) center left no-repeat;
 }
 
 .service_list li .service_six { 
-	background: url(../images/onebit_19.png) center left no-repeat;
+	background: url(../images/icons/onebit_19.png) center left no-repeat;
 }
 
 #contact_form {  

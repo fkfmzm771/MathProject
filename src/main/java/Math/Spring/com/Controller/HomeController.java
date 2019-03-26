@@ -16,18 +16,22 @@ public class HomeController {
     @Autowired
     ChartRepository rep;
 
+    //메인 화면
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
 
         return "index";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    //??
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index() {
 
         return "selectwindow";
     }
 
+
+    //??
     @RequestMapping(value = "chartregist", method = RequestMethod.GET)
     @ResponseBody
     public String chartregist(Chart chart) {
@@ -38,6 +42,7 @@ public class HomeController {
         else return "N";
     }
 
+    //??
     @RequestMapping(value = "reserch", method = RequestMethod.GET)
     @ResponseBody
     public Doughnut reserch(Student student) {

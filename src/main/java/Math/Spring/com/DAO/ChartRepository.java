@@ -1,5 +1,6 @@
 package Math.Spring.com.DAO;
 
+import Math.Spring.com.MapperInterface.ChartMapper;
 import Math.Spring.com.VO.Chart;
 import Math.Spring.com.VO.Doughnut;
 import Math.Spring.com.VO.Student;

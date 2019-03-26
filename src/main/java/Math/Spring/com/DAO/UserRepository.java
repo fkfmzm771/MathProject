@@ -1,5 +1,6 @@
 package Math.Spring.com.DAO;
 
+import Math.Spring.com.MapperInterface.UserMapper;
 import Math.Spring.com.VO.Parents;
 import Math.Spring.com.VO.Student;
 import Math.Spring.com.VO.Teacher;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class UserDAO {
+public class UserRepository {
 	@Autowired
 	SqlSession session;
 	
