@@ -12,10 +12,11 @@ Template 2024 Vertiwood
 http://www.tooplate.com/view/2024-vertiwood
 -->
 <title>Verti Wood Template</title>
+
 <meta name="keywords" content=""/>
 <meta name="description" content=""/>
-<link href="resources/css/tooplate_style.css" rel="stylesheet" type="text/css"/>
 
+<link href="resources/css/user_css/tooplate_style.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/coda-slider.css" type="text/css" charset="utf-8"/>
 
 <script src="resources/js/jquery-1.2.6.js" type="text/javascript"></script>
@@ -30,14 +31,17 @@ http://www.tooplate.com/view/2024-vertiwood
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"
         integrity="sha256-MZo5XY1Ah7Z2Aui4/alkfeiq3CopMdV/bbkc/Sh41+s="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+
+</script>
+
 <script src="resources/scripts/util.js"></script>
 
 <style>
-    .bg1 {
-        width: 500px;
-        height: 500px;
-    }
+    /*.bg1 {*/
+        /*width: 500px;*/
+        /*height: 500px;*/
+    /*}*/
 
 </style>
 
@@ -67,16 +71,12 @@ http://www.tooplate.com/view/2024-vertiwood
     }
 
     function output(resp) {
-
-
         var temp = [];
 
         if (resp != null) {
-
             for (var i = 1; i <= 10; i++) {
                 temp.push(eval('resp.game' + i))
             }
-
         }
 
         var num_temp1 = 0;
@@ -85,16 +85,13 @@ http://www.tooplate.com/view/2024-vertiwood
         for (var i = 0; i < temp.length; i++) {
             if (temp[i] > 0) {
                 num_temp1 += 1;
-
             } else {
                 num_temp2 += 1;
             }
         }
 
-
         console.log(num_temp1);
         console.log(num_temp2);
-
 
         var ctx = document.getElementById("myAreaChart2").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -104,10 +101,16 @@ http://www.tooplate.com/view/2024-vertiwood
                 datasets: [{
                     label: '# of Votes',
                     data: [num_temp2, num_temp1],
-                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'],
-                    borderColor: ['rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)'],
+                    backgroundColor:
+                        [
+                            'rgba(255, 99, 132, 0.2)'
+                            , 'rgba(54, 162, 235, 0.2)'
+                        ],
+                    borderColor:
+                        [
+                            'rgba(255,99,132,1)'
+                            , 'rgba(54, 162, 235, 1)'
+                        ],
                     borderWidth: 0.05
                 }]
             },
@@ -126,6 +129,10 @@ http://www.tooplate.com/view/2024-vertiwood
 </script>
 </head>
 <body>
+<div id="bg">
+    <img src="/resources/images/bg/bg_02.jpg" alt="">
+</div>
+
 
 <div id="slider">
     <div id="tooplate_wrapper">
