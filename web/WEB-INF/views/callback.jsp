@@ -43,6 +43,8 @@
 						naverLogin.reprompt();
 						return;
 					}
+
+					//jhjlkgfh
 					data = {
 							 'name' : name
 							,'email' : email
