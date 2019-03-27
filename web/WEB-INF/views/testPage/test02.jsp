@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>로그인</title>
+    <title>회원가입</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -26,54 +26,89 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+
+    </style>
+
+    <script>
+        function cancle() {
+            alert("취소성공");
+            document.joinform.reset();
+        }
+    </script>
+
 </head>
 <body>
 
 <div class="limiter">
-    <div class="container-login100" style="background-image: url('../../../resources/images/bg/bg_04.jpg');">
+    <div class="container-login100" style= "background-image:url('../../../resources/images/bg/bg_05.jpg');">
         <div class="wrap-login100 p-t-80 p-b-30">
-            <i class="fas fa-dragon" style="font-size:100px;  height: 100px;width: 100px; margin-left: 35%" ></i>
-            <form class="login100-form validate-form">
-                <%--  <div class="login100-form-avatar">--%>
-                    <%--<img src="../../resources/images/" alt="AVATAR">--%>
+            <form class="login100-form validate-form" name="joinform">
+                <%--<div class="login100-form-avatar">
+                    <img src="images/avatar-01.jpg" alt="AVATAR">
+                </div>--%>
 
-                <%--</div>--%>
-
-                <h1 class="login100-form-title p-t-20 p-b-45">
-                     유치원 수학 게임
-                </h1>
+                <span class="login100-form-title p-t-20 p-b-45">
+						<i class="fas fa-horse-head"></i>회원 가입
+					</span>
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username" placeholder="Username">
+                    <input class="input100" type="text" name="username" placeholder="아이디">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-user"></i>
-						</span>
+                    </span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <input class="input100" type="password" name="pass" placeholder="비밀번호">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-lock"></i>
-						</span>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+                    <input class="input100" type="password" name="pass" placeholder="비밀번호 확인">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "name is required">
+                    <input class="input100" type="text" name="pass" placeholder="이름">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fas fa-file-signature"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "e-mail is required">
+                    <input class="input100" type="email" name="pass" placeholder="이메일">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fas fa-envelope"></i>
+                    </span>
                 </div>
 
                 <div class="container-login100-form-btn p-t-10">
                     <button class="login100-form-btn">
-                        Login
+                        회원가입
                     </button>
                 </div>
-                <div class="rounded" >
-                    <a href="#" class="rounded-btn" id="rounded-btn-google"></a>
-                    <a href="#" class="rounded-btn" id="rounded-btn-naver"></a>
-                </div>
-                <div class="text-center w-full">
-                    <a class="txt1" href="#">
-                       회원 가입
 
+                 <div class="container-login100-form-btn p-t-10">
+                     <a href="javascript:cancle();" class="login100-form-btn">취소</a>
+                 </div>
+
+
+                <%--<div class="text-center w-full">
+                    <a class="txt1" href="#">
+
+                        <i class="fa fa-long-arrow-right"></i>
                     </a>
-                </div>
+                </div>--%>
             </form>
         </div>
     </div>

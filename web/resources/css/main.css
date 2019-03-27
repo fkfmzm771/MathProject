@@ -394,6 +394,7 @@ iframe {
 .login100-form-btn:hover:before {
   opacity: 1;
 }
+
 .rounded{
     margin-top: 30px;
     margin-left: 120px;
@@ -562,7 +563,7 @@ iframe {
 
 @media (max-width: 576px) {
   .wrap-login100 {
-    padding-top: 80px;
+    padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
   }
