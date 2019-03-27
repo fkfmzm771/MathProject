@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -48,10 +50,10 @@
                 data: Data,
                 success: function (resp) {
                     if (resp == "T") {
-                        alert("µî·Ï¼º°ø");
+                        alert("ë“±ë¡ì„±ê³µ");
 
                     } else {
-                        alert("µî·Ï½ÇÆĞ");
+                        alert("ë“±ë¡ì‹¤íŒ¨");
                     }
                     $("#studentId").val("");
                     $("#numberKnow").val("");
@@ -75,7 +77,7 @@
                 data: Data,
                 success: output,
                 error: function () {
-                    alert("½ÇÆĞ¤»¤»");
+                    alert("ì‹¤íŒ¨ã…‹ã…‹");
                 }
             })
         }
@@ -141,25 +143,25 @@
 
 </head>
 <body>
-<p>°ªÀ» ÀÔ·ÂÇÏ¼¼¿ä</p>
+<p>ê°’ì„ ì…ë ¥í•˜ì„¸ìš”</p>
 
 <table border="1">
     <tr>
-        <th>ÇĞ»ı¾ÆÀÌµğ: <input type="text" id="studentId"></th>
-        <td>¼ıÀÚ ÀÌÇØ: <input type="text" id="numberKnow"></td>
-        <td>µ¡¼À »¬¼À: <input type="text" id="numberPlus"></td>
-        <td>µµÇü ÀÌÇØ: <input type="text" id="shapesKnow"></td>
-        <td>»ıÈ° È°¿ë: <input type="text" id="lifeAbility"></td>
-        <td><input type="button" id="chartRegist" value="È®ÀÎ">
+        <th>í•™ìƒì•„ì´ë””: <input type="text" id="studentId"></th>
+        <td>ìˆ«ì ì´í•´: <input type="text" id="numberKnow"></td>
+        <td>ë§ì…ˆ ëº„ì…ˆ: <input type="text" id="numberPlus"></td>
+        <td>ë„í˜• ì´í•´: <input type="text" id="shapesKnow"></td>
+        <td>ìƒí™œ í™œìš©: <input type="text" id="lifeAbility"></td>
+        <td><input type="button" id="chartRegist" value="í™•ì¸">
     </tr>
 </table>
-<p>ÇĞ»ı ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¿© Â÷Æ® °Ë»ö</p>
+<p>í•™ìƒ ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì—¬ ì°¨íŠ¸ ê²€ìƒ‰</p>
 
 
 <table>
     <tr>
-        <td>ÇĞ»ı ¾ÆÀÌµğ : <input type="text" id="studentId2"></td>
-        <td><input type="button" value="°Ë»ö" id="reserchChart"></td>
+        <td>í•™ìƒ ì•„ì´ë”” : <input type="text" id="studentId2"></td>
+        <td><input type="button" value="ê²€ìƒ‰" id="reserchChart"></td>
     </tr>
 </table>
 

@@ -823,7 +823,7 @@ $(document).ready(function() { "use strict";
           
       if (window.sidebarShown){
         $currentSection = $('.sidebar .content');
-      } 
+      }
       
       if (window.popupShown){
         $currentSection = $('.popup .content');
