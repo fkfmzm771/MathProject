@@ -131,11 +131,13 @@ iframe {
 [ Utility ]*/
 .txt1 {
   font-family: Montserrat-Regular;
-  font-size: 16px;
-  color: #cccccc;
+  font-size: 40px;
+  color: #000000;
   line-height: 1.4;
-  margin-bottom: 50px;
-  margin-top: 10px;
+}
+
+.text-center{
+  margin-top: 20px;
 }
 
 .bo1 {
@@ -211,11 +213,11 @@ iframe {
 
 .login100-form-title {
   font-family: Montserrat-ExtraBold;
-  font-size: 24px;
-  color: #fff;
+  font-size: 50px;
+  color: #000000;
   line-height: 1.2;
   text-align: center;
-
+  size: 50px;
   width: 100%;
   display: block;
 }
@@ -394,6 +396,7 @@ iframe {
 }
 .rounded{
     margin-top: 30px;
+    margin-left: 120px;
     padding: 10px;
 }
 .rounded-btn{
@@ -405,18 +408,26 @@ iframe {
     text-align: center;
     line-height: 80px;
 }
+
 #rounded-btn-naver{
     float: right;
-    margin-right: 20px;
+    margin-left: 20px;
     background:url("../images/login_image/naver.png") ;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #00d131;
 }
 
+#rounded-btn-naver:hover{
+  color: #fff;
+}
+#rounded-btn-googler:hover{
+  color: #fff;
+}
+
 #rounded-btn-google{
     float: left;
-    margin-left:  20px;
+    margin-right:  20px;
     background:url("../images/login_image/google.jpg") ;
     background-size: cover;
     background-repeat: no-repeat;

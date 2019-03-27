@@ -7,7 +7,7 @@
 
     <title>Insert title here</title>
 
-    <script src="resources/jquery-3.3.1.min.js"></script>
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"
             integrity="sha256-MZo5XY1Ah7Z2Aui4/alkfeiq3CopMdV/bbkc/Sh41+s="

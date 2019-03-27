@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="resources/jquery-3.3.1.min.js"></script>
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
 
 
     <style type="text/css">
