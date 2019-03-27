@@ -277,37 +277,13 @@
             </svg>
         </a>
         <ul class="mainMenu margin-top-3">
-            <li><a href="#">All Goods</a></li>
-            <li><a href="#">UI Kits</a></li>
-            <li><a href="#">Icons</a></li>
-            <li><a href="#">Mockups</a></li>
-            <li><a href="#">Toolkit</a></li>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">교육</a></li>
+            <li><a href="#">게임</a></li>
+            <li><a href="#">통계</a></li>
+            <li><a href="#">만든이</a></li>
         </ul>
-        <ul class="subMenu small opacity-8">
-            <li><a href="#">Submit Product</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">License</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-        <ul class="social opacity-8">
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
-                </svg>
-            </a></li>
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use>
-                </svg>
-            </a></li>
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use>
-                </svg>
-            </a></li>
-        </ul>
+
     </div>
 </nav>
 
@@ -318,18 +294,35 @@
             <div class="wrap">
 
                 <div class="fix-12-12">
-                    <ul class="flex fixedSpaces verticalCenter reverse">
-                        <li class="col-6-12 left middle">
-                            <h1 class="ae-1 fromLeft">Designers are meant to be loved, not to be understood.</h1>
-                            <p class="ae-2 fromLeft"><span class="opacity-8">The sudden hunch, the creative leap of mind that “sees”
-                                in a flash how to solve a problem in a simple way, is something quite&nbsp;different.</span>
+                    <ul class="grid">
+                        <li class="col-6-12 left">
+                            <h1 class="ae-2 fromLeft">이대로 수학에 오신것을 환영합니다!</h1>
+                            <p class="ae-3 fromLeft"><span class="opacity-8">어쩌구 저쩌구</span>
                             </p>
-                            <a class="button blue gradient ae-3 fromCenter cropLeft">Get Started</a><a
-                                class="button white ae-4 fromCenter">Learn more</a>
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" data-slider-id="60-1">
+                                <li class="selected">Education</li>
+                                <li>Game</li>
+                                <li>Management</li>
+                            </ul>
                         </li>
-                        <li class="col-6-12">
-                            <img class="ae-4" width="605" src="/resources/templet/assets/img/iphones-34.png" alt="iPhones Thumbnail"
-                                 data-action="zoom"/>
+                        <li class="col-6-12 left ae-5 fromCenter">
+                            <ul class="slider animated margin-top-4" data-slider-id="60-1">
+                                <li class="selected fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-1">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                                <li class="fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-2">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                                <li class="fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-3">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -337,7 +330,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_01.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_01_1.png)"></div>
 </section>
 
 <!-- Slide 2 (#60) -->
@@ -383,7 +376,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_02.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_02_1.png)"></div>
 </section>
 
 
@@ -501,7 +494,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_03.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_03_1.png)"></div>
 </section>
 
 <!-- Slide 4 (#26) -->
@@ -552,7 +545,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_04.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_04_1.png)"></div>
 </section>
 
 <!-- Slide 5 (#91) -->
@@ -590,7 +583,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_04.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_05_1.png)"></div>
 </section>
 
 <!-- Slide 6 (#83) -->
