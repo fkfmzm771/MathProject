@@ -186,6 +186,7 @@
                 <li><a href="#section2">교육</a></li>
                 <li><a href="#section3">게임</a></li>
                 <li><a href="#section4">통계</a></li>
+                <li><a href="#section5">만든이</a></li>
             </ul>
         </div>
         <div class="right"><a class="button blue gradient" href="#">내 정보</a>

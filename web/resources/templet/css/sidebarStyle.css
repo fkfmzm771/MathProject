@@ -305,20 +305,35 @@ body {
 }
 
 .wp-content {
-  margin-top: 60px;
-  margin-left: 75px;
+  /*margin-top: 160px;*/
+
 }
 
-.page_content{
+.page_content {
   position: absolute;
+  /*margin-left: 75px;*/
+  /*margin-left: 75px;*/
+  margin-right: 75px;
+  padding-top: 60px;
   width: 100%;
   height: 100%;
-
 }
-/*.container-fluid{*/
-  /*margin-top: 0px;*/
-  /*margin-left: 0px;*/
-/*}*/
+  /*max-height: 100%;*/
+  /*min-height: 100%;*/
+  /*height: 90%;*/
+
+.hide_menu_content {
+  overflow: hidden;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  -webkit-overflow-scrolling: touch;
+}
 
 
 /* Remove unde
@@ -428,7 +443,7 @@ button:focus, a:focus {
 [data-component='navbar'] .list-group .lg {
   height: 500px;
   width: 270px;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 [data-component='navbar'] .list-group .list-group-item {
   border-radius: 0;
