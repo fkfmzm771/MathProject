@@ -217,49 +217,7 @@
 </nav>
 
 <!-- HomePage Sidebar -->
-<nav class="sidebar" data-sidebar-id="Home_side">
-    <div class="close">
-        <svg>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-        </svg>
-    </div>
-    <div class="content">
-        <a href="#" class="logo">
-            <svg width="37" height="30">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
-            </svg>
-        </a>
-        <ul class="mainMenu margin-top-3">
-            <li><a href="#">내 유치원</a></li>
-            <li><a href="#">친구들</a></li>
-        </ul>
-        <ul class="subMenu small opacity-8">
-            <li><a href="#">Submit Product</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">License</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-        <ul class="social opacity-8">
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
-                </svg>
-            </a></li>
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use>
-                </svg>
-            </a></li>
-            <li><a href="#">
-                <svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use>
-                </svg>
-            </a></li>
-        </ul>
-    </div>
-</nav>
+
 
 
 
@@ -330,7 +288,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_01_1.png)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_01.jpg)"></div>
 </section>
 
 <!-- Slide 2 (#60) -->
@@ -376,7 +334,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_02_1.png)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_02.jpg)"></div>
 </section>
 
 
@@ -494,7 +452,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_03_1.png)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_03.jpg)"></div>
 </section>
 
 <!-- Slide 4 (#26) -->
@@ -545,7 +503,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_04_1.png)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_04.jpg)"></div>
 </section>
 
 <!-- Slide 5 (#91) -->
@@ -583,7 +541,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_05_1.png)"></div>
+    <div class="background" style="background-image:url(/resources/images/bg/bg_05.jpg)"></div>
 </section>
 
 <!-- Slide 6 (#83) -->
