@@ -1,6 +1,11 @@
-<html lang="utf-8">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<html>
+
 
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
@@ -12,17 +17,11 @@
     <!-- Compressed Styles -->
     <link href="/resources/templet/css/slides.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Custom Styles -->
-    <!-- <link href="css/custom.css" rel="stylesheet" type="text/css"> -->
-
     <!-- jQuery 3.3.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Compressed Scripts -->
     <script src="/resources/templet/js/slides.min.js" type="text/javascript"></script>
-
-    <!-- Custom Scripts -->
-    <!-- <script src="js/custom.js" type="text/javascript"></script> -->
 
     <!-- Fonts and Material Icons -->
     <link rel="stylesheet" as="font"
@@ -177,26 +176,25 @@
     </symbol>
 
 </svg>
-
 <!-- Panel Top #05 -->
 <nav class="panel top">
     <div class="sections desktop">
-        <%--<div class="left"><a href="https://designmodo.com/?u=3165" title="Slides Framework">--%>
-            <%--<svg style="width:82px;height:24px">--%>
-                <%--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>--%>
-            <%--</svg>--%>
-        <%--</a></div>--%>
+
         <div class="center">
             <ul class="menu">
-                <li><a href="#">홈</a></li>
-                <li><a href="#">교육</a></li>
-                <li><a href="#">게임</a></li>
-                <li><a href="#">통계</a></li>
+                <li><a href="#section1">홈</a></li>
+                <li><a href="#section2">교육</a></li>
+                <li><a href="#section3">게임</a></li>
+                <li><a href="#section4">통계</a></li>
             </ul>
         </div>
         <div class="right"><a class="button blue gradient" href="#">내 정보</a>
             <a class="button green gradient" href="#">로그인</a></div>
     </div>
+
+
+
+
 
     <div class="sections compact hidden">
         <div class="left"><a href="#" title="Slides Framework">
@@ -204,13 +202,68 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
             </svg>
         </a></div>
-        <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use
-                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+
+        <div class="right">
+            <span class="button actionButton sidebarTrigger" data-sidebar-id="mobile_side">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use>
+                </svg>
+            </span>
+        </div>
+    </div>
+
+
+</nav>
+
+<!-- HomePage Sidebar -->
+<nav class="sidebar" data-sidebar-id="Home_side">
+    <div class="close">
+        <svg>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
+        </svg>
+    </div>
+    <div class="content">
+        <a href="#" class="logo">
+            <svg width="37" height="30">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
+            </svg>
+        </a>
+        <ul class="mainMenu margin-top-3">
+            <li><a href="#">내 유치원</a></li>
+            <li><a href="#">친구들</a></li>
+        </ul>
+        <ul class="subMenu small opacity-8">
+            <li><a href="#">Submit Product</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">License</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="social opacity-8">
+            <li><a href="#">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
+                </svg>
+            </a></li>
+            <li><a href="#">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use>
+                </svg>
+            </a></li>
+            <li><a href="#">
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use>
+                </svg>
+            </a></li>
+        </ul>
     </div>
 </nav>
 
-<!-- Sidebar -->
-<nav class="sidebar" data-sidebar-id="1">
+
+
+<!-- Mobile Sidebar -->
+<nav class="sidebar" data-sidebar-id="mobile_side">
     <div class="close">
         <svg>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
@@ -258,7 +311,7 @@
 </nav>
 
 <!-- Slide 1 (#34) -->
-<section class="slide fade-6 kenBurns">
+<section id="section1" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -267,7 +320,8 @@
                     <ul class="flex fixedSpaces verticalCenter reverse">
                         <li class="col-6-12 left middle">
                             <h1 class="ae-1 fromLeft">Designers are meant to be loved, not to be understood.</h1>
-                            <p class="ae-2 fromLeft"><span class="opacity-8">The sudden hunch, the creative leap of mind that “sees” in a flash how to solve a problem in a simple way, is something quite&nbsp;different.</span>
+                            <p class="ae-2 fromLeft"><span class="opacity-8">The sudden hunch, the creative leap of mind that “sees”
+                                in a flash how to solve a problem in a simple way, is something quite&nbsp;different.</span>
                             </p>
                             <a class="button blue gradient ae-3 fromCenter cropLeft">Get Started</a><a
                                 class="button white ae-4 fromCenter">Learn more</a>
@@ -286,7 +340,7 @@
 </section>
 
 <!-- Slide 2 (#60) -->
-<section class="slide fade-6 kenBurns">
+<section id="section2" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -399,7 +453,7 @@
 
 
 <!-- Slide 3 (#27) -->
-<section class="slide fade-6 kenBurns">
+<section  id="section3" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -409,8 +463,8 @@
                         <li class="col-5-12 cell-27">
                             <div class="fix-4-12">
                                 <ul class="slider clickable ae-1 fromAbove" data-slider-id="27-2">
-                                    <li class="selected"><img src="/resources/templet/assets/img/watch-26-2.png"
-                                                              alt="Apple Watch Thumbnail"/></li>
+                                    <li class="selected">
+                                        <img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
                                     <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
                                     <li><img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
                                     <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
@@ -450,7 +504,7 @@
 </section>
 
 <!-- Slide 4 (#26) -->
-<section class="slide fade-6 kenBurns">
+<section id="section4" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -501,7 +555,7 @@
 </section>
 
 <!-- Slide 5 (#91) -->
-<section class="slide fade-6 kenBurns">
+<section id="section5" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
