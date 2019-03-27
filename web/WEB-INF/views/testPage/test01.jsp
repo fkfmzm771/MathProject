@@ -26,13 +26,14 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 <body>
 
 <div class="limiter">
     <div class="container-login100" style="background-image: url('../../../resources/images/bg/bg_04.jpg');">
         <div class="wrap-login100 p-t-80 p-b-30">
-            <i class="fas fa-dragon" style="font-size:100px;  height: 100px;width: 100px; margin-left: 35%" ></i>
+            <i class="fas fa-dragon" id="drangon"  ></i>
             <form class="login100-form validate-form">
                 <%--  <div class="login100-form-avatar">--%>
                     <%--<img src="../../resources/images/" alt="AVATAR">--%>
@@ -44,7 +45,7 @@
                 </h1>
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username" placeholder="Username">
+                    <input class="input100" type="text" name="username" placeholder="아이디">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-user"></i>
@@ -52,7 +53,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <input class="input100" type="password" name="pass" placeholder="비밀번호">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-lock"></i>
@@ -68,11 +69,8 @@
                     <a href="#" class="rounded-btn" id="rounded-btn-google"></a>
                     <a href="#" class="rounded-btn" id="rounded-btn-naver"></a>
                 </div>
-                <div class="text-center w-full">
-                    <a class="txt1" href="#">
-                       회원 가입
-
-                    </a>
+                <div class="container-login100-form-btn2 p-t-10">
+                    <a href="#" class="login100-form-btn2">회원가입</a>
                 </div>
             </form>
         </div>

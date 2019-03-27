@@ -49,8 +49,8 @@
                 </div>--%>
 
                 <span class="login100-form-title p-t-20 p-b-45">
-						<i class="fas fa-horse-head"></i>회원 가입
-					</span>
+						<i class="fas fa-horse-head" id="horse"></i>회원 가입
+                </span>
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
                     <input class="input100" type="text" name="username" placeholder="아이디">
@@ -98,8 +98,8 @@
                     </button>
                 </div>
 
-                 <div class="container-login100-form-btn p-t-10">
-                     <a href="javascript:cancle();" class="login100-form-btn">취소</a>
+                 <div class="container-login100-form-btn2 p-t-10">
+                     <a href="javascript:cancle();" class="login100-form-btn2">취소</a>
                  </div>
 
 
