@@ -27,6 +27,7 @@ public class UserController {
     public String joinus() {
         return "user/joinForm";
     }
+    //셋업
 
 
     //네이버로그인화면

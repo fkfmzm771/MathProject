@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
+
 <html>
 
 
@@ -14,7 +15,7 @@
     <title>New Template — Slides 4.0.5 Template Generator</title>
 
     <!-- Compressed Styles -->
-    <link href="/resources/templet/css/slides.css" rel="stylesheet" type="text/css">
+    <link href="/resources/templet/css/slides.min.css" rel="stylesheet" type="text/css">
 
     <!-- jQuery 3.3.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,11 +26,6 @@
     <!-- Fonts and Material Icons -->
     <link rel="stylesheet" as="font"
           href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
-
-    <%--PIXI.JS--%>
-    <script src="resources/scripts/pixi.min.js"></script>
-
-    <link href="/resources/game/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 <body class="slides horizontal simplifiedMobile animated">
@@ -198,6 +194,9 @@
     </div>
 
 
+
+
+
     <div class="sections compact hidden">
         <div class="left"><a href="#" title="Slides Framework">
             <svg style="width:82px;height:24px">
@@ -213,9 +212,13 @@
             </span>
         </div>
     </div>
+
+
 </nav>
 
 <!-- HomePage Sidebar -->
+
+
 
 
 <!-- Mobile Sidebar -->
@@ -264,20 +267,17 @@
                             <ul class="slider animated margin-top-4" data-slider-id="60-1">
                                 <li class="selected fromCenter">
                                     <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-1">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg"
-                                             alt="Video Thumbnail"/>
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg" alt="Video Thumbnail"/>
                                     </div>
                                 </li>
                                 <li class="fromCenter">
                                     <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-2">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg"
-                                             alt="Video Thumbnail"/>
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg" alt="Video Thumbnail"/>
                                     </div>
                                 </li>
                                 <li class="fromCenter">
                                     <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-3">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg"
-                                             alt="Video Thumbnail"/>
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg" alt="Video Thumbnail"/>
                                     </div>
                                 </li>
                             </ul>
@@ -296,16 +296,41 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-                <%--<div class="fix-12-12">--%>
 
+                <div class="fix-12-12">
+                    <ul class="grid">
+                        <li class="col-6-12 left">
+                            <h1 class="ae-2 fromLeft">Krabi Island</h1>
+                            <p class="ae-3 fromLeft"><span class="opacity-8">An electrician isn’t an opinion former, but a graphic designer is. My argument is that all graphic designers hold high levels of responsibility in society.</span>
+                            </p>
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" data-slider-id="60-1">
+                                <li class="selected">Krabi Island</li>
+                                <li>Community</li>
+                                <li>Surfing</li>
+                            </ul>
+                        </li>
+                        <li class="col-6-12 left ae-5 fromCenter">
+                            <ul class="slider animated margin-top-4" data-slider-id="60-1">
+                                <li class="selected fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-1">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                                <li class="fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-2">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                                <li class="fromCenter">
+                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-3">
+                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg" alt="Video Thumbnail"/>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-                    <%--<div class="canvas_fix">--%>
-                        <%--<canvas id="edu_canvas"></canvas>--%>
-                    <%--</div>--%>
-
-                    <a href="/gamego" target="_blank">게임 시작</a>
-
-                <%--</div>--%>
             </div>
         </div>
     </div>
@@ -380,7 +405,7 @@
 
 
 <!-- Slide 3 (#27) -->
-<section id="section3" class="slide fade-6 kenBurns">
+<section  id="section3" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -391,14 +416,10 @@
                             <div class="fix-4-12">
                                 <ul class="slider clickable ae-1 fromAbove" data-slider-id="27-2">
                                     <li class="selected">
-                                        <img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
-                                             alt="Apple Watch Thumbnail"/></li>
+                                        <img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
                                 </ul>
                                 <ul class="controller dots ae-2 fromCenter margin-top-3" data-slider-id="27-2">
                                     <li class="dot selected"></li>
@@ -415,8 +436,7 @@
                                     we reach out to brands to connect with a time when things seemed&nbsp;better.</p>
                             </div>
                             <div class="relative">
-                                <img src="/resources/templet/assets/img/icon-2.png" class="ae-3 fromCenter app-26"
-                                     alt="app"/>
+                                <img src="/resources/templet/assets/img/icon-2.png" class="ae-3 fromCenter app-26" alt="app"/>
                                 <div class="text-26">
                                     <h3 class="ae-3 fromRight">Ember for Apple Watch</h3>
                                     <div class="ae-5 fromRight">
@@ -436,53 +456,17 @@
 </section>
 
 <!-- Slide 4 (#26) -->
+<%--통계 페이지--%>
 <section id="section4" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
 
-                <div class="fix-12-12">
-                    <ul class="flex reverse verticalCenter">
-                        <li class="col-7-12 left cell-26">
-                            <h1 class="ae-1 fromLeft">How we work</h1>
-                            <div class="ae-2 fromLeft">
-                                <p class="opacity-8">An electrician isn't an opinion former, but a graphic designer is.
-                                    My argument is that all graphic designers hold high levels of responsibility in&nbsp;society.</p>
-                            </div>
-                            <div class="relative">
-                                <img src="/resources/templet/assets/img/icon-1.png" class="ae-3 fromCenter app-26"
-                                     alt="app"/>
-                                <div class="text-26">
-                                    <h3 class="ae-3 fromRight">Ember for Apple Watch</h3>
-                                    <div class="ae-5 fromRight">
-                                        <p class="tiny opacity-6">People don&rsquo;t use a product<br>because of the
-                                            great&nbsp;design.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-5-12">
-                            <div class="fix-4-12 center">
-                                <ul class="slider clickable ae-1 fromAbove" data-slider-id="26-3">
-                                    <li class="selected"><img src="/resources/templet/assets/img/watch-26-1.png"
-                                                              alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                </ul>
-                                <ul class="controller dots ae-3 fromCenter margin-top-3" data-slider-id="26-3">
-                                    <li class="dot selected"></li>
-                                    <li class="dot"></li>
-                                    <li class="dot"></li>
-                                    <li class="dot"></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+
+
+
+
+
 
             </div>
         </div>
@@ -612,10 +596,8 @@
                         <button type="submit" class="button blue gradient ae-4" name="submit">Try it free</button>
                     </form>
 
-                    <a href="#" class="button hollow ae-5"><img src="/resources/templet/assets/img/appstore.jpg"
-                                                                height="63"/></a><a
-                        href="#" class="button hollow ae-6"><img src="/resources/templet/assets/img/googleplay.jpg"
-                                                                 height="63"/></a>
+                    <a href="#" class="button hollow ae-5"><img src="/resources/templet/assets/img/appstore.jpg" height="63"/></a><a
+                        href="#" class="button hollow ae-6"><img src="/resources/templet/assets/img/googleplay.jpg" height="63"/></a>
                 </div>
 
             </div>
@@ -628,11 +610,8 @@
 <nav class="panel bottom forceMobileView">
     <div class="sections desktop">
 
-        <div class="center"><span class="nextSlide">
-            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"></use>
-            </svg>
-        </span>
-        </div>
+        <div class="center"><span class="nextSlide"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                              xlink:href="#arrow-down"></use></svg></span></div>
 
     </div>
     <div class="sections compact hidden">

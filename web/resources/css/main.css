@@ -135,6 +135,9 @@ iframe {
   color: #000000;
   line-height: 1.4;
 }
+.txt1 :hover{
+    transform: scale(1.5,1.5);
+}
 
 .text-center{
   margin-top: 20px;
@@ -210,7 +213,19 @@ iframe {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+#drangon{
+    font-size:100px;
+    margin-left: 35%;
+}
 
+#drangon:hover{
+    transform: rotate(360deg);
+    transition: all 0.8s;
+}
+#horse:hover{
+    transform: rotate(360deg);
+    transition: all 0.8s;
+}
 .login100-form-title {
   font-family: Montserrat-ExtraBold;
   font-size: 50px;
@@ -220,6 +235,7 @@ iframe {
   size: 50px;
   width: 100%;
   display: block;
+
 }
 
 /*---------------------------------------------*/
@@ -394,6 +410,82 @@ iframe {
 .login100-form-btn:hover:before {
   opacity: 1;
 }
+/*------------------------------------------------------------------
+*/
+
+.container-login100-form-btn2 {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -13px;
+}
+
+.login100-form-btn2 {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #d60c0d;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    position: relative;
+    z-index: 1;
+}
+
+.login100-form-btn2::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    top: 0;
+    left: 0;
+    background: #005bea;
+    background: -webkit-linear-gradient(left, #005bea, #00c6fb);
+    background: -o-linear-gradient(left, #005bea, #00c6fb);
+    background: -moz-linear-gradient(left, #005bea, #00c6fb);
+    background: linear-gradient(left, #005bea, #00c6fb);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    opacity: 0;
+}
+
+.login100-form-btn2:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.login100-form-btn2:hover:before {
+    opacity: 1;
+}
+
+/*------------------------------------------------------------------
+*/
 .rounded{
     margin-top: 30px;
     margin-left: 120px;
@@ -407,6 +499,9 @@ iframe {
     font-size: 16px;
     text-align: center;
     line-height: 80px;
+}
+.rounded-btn:hover{
+    transform: scale(1.5,1.5);
 }
 
 #rounded-btn-naver{
@@ -562,7 +657,7 @@ iframe {
 
 @media (max-width: 576px) {
   .wrap-login100 {
-    padding-top: 80px;
+    padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
   }
