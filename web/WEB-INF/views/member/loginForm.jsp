@@ -32,7 +32,7 @@
 
 <div class="limiter">
     <div class="container-login100" style="background-image: url('../../../resources/images/bg/bg_04.jpg');">
-        <div class="wrap-login100 p-t-80 p-b-30">
+        <div class="wrap-login100 p-t-100 p-b-50">
             <i class="fas fa-dragon" id="drangon"  ></i>
             <form class="login100-form validate-form">
                 <%--  <div class="login100-form-avatar">--%>
