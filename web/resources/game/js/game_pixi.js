@@ -90,7 +90,7 @@ stage.addChild(gagein);
 
 
 const ticker = new PIXI.Ticker();
-
+//ㅣㅣ
 ticker.add((delta) => {
     //게이지 막대 최대 크기 제한
     img.x = renderer.screen.width / 2;
@@ -109,7 +109,7 @@ function resize() {
     _w = window.innerWidth;
     _h = window.innerHeight;
 
-    gageout.height = 
+    gageout.height =
 
     renderer.resize(_w, _h);
 }
