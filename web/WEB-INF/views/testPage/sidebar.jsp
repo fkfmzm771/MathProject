@@ -25,6 +25,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
+    <script>
+        let check;
+        let side;
+
+        $(function () {
+            check = true;
+            side = document.getElementById("first_menu");
+
+        });
+
+        function side_call() {
+
+            if (check) {
+                side.style.width = "200px";
+                check = !check;
+            } else {
+                side.style.width = "0px";
+                check = !check;
+            }
+        }
+
+        $(".wrap").click(function () {
+            alert("sdfsfd");
+            side.style.width = "0px";
+            check = !check;
+        });
+
+
+    </script>
 </head>
 
 <body class="slides horizontal simplifiedMobile animated">
@@ -186,9 +215,9 @@
         <%--</button>--%>
 
         <div>
-            <a class="navbar-brand px-1" href="#"><img
-                    src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
-                    class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
+            <a class="navbar-brand px-1" href="#" onclick="side_call();">
+                <img src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
+                     class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
 
             <div class="right-links float-right mr-4">
                 <a href="#" class="home"><i class="fa fa-home mr-3"></i></a>
@@ -349,54 +378,24 @@
 
 
 <div class="#">
-    <div data-component="sidebar">
+    <div data-component="sidebar" id="side_click">
         <div class="sidebar">
 
             <%--리스트 그룹 시작(친구 패널)--%>
-            <ul class="list-group flex-column d-inline-block first-menu">
+            <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
                 <li class="list-group-item pl-3 py-2">
-                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
+                    <a href="#"><i class="fa fa-user-o"><span
                             class="ml-2 align-middle">우리반</span></i></a>
 
-                    <ul class="list-group flex-column d-inline-block submenu">
-                        <li class="list-group-item pl-4">
-                            <a href="#" class="">Dashboard</a>
-                        </li>
 
-                        <li class="list-group-item pl-4">
-                            <a href="">SEO</a>
-                        </li>
-
-                    </ul> <!-- /.submenu -->
                 </li> <!-- /우리반 마지막 -->
 
 
                 <li class="list-group-item pl-3 py-2">
                     <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
                             class="ml-2 align-middle">친구</span></i></a>
-                    <ul class="list-group flex-column d-inline-block submenu">
-                        <li class="list-group-item pl-4">
-                            <a href="#" class="">Posts</a>
 
-                            <ul class="list-group flex-column d-inline-block sub-submenu">
-                                <span class="arrow"></span>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">All Posts</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Add New</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Categories</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Tags</a>
-                                </li>
-                            </ul>
-                        </li> <!-- end Posts -->
-
-            </ul> <!-- /.first-menu -->
         </div> <!-- /.sidebar -->
     </div>
 </div>
