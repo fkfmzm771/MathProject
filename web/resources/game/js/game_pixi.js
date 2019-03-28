@@ -10,7 +10,7 @@
 var docV = document.documentElement;
 // 전체화면 설정
 $(function () {
-    // openFullScreenMode();
+    openFullScreenMode();
 });
 
 //전체화면 실행
@@ -90,7 +90,7 @@ stage.addChild(gagein);
 
 
 const ticker = new PIXI.Ticker();
-//ㅣㅣ
+//ㅣ
 ticker.add((delta) => {
     //게이지 막대 최대 크기 제한
     img.x = renderer.screen.width / 2;
