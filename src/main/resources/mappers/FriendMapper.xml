@@ -3,14 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="Math.Spring.com.DAO.FriendMapper">
-    <select id="searchFriend" parameterType="String" resultType="Student">
-			select
-				student_id
-				,student_nickname
-			from
-				student
-			where
-                student_nickname = #{nickname}
-		</select>
+ <mapper namespace="Math.Spring.com.MapperInterface.FriendMapper">
+	<select id="searchFriend" parameterType="String" resultType="Student">
+		select
+			student_id
+			,student_nickname
+		from
+			student
+	  	where
+        	student_nickname = #{nickname}
+	</select>
+
+	<insert id="friendApply" parameterType="Friend">
+		insert into friend
+		values (
+			friend_seq.nextval
+			,#{my_id}
+			,#{friend_id}
+			,0
+		)
+	</insert>
 </mapper>

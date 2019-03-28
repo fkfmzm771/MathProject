@@ -4,9 +4,32 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="341184560724-2888vrea7csuq3s4c79tedsre9cpm7kj.apps.googleusercontent.com">
+
 <title>NaverLogin</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="341184560724-2888vrea7csuq3s4c79tedsre9cpm7kj.apps.googleusercontent.com">
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+            auth2.disconnect();
+        }
+    </script>
 
 <style>
     p#message {
@@ -14,7 +37,6 @@
     }
 </style>
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script>
 function login(){
@@ -60,42 +82,6 @@ function login(){
     }
 </style>
 
-<script>
-    function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-
-        location.href="googleLogin";
-    };
-</script>
-
-<script>
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-        });
-    }
-</script>
-
-<script>
-    function disconnect() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.disconnect().then(function () {
-            console.log('User disconnected.');
-        });
-    }
-</script>
 </head>
 
 
@@ -156,10 +142,10 @@ function login(){
     </script>
     <!-- // 네이버아이디로로그인 초기화 Script -->
 
-    <%--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>--%>
-    <a href="#" onclick="signOut();">Sign out</a>
-    <a href="#" onclick="disconnect();">Disconnect</a>
-    <%--</div>--%>
+
+        <h1>Google Login test</h1>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" onclick="signOut();">Sign out</a>
 </c:if>
 
 <c:if test="${sessionScope.loginId != null}">

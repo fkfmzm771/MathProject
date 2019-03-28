@@ -8,12 +8,32 @@
     <script src="resources/jquery-3.3.1.min.js"></script>
     <script>
 
+
         $(function(){
             $("#searchbtn").on("click",search);
+            $("#apply").on("click",apply);
         })
 
         function search(){
             $("#search").submit();
+        }
+
+        function apply(){
+            var user_id;
+            user_id = document.getElementById("user_id").value;
+
+            $(function(){
+                $.ajax({
+                    url: "friendApply"
+                    ,type: "GET"
+                    ,data: {
+                        user_id:user_id
+                    }
+                    ,success: function(){
+                        alert("친구 신청 완료");
+                    }
+                });
+            })
         }
     </script>
 
@@ -58,7 +78,8 @@
                     <td></td>
                     <td>${user_nickname}</td>
                     <td></td>
-                    <td><input type="button" id="apply" value="신청" value="${user_id}"><br/></td>
+                    <td><input type="button" id="apply" value="신청"><br/></td>
+                    <td><input type="hidden" id="user_id" value=${user_id}></td>
                 </tr>
             </table>
         </form>

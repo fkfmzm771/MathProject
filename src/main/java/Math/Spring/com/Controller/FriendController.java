@@ -1,8 +1,8 @@
 package Math.Spring.com.Controller;
 
 import Math.Spring.com.DAO.FriendDAO;
+import Math.Spring.com.VO.Friend;
 import Math.Spring.com.VO.Student;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class FriendController {
@@ -42,5 +40,18 @@ public class FriendController {
             model.addAttribute("user_nickname",student.getStudent_nickname());
         }
         return "searchFriendForm";
+    }
+
+    @RequestMapping(value="friendApply", method=RequestMethod.GET)
+    @ResponseBody
+    public int friendApply(String user_id, HttpSession session, Friend friend){
+        String sessionId = (String)session.getAttribute("loginId");
+
+        friend.setFriend_id(user_id);
+        friend.setMy_id(sessionId);
+
+        int result = dao.friendApply(friend);
+
+        return result;
     }
 }

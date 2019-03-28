@@ -1,13 +1,11 @@
 package Math.Spring.com.DAO;
 
+import Math.Spring.com.MapperInterface.FriendMapper;
+import Math.Spring.com.VO.Friend;
 import Math.Spring.com.VO.Student;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class FriendDAO {
@@ -19,5 +17,11 @@ public class FriendDAO {
 
          Student searchFriend = mapper.searchFriend(nickname);
         return searchFriend;
+    }
+
+    public int friendApply(Friend friend) {
+        FriendMapper mapper = session.getMapper(FriendMapper.class);
+        int friendApply = mapper.friendApply(friend);
+        return friendApply;
     }
 }

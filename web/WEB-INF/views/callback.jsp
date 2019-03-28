@@ -54,7 +54,7 @@
 							,type: "POST"
 							,data:data
 							,success: function(){
-								window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/index");
+								window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/");
 							}
 //							,error: function(){
 //								window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/logintest/naverFirst");

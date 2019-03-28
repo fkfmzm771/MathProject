@@ -1,11 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html >
 <html>
 <head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="341184560724-2888vrea7csuq3s4c79tedsre9cpm7kj.apps.googleusercontent.com">
+
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		}
+
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+			auth2.disconnect();
+
+
+		}
+	</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-</head>
 
 <!--
 Template 2024 Vertiwood
@@ -14,10 +41,10 @@ http://www.tooplate.com/view/2024-vertiwood
 <title>Verti Wood Template</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="resources/css/tooplate_style.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/user_css/tooplate_style.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="resources/css/coda-slider.css" type="text/css" charset="utf-8" />
-
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="resources/js/jquery-1.2.6.js" type="text/javascript"></script>
 <script src="resources/js/jquery.scrollTo-1.3.3.js" type="text/javascript"></script>
 <script src="resources/js/jquery.localscroll-1.2.5.js" type="text/javascript" charset="utf-8"></script>
@@ -143,6 +170,8 @@ http://www.tooplate.com/view/2024-vertiwood
         }, 2000);
     }
 </script>
+
+
 </head>
 <body>
 	
@@ -157,16 +186,17 @@ http://www.tooplate.com/view/2024-vertiwood
 
             <div id="menu">
                 <ul class="navigation">
+					<c:if test="${sessionScope.loginId != null}">
                 	<li><a href="modify" class="selected">${sessionScope.loginId}님</a></li>
+					</c:if>
+					<c:if test="${sessionScope.loginId == null}">
+						<li><a href="login" class="selected">로그인 하러가기</a></li>
+					</c:if>
                     <li><a href="logout">로그아웃</a></li>
                     <li><a href="javascript:naverLogout()">네이버 로그아웃</a></li>
                     <li><a href="friend">친구목록</a></li>
-                    <li><a href="#gallery">저장된게임불러오기</a></li>
+                    <li><a href="#" onclick="signOut();">Sign out</a></li>
                     <li><a href="#contact" class="last">통계</a></li>
-                    <%--<a href="https://nid.naver.com/nidlogin.logout?returl=http://localhost:8085/login" target="_parent" id="btn_logout" class="btn_logout">--%>
-                        <%--<span class="btn_inr">로그아웃</span>--%>
-                    <%--</a>--%>
-
                 </ul>
             </div>
 			
@@ -214,8 +244,7 @@ http://www.tooplate.com/view/2024-vertiwood
         <div class="cleaner"></div>
 	</div>
     </div> <!-- end of content -->
-	
-    
+
 
 </div>
 </body>
