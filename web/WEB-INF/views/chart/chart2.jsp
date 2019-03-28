@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
     <title>Insert title here</title>
 
-    <script src="resources/jquery-3.3.1.min.js"></script>
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"
             integrity="sha256-MZo5XY1Ah7Z2Aui4/alkfeiq3CopMdV/bbkc/Sh41+s="
@@ -48,10 +50,10 @@
                 data: Data,
                 success: function (resp) {
                     if (resp == "T") {
-                        alert("µî·Ï¼º°ø");
+                        alert("ë“±ë¡ì„±ê³µ");
 
                     } else {
-                        alert("µî·Ï½ÇÆÐ");
+                        alert("ë“±ë¡ì‹¤íŒ¨");
                     }
                     $("#studentId").val("");
                     $("#numberKnow").val("");
@@ -75,7 +77,7 @@
                 data: Data,
                 success: output,
                 error: function () {
-                    alert("½ÇÆÐ¤»¤»");
+                    alert("ì‹¤íŒ¨ã…‹ã…‹");
                 }
             })
         }
@@ -141,25 +143,25 @@
 
 </head>
 <body>
-<p>°ªÀ» ÀÔ·ÂÇÏ¼¼¿ä</p>
+<p>ê°’ì„ ìž…ë ¥í•˜ì„¸ìš”</p>
 
 <table border="1">
     <tr>
-        <th>ÇÐ»ý¾ÆÀÌµð: <input type="text" id="studentId"></th>
-        <td>¼ýÀÚ ÀÌÇØ: <input type="text" id="numberKnow"></td>
-        <td>µ¡¼À »¬¼À: <input type="text" id="numberPlus"></td>
-        <td>µµÇü ÀÌÇØ: <input type="text" id="shapesKnow"></td>
-        <td>»ýÈ° È°¿ë: <input type="text" id="lifeAbility"></td>
-        <td><input type="button" id="chartRegist" value="È®ÀÎ">
+        <th>í•™ìƒì•„ì´ë””: <input type="text" id="studentId"></th>
+        <td>ìˆ«ìž ì´í•´: <input type="text" id="numberKnow"></td>
+        <td>ë§ì…ˆ ëº„ì…ˆ: <input type="text" id="numberPlus"></td>
+        <td>ë„í˜• ì´í•´: <input type="text" id="shapesKnow"></td>
+        <td>ìƒí™œ í™œìš©: <input type="text" id="lifeAbility"></td>
+        <td><input type="button" id="chartRegist" value="í™•ì¸">
     </tr>
 </table>
-<p>ÇÐ»ý ¾ÆÀÌµð¸¦ ÀÔ·ÂÇÏ¿© Â÷Æ® °Ë»ö</p>
+<p>í•™ìƒ ì•„ì´ë””ë¥¼ ìž…ë ¥í•˜ì—¬ ì°¨íŠ¸ ê²€ìƒ‰</p>
 
 
 <table>
     <tr>
-        <td>ÇÐ»ý ¾ÆÀÌµð : <input type="text" id="studentId2"></td>
-        <td><input type="button" value="°Ë»ö" id="reserchChart"></td>
+        <td>í•™ìƒ ì•„ì´ë”” : <input type="text" id="studentId2"></td>
+        <td><input type="button" value="ê²€ìƒ‰" id="reserchChart"></td>
     </tr>
 </table>
 
