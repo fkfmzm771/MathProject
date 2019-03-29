@@ -5,13 +5,15 @@
 //     window.resizeTo(1280, 800); // 웹페이지의 크기를 가로 1280 , 세로 800 으로 고정(확장 및 축소)
 // });
 //
+window.onload = function () {
+    // openFullScreenMode();
+
+};
 
 
 var docV = document.documentElement;
 // 전체화면 설정
-$(function () {
-    openFullScreenMode();
-});
+
 
 //전체화면 실행
 function openFullScreenMode() {
@@ -70,7 +72,7 @@ stage.addChild(img);
 //사각형 게이지 생성
 let gageout = new PIXI.Graphics();
 gageout.beginFill(0xd3249);
-gageout.drawRect(50, 100, 100, _h - 100);
+gageout.drawRect(100, 100, 100, 100);
 gageout.endFill();
 
 gageout.interactive = true;
@@ -78,24 +80,13 @@ gageout.buttonmode = true;
 gageout.on('pointerdown', onClick);
 stage.addChild(gageout);
 
-//올라가는 게이지
-let gagein = new PIXI.Graphics();
-let y_end = gageout.y + gageout.height;
-
-gagein.beginFill(0xffffff);
-gagein.drawRect(gageout.x + 10, y_end, 30, 20);
-gagein.endFill();
-
-stage.addChild(gagein);
-
-
 const ticker = new PIXI.Ticker();
 //ㅣ
 ticker.add((delta) => {
     //게이지 막대 최대 크기 제한
     img.x = renderer.screen.width / 2;
     img.y = renderer.screen.height / 2;
-    img.rotation += 0.1;
+    img.rotation += 0.5;
 
     renderer.render(stage);
 });
@@ -103,26 +94,15 @@ ticker.add((delta) => {
 
 ticker.start();
 
+//창 화면 크기 자동 조절
 window.addEventListener('resize', resize);
-
 function resize() {
     _w = window.innerWidth;
     _h = window.innerHeight;
-
-    gageout.height =
-
     renderer.resize(_w, _h);
 }
 
 function onClick() {
-    // ticker.add((delta) =>{
-    // gagein.y = (gageout.y + gageout.height) - 30;
-    // gagein.height = +30;
-
-
-    // });
-    // ticker.start();
-
 
     // location.href = 'joinForm';
 }
