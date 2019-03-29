@@ -16,28 +16,19 @@
 
 
 <%--PIXI.JS--%>
-<script src="resources/scripts/pixi.min.js"></script>
-<%--<script src="/resources/game/js/game_pixi.js"></script>--%>
+<script src="/resources/game/js/pixi.min.js"></script>
+<script src="/resources/game/js/viewport.js"></script>
 
 
 <script>
+
+
     let turnset = true;
-    //
-    // $(function () {
-    //     window.focus(); // 현재 window 즉 익스플러러를 윈도우 최상단에 위치
-    //     window.moveTo(0, 0); // 웹 페이지의 창 위치를 0,0 (왼쪽 최상단) 으로 고정
-    //     window.resizeTo(1280, 800); // 웹페이지의 크기를 가로 1280 , 세로 800 으로 고정(확장 및 축소)
-    // });
-    //
-    window.onload = function () {
-        // openFullScreenMode();
-
-    };
 
 
-    var docV = document.documentElement;
     // 전체화면 설정
 
+    var docV = document.documentElement;
 
     //전체화면 실행
     function openFullScreenMode() {
@@ -70,7 +61,7 @@
     let _w = window.innerWidth;
     let _h = window.innerHeight;
 
-    const renderer = new PIXI.Renderer({
+    const renderer = new Renderer({
         view: canvas,
         width: _w,
         height: _h,
@@ -79,9 +70,30 @@
         autoDensity: true
     });
     //컨테이너 생성
-    const pixi = PIXI;
+
+
+    var PIXI = require('pixi.js');
+    var Viewport = require('pixi-viewport');
+
 
     const stage = new PIXI.Container();
+
+
+    let viewport = new Viewport({
+        screenWidth: _w,
+        screenHeight: _h,
+        worldWidth: 1000,
+        worldHeight: 1000,
+        interaction: renderer.plugins.interaction
+
+    });
+    stage.addChild(viewport);
+
+    viewport
+        .drag()
+        .pinch()
+        .wheel()
+        .decelerate();
 
 
     //이미지의 스프라이트화(메모리에 영향이 있는듯)
@@ -99,9 +111,6 @@
     // bg_sp.anchor.set(0.5);
     bg_sp.width = _w;
     bg_sp.height = _h;
-
-
-
 
 
     //사각형 게이지 생성
@@ -123,10 +132,10 @@
     gageout2.on('pointerdown', onClick);
 
     //컨테이너에 스프라이트를 추가
-    stage.addChild(bg_sp);
-    stage.addChild(img);
-    stage.addChild(gageout1);
-    stage.addChild(gageout2);
+    viewport.addChild(bg_sp);
+    viewport.addChild(img);
+    viewport.addChild(gageout1);
+    viewport.addChild(gageout2);
 
 
     const ticker = new PIXI.Ticker();
@@ -141,10 +150,6 @@
     });
 
     ticker.start();
-
-    const stage2 = new PIXI.Container();
-
-
 
 
     //창 화면 크기 자동 조절

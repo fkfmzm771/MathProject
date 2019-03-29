@@ -298,7 +298,7 @@
             <div class="wrap">
 
                 <div class="fix-12-12">
-                    <a href="/gamego">게임시작</a>
+                    <a href="/gamego" target="_blank">게임시작</a>
                 </div>
 
             </div>
