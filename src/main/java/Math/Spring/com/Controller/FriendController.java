@@ -11,22 +11,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class FriendController {
     @Autowired
     FriendDAO dao;
 
+    /*
+    친구 페이지
+     */
     @RequestMapping(value = "friend" , method = RequestMethod.GET)
     public String friend(){
         return "friend";
     }
 
+    /*
+    유저 검색 페이지
+     */
     @RequestMapping(value = "searchFriendForm" , method = RequestMethod.GET)
     public String searchFriendForm(){
         return "searchFriendForm";
     }
 
+    /*
+    친구 찾기기능
+     */
     @RequestMapping(value = "searchFriend" , method = RequestMethod.GET)
     public String searchFriend(String nickname, HttpSession session, Model model){
         Student student = dao.searchFriend(nickname);
@@ -42,6 +56,9 @@ public class FriendController {
         return "searchFriendForm";
     }
 
+    /*
+    친구 신청 기능
+     */
     @RequestMapping(value="friendApply", method=RequestMethod.GET)
     @ResponseBody
     public int friendApply(String user_id, HttpSession session, Friend friend){
@@ -53,5 +70,43 @@ public class FriendController {
         int result = dao.friendApply(friend);
 
         return result;
+    }
+
+    /*
+    친구 목록 출력
+     */
+    @RequestMapping(value = "/friendList", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<HashMap<String, Object>> reviewList(HttpSession session){
+        String session_my_id = (String)session.getAttribute("loginId");
+        ArrayList<HashMap<String, Object>> fList = new ArrayList<HashMap<String, Object>>();
+
+        try {
+            fList = dao.friendList(session_my_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(fList);
+
+        return fList;
+    }
+
+    /*
+    팔로우 삭제
+     */
+    @RequestMapping(value = "/deleteFriend", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteFriend(int seq){
+        System.out.println("seq : " +seq);
+        int result = dao.deleteFriend(seq);
+        String message = "";
+
+        if(result > 0){
+            message = "success";
+        } else {
+            message = "fail";
+        }
+
+        return message;
     }
 }

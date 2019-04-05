@@ -507,7 +507,7 @@ iframe {
 #rounded-btn-naver{
     float: right;
     margin-left: 20px;
-    background:url("../images/login_image/naver.png") ;
+    background:url("/resources/images/login_image/naver.png") ;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #00d131;
@@ -582,6 +582,16 @@ iframe {
 .btn-google:hover {
   border-color: #d33f8d;
 }
+
+.btn-group{
+    background-color: #2b42ff;
+    margin-left: 66px;
+
+
+}
+
+
+
 
 
 

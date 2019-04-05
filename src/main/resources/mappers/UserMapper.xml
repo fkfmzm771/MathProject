@@ -5,38 +5,47 @@
 
  <mapper namespace="Math.Spring.com.MapperInterface.UserMapper">
 	<insert id="ParentsInsert" parameterType="Parents">
-		insert into parents
+		insert into parents(
+			parents_id,
+			parents_pw,
+			parents_name,
+			parents_email
+		)
 		values (
 			#{parents_id},
 			#{parents_pw},
 			#{parents_name},
-			#{parents_email},
-			#{parents_nickname},
-			#{parents_phone}
+			#{parents_email}
 		)
 	</insert>
 	
 	<insert id="TeacherInsert" parameterType="Teacher">
-		insert into teacher
+		insert into teacher(
+			teacher_id,
+			teacher_pw,
+			teacher_name,
+			teacher_email
+		)
 		values (
 			#{teacher_id},
 			#{teacher_pw},
 			#{teacher_name},
-			#{teacher_email},
-			#{teacher_nickname},
-			#{teacher_phone}
+			#{teacher_email}
 		)
 	</insert>
 	
 	<insert id="StudentInsert" parameterType="Student">
-		insert into student
+		insert into student(
+			student_id,
+			student_pw,
+			student_name,
+			student_email
+		)
 		values (
 			#{student_id},
 			#{student_pw},
 			#{student_name},
-			#{student_email},
-			#{student_nickname},
-			#{student_phone}
+			#{student_email}
 		)
 	</insert>
 
@@ -69,8 +78,7 @@
      	SET parents_pw = #{parents_pw},
          	parents_name = #{parents_name},
          	parents_email = #{parents_email},
-         	parents_nickname = #{parents_nickname},
-         	parents_phone = #{parents_phone}
+         	parents_nickname = #{parents_nickname}
      	WHERE parents_id = #{parents_id}
 	</update>
 	
@@ -79,8 +87,7 @@
      	SET teacher_pw = #{teacher_pw},
          	teacher_name = #{teacher_name},
          	teacher_email = #{teacher_email},
-         	teacher_nickname = #{teacher_nickname},
-         	teacher_phone = #{teacher_phone}
+         	teacher_nickname = #{teacher_nickname}
      	WHERE teacher_id = #{teacher_id}
 	</update>
 	
@@ -89,8 +96,7 @@
      	SET student_pw = #{student_pw},
          	student_name = #{student_name},
          	student_email = #{student_email},
-         	student_nickname = #{student_nickname},
-         	student_phone = #{student_phone}
+         	student_nickname = #{student_nickname}
      	WHERE student_id = #{student_id}
 	</update>
 </mapper>

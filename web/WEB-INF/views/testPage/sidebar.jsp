@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,6 +24,38 @@
 
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        let check;
+        let side;
+
+        $(function () {
+            check = true;
+            side = document.getElementById("first_menu");
+            side_open = document.getElementById("side_open");
+            side_open.on('click',side_call);
+        });
+
+        function side_call() {
+            if (check) {
+                side.style.width = "200px";
+                check = !check;
+            } else {
+                side.style.width = "0px";
+                check = !check;
+            }
+        }
+
+
+        // side_open.click(function () {
+        //     alert("sdfsfd");
+        //     // side.style.width = "0px";
+        //     side_call();
+        //     // check = !check;
+        // });
+
+
+    </script>
 
 
 </head>
@@ -186,7 +219,7 @@
         <%--</button>--%>
 
         <div>
-            <a class="navbar-brand px-1" href="#"><img
+            <a class="navbar-brand px-1"  href="#" onclick="side_call()"><img
                     src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
                     class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
 
@@ -228,8 +261,8 @@
                         <img src="http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="messages">
-                        <a class="dropdown-item" href="#">Edit my profile</a>
-                        <a class="dropdown-item" href="#">Log Out</a>
+                        <a class="dropdown-item" href="modify">Edit my profile</a>
+                        <a class="dropdown-item" href="logout">Log Out</a>
                     </div> <!-- /.dropdown-menu -->
                 </div> <!-- /.dropdown -->
 
@@ -353,10 +386,10 @@
         <div class="sidebar">
 
             <%--리스트 그룹 시작(친구 패널)--%>
-            <ul class="list-group flex-column d-inline-block first-menu">
+            <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
                 <li class="list-group-item pl-3 py-2">
-                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
+                    <a href="myClass"><i class="fa fa-user-o" aria-hidden="true"><span
                             class="ml-2 align-middle">우리반</span></i></a>
 
                     <ul class="list-group flex-column d-inline-block submenu">
@@ -365,24 +398,25 @@
                         </li>
 
                         <li class="list-group-item pl-4">
-                            <a href="">SEO</a>
+                            <a href="#">SEO</a>
                         </li>
 
                     </ul> <!-- /.submenu -->
                 </li> <!-- /우리반 마지막 -->
 
+                <c:if test="${sessionScope.type == 'student'}">
 
                 <li class="list-group-item pl-3 py-2">
-                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
-                            class="ml-2 align-middle">친구</span></i></a>
+                    <i class="fa fa-user-o" aria-hidden="true" >
+                        <span class="ml-2 align-middle" >친구</span></i>
                     <ul class="list-group flex-column d-inline-block submenu">
-                        <li class="list-group-item pl-4">
+                         <li class="list-group-item pl-4">
                             <a href="#" class="">Posts</a>
 
                             <ul class="list-group flex-column d-inline-block sub-submenu">
                                 <span class="arrow"></span>
                                 <li class="list-group-item pl-4">
-                                    <a href="#">All Posts</a>
+                                    <a href="friend">All Posts</a>
                                 </li>
                                 <li class="list-group-item pl-4">
                                     <a href="#">Add New</a>
@@ -395,8 +429,9 @@
                                 </li>
                             </ul>
                         </li> <!-- end Posts -->
+                </c:if>
 
-            </ul> <!-- /.first-menu -->
+                    </ul> <!-- /.first-menu -->
         </div> <!-- /.sidebar -->
     </div>
 </div>
@@ -404,15 +439,24 @@
 <div class="wp-content">
 
 
-    <%--<embed class="page_content" type="text/html" src="/main_test">--%>
-    <iframe frameborder=0
-            framespacing=0
-            marginheight=0
-            marginwidth=0
-            scrolling=no vspace=0
-            class="page_content"
-            type="text/html"
-            src="/main_test">
+    <embed frameborder=0
+           framespacing=0
+           marginheight=0
+           marginwidth=0
+           scrolling=no vspace=0
+           class="page_content"
+           type="text/html"
+           src="/main_test">
+
+        <%--<iframe frameborder=0--%>
+                <%--framespacing=0--%>
+                <%--marginheight=0--%>
+                <%--marginwidth=0--%>
+                <%--scrolling=no vspace=0--%>
+                <%--class="page_content"--%>
+                <%--type="text/html"--%>
+                <%--src="/main_test">--%>
+
 
 
 </div>

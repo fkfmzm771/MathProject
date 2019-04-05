@@ -20,7 +20,27 @@
 			friend_seq.nextval
 			,#{my_id}
 			,#{friend_id}
-			,0
 		)
 	</insert>
+
+    <select id = "friendList" parameterType = "String" resultType = "map">
+		SELECT
+			f.friend_seq as friend_seq
+			, f.my_id as my_id
+			, f.friend_id as friend_id
+			, s.student_name as friend_name
+			, s.student_nickname as friend_nickname
+		from
+			friend f, student s
+		where f.friend_id=s.student_id
+    	AND f.my_id=#{my_id}
+  	  	ORDER BY
+			f.friend_id ASC
+	</select>
+
+    <delete id="deleteFriend" parameterType="int">
+        DELETE FROM
+          friend
+        WHERE friend_seq = #{seq}
+    </delete>
 </mapper>

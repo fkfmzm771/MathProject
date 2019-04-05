@@ -22,9 +22,9 @@ public class UserController {
 	UserRepository dao;
 
 	/** 회원가입 화면 요청 */
-	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/joinform", method = RequestMethod.GET)
 	public String joinus() {
-		return "user/joinForm";
+		return "member/signForm";
 	}
 
 	/** 네이버로그인화면 */
@@ -65,7 +65,7 @@ public class UserController {
 	/** 아이디 중복확인 화면 요청 */
 	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
 	public String idCheck() {
-		return "user/idCheck";
+		return "user/idCheck_temp";
 	}
 
 	/** 아이디 중복확인 처리 요청 */
@@ -92,49 +92,44 @@ public class UserController {
 				else {
 					model.addAttribute("result", "fail");
 					model.addAttribute("userid", userid);
-					return "user/idCheck";
+					return "user/idCheck_temp";
 				}
 			}
 		}
-		return "user/idCheck";
+		return "user/idCheck_temp";
 	}
 
 	/** 회원가입 처리 요청 */
-	@RequestMapping(value="/joinus", method = RequestMethod.POST)
+	@RequestMapping(value="/joinform", method = RequestMethod.POST)
 	public String joinus(Parents p, Teacher t, Student s,
-				@RequestParam(value="usertype", defaultValue="student") String usert,
-				String id, String pw, String name, String email, String nickname, String phone
-			) {
-		if(usert.equals("student")) {
-			s.setStudent_id(id);
-			s.setStudent_pw(pw);
+				@RequestParam(value="usertype", defaultValue="student") String usertype,
+				String username, String pass, String name, String email) {
+		System.out.println(usertype +", " + username +", " + pass +", " + name +", " + email);
+
+		if(usertype.equals("student")) {
+			s.setStudent_id(username);
+			s.setStudent_pw(pass);
 			s.setStudent_name(name);
 			s.setStudent_email(email);
-			s.setStudent_nickname(nickname);
-			s.setStudent_phone(phone);
 			
 			dao.StudentInsert(s);
-		} else if(usert.equals("parents")) {
-			p.setParents_id(id);
-			p.setParents_pw(pw);
+		} else if(usertype.equals("parents")) {
+			p.setParents_id(username);
+			p.setParents_pw(pass);
 			p.setParents_name(name);
 			p.setParents_email(email);
-			p.setParents_nickname(nickname);
-			p.setParents_phone(phone);
 			
 			dao.ParentsInsert(p);
-		} else if(usert.equals("teacher")) {
-			t.setTeacher_id(id);
-			t.setTeacher_pw(pw);
+		} else if(usertype.equals("teacher")) {
+			t.setTeacher_id(username);
+			t.setTeacher_pw(pass);
 			t.setTeacher_name(name);
 			t.setTeacher_email(email);
-			t.setTeacher_nickname(nickname);
-			t.setTeacher_phone(phone);
 			
 			dao.TeacherInsert(t);
 		}
 
-		return "/login";
+		return "redirect:/";
 	}
 
 //	@RequestMapping(value="/googleLogin", method = RequestMethod.GET)
@@ -144,27 +139,28 @@ public class UserController {
 
 	/**로그인 처리를 요청함 */
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String login(boolean idChecked, Model model, String userid, String userpw, // ID저장 체크?
-			HttpSession session, HttpServletResponse response
-			) {
-		Parents p = dao.ParentsSelectOne(userid);
-		Teacher t = dao.TeacherSelectOne(userid);
-		Student s = dao.StudentSelectOne(userid);
-		if(p != null && (p.getParents_pw().equals(userpw))) {
+	public String login(Model model, String username, String pass, HttpSession session	) {
+		Parents p = dao.ParentsSelectOne(username);
+		Teacher t = dao.TeacherSelectOne(username);
+		Student s = dao.StudentSelectOne(username);
+		if(p != null && (p.getParents_pw().equals(pass))) {
 			session.setAttribute("loginId",   p.getParents_id());
 			session.setAttribute("loginName", p.getParents_nickname());
-			return "index";
-		} else if(t != null && (t.getTeacher_pw().equals(userpw))) {
+			session.setAttribute("type", "parents");
+			return "testPage/sidebar";
+		} else if(t != null && (t.getTeacher_pw().equals(pass))) {
 			session.setAttribute("loginId",   t.getTeacher_id());
 			session.setAttribute("loginName", t.getTeacher_nickname());
-			return "index";
-		} else if(s != null && (s.getStudent_pw().equals(userpw))) {
+			session.setAttribute("type", "teacher");
+			return "testPage/sidebar";
+		} else if(s != null && (s.getStudent_pw().equals(pass))) {
 			session.setAttribute("loginId",   s.getStudent_id());
 			session.setAttribute("loginName", s.getStudent_nickname());
-			return "index";
+			session.setAttribute("type", "student");
+			return "testPage/sidebar";
 		} else {
 			model.addAttribute("message", "로그인을 할 수 없습니다.");
-			return "login";
+			return "redirect:/";
 		}
 	}
 
@@ -198,7 +194,6 @@ public class UserController {
 			model.addAttribute("email", p.getParents_email());
 			model.addAttribute("name", p.getParents_name());
 			model.addAttribute("nickname", p.getParents_nickname());
-			model.addAttribute("phone", p.getParents_phone());
 		} else {
 			Teacher t = dao.TeacherSelectOne(id);
 			if (t != null) {
@@ -207,7 +202,6 @@ public class UserController {
 				model.addAttribute("email", t.getTeacher_email());
 				model.addAttribute("name", t.getTeacher_name());
 				model.addAttribute("nickname", t.getTeacher_nickname());
-				model.addAttribute("phone", t.getTeacher_phone());
 			} else {
 				Student s = dao.StudentSelectOne(id);
 				if(s != null) {
@@ -216,12 +210,11 @@ public class UserController {
 					model.addAttribute("email", s.getStudent_email());
 					model.addAttribute("name", s.getStudent_name());
 					model.addAttribute("nickname", s.getStudent_nickname());
-					model.addAttribute("phone", s.getStudent_phone());
 				}
 			}
 		}
 		
-		return "user/updateForm";
+		return "user/updateForm_temp";
 	}
 
 	@RequestMapping(value="/callback", method = RequestMethod.GET)
@@ -231,7 +224,7 @@ public class UserController {
 	
 	@RequestMapping(value="/userUpdate", method = RequestMethod.POST)
 	public String userUpdate(Parents p, Teacher t, Student s,
-			String type, String userid, String pw, String name, String email, String nickname, String phone) {
+			String type, String userid, String pw, String name, String email, String nickname) {
 		
 		if(type.equals("Student")) {
 			s.setStudent_id(userid);
@@ -239,7 +232,6 @@ public class UserController {
 			s.setStudent_name(name);
 			s.setStudent_email(email);
 			s.setStudent_nickname(nickname);
-			s.setStudent_phone(phone);
 			
 			dao.StudentUpdate(s);
 		} else if(type.equals("Parents")) {
@@ -248,8 +240,7 @@ public class UserController {
 			p.setParents_name(name);
 			p.setParents_email(email);
 			p.setParents_nickname(nickname);
-			p.setParents_phone(phone);
-			
+
 			dao.ParentsUpdate(p);
 		} else if(type.equals("Teacher")) {
 			t.setTeacher_id(userid);
@@ -257,11 +248,10 @@ public class UserController {
 			t.setTeacher_name(name);
 			t.setTeacher_email(email);
 			t.setTeacher_nickname(nickname);
-			t.setTeacher_phone(phone);
 			
 			dao.TeacherUpdate(t);
 		}
 		
-		return "index";
+		return "testPage_sidebar";
 	}
 }

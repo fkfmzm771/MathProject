@@ -29,5 +29,21 @@
 	where
     student_id = #{student_id}
 </select>
+<select id="gamescorefind" resultType="Gamescore">
+	select
+	*
+	from
+	gamescore
+ </select>
+
+<select parameterType="String" id="gamescorefind2" resultType="Gamescore">
+	select
+	*
+	fromg
+	amescore
+	where
+	student_id = #{loginId}
+</select>
+
 
 </mapper>

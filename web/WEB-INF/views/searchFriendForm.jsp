@@ -30,7 +30,7 @@
                         user_id:user_id
                     }
                     ,success: function(){
-                        alert("친구 신청 완료");
+                        alert("팔로우 완료");
                     }
                 });
             })
@@ -78,7 +78,7 @@
                     <td></td>
                     <td>${user_nickname}</td>
                     <td></td>
-                    <td><input type="button" id="apply" value="신청"><br/></td>
+                    <td><input type="button" id="apply" value="팔로우"><br/></td>
                     <td><input type="hidden" id="user_id" value=${user_id}></td>
                 </tr>
             </table>

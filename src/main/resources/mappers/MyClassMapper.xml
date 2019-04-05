@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="Math.Spring.com.MapperInterface.MyClassMapper">
+	<select id="searchCode" parameterType="String" resultType="String">
+      SELECT myclass_code
+      FROM myclass
+      where myclass_code = #{codenum}
+	</select>
+
+    <insert id="insertMyclass" parameterType="Myclass">
+        INSERT INTO myclass
+        VALUES(
+          #{myclass_code}
+          ,#{myclass_name}
+          ,#{myclass_teacher_name}
+        )
+    </insert>
+
+    <select id="classNameList" parameterType="String" resultType="Myclass">
+        SELECT myclass_code, myclass_name
+        FROM myclass
+        where myclass_teacher_name = #{teacher_id}
+    </select>
+
+    <select id="classList" parameterType="String" resultType="map">
+        SELECT s.student_id AS student_id
+               ,s.student_name AS student_name
+               ,s.student_nickname AS student_nickname
+               ,c.myclass_code AS myclass_code
+               ,c.myclass_name AS myclass_name
+        FROM student s, myclass c
+        WHERE s.STUDENT_MYCLASS_CODE = c.MYCLASS_CODE
+        AND c.MYCLASS_CODE = #{myclass_code}
+    </select>
+</mapper>

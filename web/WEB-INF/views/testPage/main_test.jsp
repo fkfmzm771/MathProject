@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html>
@@ -27,7 +27,95 @@
     <link rel="stylesheet" as="font"
           href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
 
+    <!--googlechart-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!--chart.js-->
+    <script src="/resources/js/chart.js"></script>
+
+    <!-----------------------------------도넛츠 차트 불러오기 함수 시작------------------------------------>
+    <style>
+        .chart-table  tr{
+            color: #090104;
+            border-color: #0f0f0f;
+            border: 1px;
+
+            /* background-color: #00d131;*/
+            margin: 10px;
+        }
+    </style>
+
+    <script>
+        <c:if test="${sessionScope.type  !='teacher'}">
+            $(function(){
+                reserchchart();
+            })
+
+            function reserchchart() {
+
+                var studentId = ${sessionScope.loginId};
+                /* var Data = {studentid :'studentid'}
+                console.log(Data);*/
+                $.ajax({
+                    method: 'GET',
+                    url: 'search',
+                    data: 'studentId=' +studentId,
+                    success: drawdonutChart,
+                    error: function () {
+                        alert("실패ㅋzzzㅋ");
+                    }
+                })
+            }
+
+            google.charts.load("current", {packages: ["corechart"]});
+            google.charts.setOnLoadCallback(drawdonutChart);
+
+            function drawdonutChart(resp) {
+                var temp = [];
+                if (resp != null) {
+                    for (var i = 1; i <= 10; i++) {
+                        temp.push(eval('resp.game' + i))
+                    }
+                }
+                var num_temp1 = 0;
+                var num_temp2 = 0;
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i] > 0) {
+                        num_temp1 += 1;
+                    } else {
+                        num_temp2 += 1;
+                    }
+                }
+                console.log(num_temp1);
+                console.log(num_temp2);
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['clear', num_temp1],
+                    ['noclear', num_temp2]
+                ]);
+
+                var options = {
+                    title: num_temp1,
+
+                    pieHole: 0.3,
+                    chartArea: {left: 130, top: 70},
+
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+            }
+        </c:if>
+    </script>
+    <!------------------------------------도넛츠 차트 불러오기 함수 끝--------------------------------------->
+    <%-- <style >
+         *{
+             border: 1px solid #000000;
+             }
+     </style>--%>
 </head>
+
 <body class="slides horizontal simplifiedMobile animated">
 
 <!-- SVG Library -->
@@ -189,8 +277,6 @@
                 <li><a href="#section5">만든이</a></li>
             </ul>
         </div>
-        <div class="right"><a class="button blue gradient" href="#">내 정보</a>
-            <a class="button green gradient" href="#">로그인</a></div>
     </div>
 
 
@@ -461,13 +547,38 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-
-
-
-
-
-
-
+                <%-------------------------------------------------------------------------------------------%>
+                <div class="fix-12-12" style="width: 100%;">
+                    <ul class="grid grid-83 noSpaces equal ae-2 fadeIn" style="width: 100%;">
+                        <li class="col-12-12 ae-3" style="background: #F5FBFE; width: 100%; height: 500px">
+                            <table class="chart-table" style="width: 1000px; height: 400px">
+                                <tr>
+                                    <td colspan="2" style="width: 50%" >
+                                        <c:if test="${sessionScope.type !='teacher'}">
+                                            <p>학생정보1</p>
+                                            <p>학생정보2</p>
+                                            <p>학생정보3</p>
+                                            <p>학생정보4</p>
+                                        </c:if>
+                                        <c:if test="${sessionScope.type =='teacher'}">
+                                            <div id="table_div" style="width: 100%; height:  355px; "></div> <!--선생님(kkk) 로그인시 전체 점수 테이블 -->
+                                        </c:if>
+                                    </td>
+                                    <td colspan="2" style="width: 48%; margin-left: 2%">
+                                        <c:if test="${sessionScope.type !='teacher'}">
+                                            <div id="table_div" style="width: 100%; height:  60px; "></div> <!-- 학생 로그인시 학생 점수 테이블-->
+                                            <div id="donutchart" style= "width: 100%; height: 320px; border-color: #F5FBFE; padding-top: 20px; "></div><!--학생 로그인시 현재 진행정도를 나타내는 도넛츠 그래프-->
+                                        </c:if>
+                                        <c:if test="${sessionScope.type =='teacher'}">
+                                            <div id="curve_chart" style="width: 100%; height:  355px; transform: scale(1,1.2); background: #F5FBFE;"></div><!--선생님 로그인시 반평균과 학생의 점수 비교 막대그래프-->
+                                        </c:if>
+                                    </td
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+                <%-------------------------------------------------------------------------------------------%>
             </div>
         </div>
     </div>
@@ -482,7 +593,7 @@
 
                 <div class="fix-12-12 toCenter">
                     <div class="fix-7-12">
-                        <p class="margin-bottom-2 ae-1"><span class="opacity-6">Case study</p>
+                        <p class="margin-bottom-2 ae-1"><span class="opacity-6">Case study</span></p>
                         <h1 class="ae-2 huge fromAbove margin-bottom-2">Discomfort is a signal of a good concept</h1>
                         <a href="#" class="button green gradient ae-3">Purchase</a>
                     </div>
