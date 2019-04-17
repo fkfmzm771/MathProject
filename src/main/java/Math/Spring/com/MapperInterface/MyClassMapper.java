@@ -16,4 +16,10 @@ public interface MyClassMapper {
     public ArrayList<HashMap<String, Object>> classList(String myclass_code);
 
     public List<Myclass> classNameList(String teacher_id);
+
+    public List<Myclass> classNameNCodeList(String teacher_id);
+
+    public int deleteClassMyclass(String code);
+
+    public int deleteClassStudent(String code);
 }

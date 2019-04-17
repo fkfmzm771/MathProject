@@ -1,9 +1,8 @@
 package Math.Spring.com.DAO;
 
 import Math.Spring.com.MapperInterface.ChartMapper;
-import Math.Spring.com.VO.Chart;
-import Math.Spring.com.VO.Doughnut;
-import Math.Spring.com.VO.Gamescore;
+import Math.Spring.com.VO.GameStage;
+import Math.Spring.com.VO.UserScore;
 import Math.Spring.com.VO.Student;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,34 +15,32 @@ import java.util.ArrayList;
 public class ChartRepository {
 	@Autowired
 	SqlSession session;
-	
-	public int regist(Chart chart) {
-		ChartMapper mapper = session.getMapper(ChartMapper.class);
-		int result = mapper.regist(chart);
-		return result;
-		
-	}
 
-	public Doughnut reserchchart(Student student) {
+
+
+	public GameStage reserchchart(Student student) {
 		ChartMapper mapper = session.getMapper(ChartMapper.class);
-		Doughnut doughnut = mapper.doughnutSelect(student);
+		GameStage doughnut = mapper.doughnutSelect(student);
 		return doughnut;
 	}
 
-	public ArrayList<Gamescore> gamescorefind(){
-		ArrayList<Gamescore> list = new ArrayList<Gamescore>();
+	public ArrayList<UserScore> selectClassGameScore() {
+
 		ChartMapper mapper = session.getMapper(ChartMapper.class);
-		list = mapper.gamescorefind();
-		if(list.size()==0) System.out.println("비어있넹");
+		ArrayList<UserScore> list = mapper.selectClassGameScore();
+		if (list.size() == 0){
+			System.out.println("비어있넹");
+		}
 		return list;
 	}
 
-	public ArrayList<Gamescore> gamescorefind2(String loginId) {
-		System.out.println(loginId);
-		ArrayList<Gamescore> list = new ArrayList<Gamescore>();
+	public ArrayList<UserScore> userGameScore(String loginId) {
+
 		ChartMapper mapper = session.getMapper(ChartMapper.class);
-		list = mapper.gamescorefind2(loginId);
-		if(list.size()==0)System.out.println("비어있넹");
+		ArrayList<UserScore> list = mapper.userGameScore(loginId);
+		if (list.size() == 0){
+			System.out.println("비어있넹");
+		}
 		return list;
 	}
 }

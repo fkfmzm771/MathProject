@@ -48,9 +48,6 @@
     <div class="container-login100" style= "background-image:url('../../../resources/images/bg/bg_05.jpg');">
         <div class="wrap-login100 p-t-80 p-b-30">
             <form class="login100-form validate-form" name="joinform" action="joinform" method="POST">
-                <%--<div class="login100-form-avatar">
-                    <img src="images/avatar-01.jpg" alt="AVATAR">
-                </div>--%>
 
                 <span class="login100-form-title p-t-20 p-b-45">
 						<i class="fas fa-horse-head" id="horse"></i>회원 가입
@@ -124,19 +121,10 @@
                     <a href="/" class="login100-form-btn">되돌아가기</a>
                 </div>
 
-
-                <%--<div class="text-center w-full">
-                    <a class="txt1" href="#">
-
-                        <i class="fa fa-long-arrow-right"></i>
-                    </a>
-                </div>--%>
             </form>
         </div>
     </div>
 </div>
-
-
 
 
 <!--===============================================================================================-->

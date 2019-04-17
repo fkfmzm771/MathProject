@@ -35,4 +35,22 @@
         WHERE s.STUDENT_MYCLASS_CODE = c.MYCLASS_CODE
         AND c.MYCLASS_CODE = #{myclass_code}
     </select>
+
+    <select id="classNameNCodeList" parameterType="String" resultType="map">
+        SELECT myclass_code, myclass_name
+        FROM myclass
+        where myclass_teacher_name = #{teacher_id}
+    </select>
+
+    <delete id="deleteClassMyclass" parameterType="String">
+        DELETE FROM
+          myclass
+        WHERE myclass_code = #{code}
+    </delete>
+    
+    <update id="deleteClassStudent" parameterType="String">
+        update student set
+        student_myclass_code = null
+        where student_myclass_code = #{code}
+    </update>
 </mapper>

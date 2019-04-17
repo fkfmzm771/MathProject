@@ -50,4 +50,22 @@ public class MyClassDAO {
         List<Myclass> cList = mapper.classNameList(teacher_id);
         return cList;
     }
+
+    public List<Myclass> classNameNCodeList(String teacher_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        List<Myclass> cList = mapper.classNameNCodeList(teacher_id);
+        return cList;
+    }
+
+    public int deleteClassMyclass(String code) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        int cList = mapper.deleteClassMyclass(code);
+        return cList;
+    }
+
+    public int deleteClassStudent(String code) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        int cList = mapper.deleteClassStudent(code);
+        return cList;
+    }
 }

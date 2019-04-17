@@ -5,18 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <title>Title</title>
-    <script src="resources/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-
-
         $(function(){
             $("#searchbtn").on("click",search);
             $("#apply").on("click",apply);
-        })
+        });
 
         function search(){
             $("#search").submit();
-        }
+        };
 
         function apply(){
             var user_id;
@@ -31,6 +29,8 @@
                     }
                     ,success: function(){
                         alert("팔로우 완료");
+                        opener.location.reload();
+                        window.close();
                     }
                 });
             })

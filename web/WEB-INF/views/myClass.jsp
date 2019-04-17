@@ -7,25 +7,67 @@
 	<meta charset="UTF-8">
 	<title>MyClass</title>
 	<link href="resources/main.css" rel="stylesheet" />
-	<script src="resources/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script>
 		$(function(){
 			// init();
+            classNameNCode();
 			classList();
 		});
 
-		// //모든 데이터 읽어옴
-		// function init() {
-		// 	$.ajax({
-		// 		url: "classList"
-		// 		,type: "get"
-		// 		,data: {}
-		// 		,success: function(cList){
-		// 			output(cList);
-		// 		}
-		// 	});
-		// }
+		//반 코드, 이름 출력
+        function classNameNCode(){
+            $.ajax({
+                url : "classNameNCodeList"
+                ,type : "get"
+                ,data : {}
+                ,success : function(cnncList){
+                    cnncoutput(cnncList);
+                }
+            })
+        }
+
+        function cnncoutput(resp){
+            var data = '<table>';
+
+            data += '<tr>';
+            data += '	<td>반명</td>';
+            data += '	<td>반코드</td>';
+            data += '</tr>';
+
+            $.each(resp, function(index, item){
+                data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
+                data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
+                data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
+                data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" value="끊기" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+            $("#cnncListDiv").append(data);
+
+            $(".delbtn").on("click", function(event){
+                del($(event.target));
+            });
+        }
+
+        // 반 삭제
+        function del(target) {
+            var code = $(target).attr('data-code');
+            if (code != null) {
+                $.ajax({
+                    url:"deleteClass"
+                    ,type : "post"
+                    ,data : {code : code}
+                    ,success: function(result){
+                        $("#cnncListDiv").empty();
+						classNameNCode();
+                    }
+                });
+            } else{
+                alert("??");
+            }
+        }
 
 		// 반 목록 출력
 		function classList() {
@@ -47,10 +89,6 @@
 			});
 			data += '</select>';
 			$("#myclassListDiv").append(data);
-
-			// $(".selectclass").on("click", function(event){
-			// 	del($(event.target));
-			// });
 		}
 
 		function chageLangSelect(){
@@ -69,47 +107,51 @@
 			});
 		}
 
-		// 반에서 삭제
-		// function del(target) {
-		// 	var class_code = $(target).attr('value');
-		// 	if (class_code != null) {
-		// 		alert(class_code);
-		// 		$.ajax({
-		// 			url:"ClassList"
-		// 			,type : "GET"
-		// 			,data : {myclass_code : class_code}
-		// 			,success: function(caList){
-		// 				output(caList);
-		// 			}
-		// 		});
-		// 	}
-		// }
-
 		// 출력
 		function output(resp) {
 			var data = '<table>';
 
-			data += '<th>';
+			data += '<tr>';
 			data += '	<td>학생아이디</td>';
 			data += '	<td>학생이름</td>';
 			data += '	<td>학생닉네임</td>';
-			data += '	<td>반코드</td>';
-			data += '	<td>반명</td>';
-			data += '</th>';
+			data += '</tr>';
 
 			$.each(resp, function(index, item){
-				data += '<tr class="friend_seq" data-sno="'+ item.MYCLASS_CODE +'" >';
+				data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
 				data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
 				data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
 				data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
-				data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
-				data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
-				data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" data-studentid="'+item.STUDENT_ID +'" value="끊기" /></td>';
+				data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" data-studentid="'+item.STUDENT_ID +'" value="제외" /></td>';
 				data += '</tr>';
 			});
+			data += '</table>';
+
 			$("#myclassDivInner").html("");
 			$("#myclassDivInner").append(data);
+            $(".delbtn").on("click", function(event){
+                delStu($(event.target));
+            });
 		}
+
+		// 반에서 학생 제외
+		function delStu(target) {
+			var code = $(target).attr('data-code');
+			if (code != null) {
+				$.ajax({
+					url:"deleteClass"
+					,type : "post"
+					,data : {code : code}
+					,success: function(result){
+						$("#cnncListDiv").empty();
+						init();
+					}
+				});
+			} else{
+				alert("??");
+			}
+		}
+
 		function createClassCode(){
 			window.open("createClass", "newwin", "top=200, left=300, height=400, width=700")
 		}
@@ -122,12 +164,16 @@
 
 <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
 
+<div id="cnncListDiv">
+    우리반 목록<br/>
+</div>
+
 <div id="myclassListDiv">
-	우리반 목록<br/>
+	반 선택<br/>
 </div>
 
 <div id="myclassDiv">
-	내 친구 목록<br/>
+	반 학생들<br/>
 	<div id="myclassDivInner">
 
 	</div>

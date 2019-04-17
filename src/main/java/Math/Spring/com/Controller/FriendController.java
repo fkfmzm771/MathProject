@@ -47,6 +47,19 @@ public class FriendController {
         String message = "찾을수 없는 닉네임 입니다.";
         String sessionId = (String)session.getAttribute("loginId");
 
+
+        //중복 검사해서 같은거 출력 못하게 내뱉어라
+        ArrayList<HashMap<String, Object>> fList = dao.friendList(sessionId);
+
+        for(int i=0; i < fList.size(); i++){
+            System.out.println("fList " + i + "번째 : "  + fList.get(i));
+            if (fList.get(i).get("FRIEND_NICKNAME").equals(nickname)){
+                message = "이미 친구로 등록되어있는 유저입니다.";
+                student = null;
+            }
+            System.out.println("fList " + i + "번째 : "  + fList.get(i));
+        }
+
         if (student == null || sessionId.equals(student.getStudent_id())){
             model.addAttribute("message", message);
         } else {

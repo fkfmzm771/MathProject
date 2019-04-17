@@ -4,14 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="Math.Spring.com.VO.Chart"  alias="Chart"/>
-		<typeAlias type="Math.Spring.com.VO.Doughnut" alias="Doughnut"/>
 		<typeAlias type="Math.Spring.com.VO.Student" alias="Student"/>
 		<typeAlias type="Math.Spring.com.VO.Parents" alias="Parents"/>
 		<typeAlias type="Math.Spring.com.VO.Teacher" alias="Teacher"/>
 		<typeAlias type="Math.Spring.com.VO.Friend" alias="Friend"/>
 		<typeAlias type="Math.Spring.com.VO.Myclass" alias="Myclass"/>
-		<typeAlias type="Math.Spring.com.VO.Gamescore" alias="Gamescore"/>
+		<typeAlias type="Math.Spring.com.VO.UserScore" alias="UserScore"/>
+		<typeAlias type="Math.Spring.com.VO.GameStage"  alias="GameStage"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/chartMapper.xml"></mapper>

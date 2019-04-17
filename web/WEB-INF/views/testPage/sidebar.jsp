@@ -32,13 +32,11 @@
         $(function () {
             check = true;
             side = document.getElementById("first_menu");
-            side_open = document.getElementById("side_open");
-            side_open.on('click',side_call);
         });
 
         function side_call() {
             if (check) {
-                side.style.width = "200px";
+                side.style.width = "160px";
                 check = !check;
             } else {
                 side.style.width = "0px";
@@ -55,6 +53,79 @@
         // });
 
 
+    </script>
+
+    <script>
+
+        $(function(){
+            init();
+        });
+
+        //모든 데이터 읽어옴
+        function init() {
+            $.ajax({
+                url: "friendList"
+                ,type: "get"
+                ,data: {}
+                ,success: function(fList){
+                    output(fList);
+                }
+            });
+        }
+
+        // 출력
+        function output(resp) {
+            var data = '<table>';
+
+            data += '<tr>';
+            data += '	<td>ID</td>';
+            data += '	<td>NAME</td>';
+            data += '	<td>NICKNAME</td>';
+            data += '</tr>';
+            data += '</table>';
+            data += '<hr/>';
+
+
+            data += '<table>';
+            $.each(resp, function(index, item){
+                data += '<tr class="friend_seq" data-sno="'+ item.FRIEND_SEQ +'" >';
+                data += '	<td class="friend_id">' + item.FRIEND_ID + '</td>';
+                data += '	<td class="friend_name">' + item.FRIEND_NAME + '</td>';
+                data += '	<td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
+                data += '	<td><input type="button"  class="delbtn" data-sno="'+item.FRIEND_SEQ +'"value="끊기" /></td>';
+                data += '</tr>';
+            });
+
+            data += '</table>';
+
+            $("#friendDiv").append(data);
+            $(".delbtn").on("click", function(event){
+                del($(event.target));
+            });
+        }
+
+        // 팔로우 삭제
+        function del(target) {
+            var delno = $(target).attr('data-sno');
+            if (delno != null) {
+                alert(delno);
+                $.ajax({
+                    url:"deleteFriend"
+                    ,type : "post"
+                    ,data : {seq : delno}
+                    ,success: function(result){
+                        $("#friendDiv").empty();
+                        init();
+                    }
+                });
+            } else{
+                alert("??");
+            }
+        }
+
+        function searchid(){
+            window.open("searchFriendForm", "newwin", "top=200, left=300, height=400, width=700")
+        }
     </script>
 
 
@@ -389,7 +460,7 @@
             <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
                 <li class="list-group-item pl-3 py-2">
-                    <a href="myClass"><i class="fa fa-user-o" aria-hidden="true"><span
+                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
                             class="ml-2 align-middle">우리반</span></i></a>
 
                     <ul class="list-group flex-column d-inline-block submenu">
@@ -407,31 +478,21 @@
                 <c:if test="${sessionScope.type == 'student'}">
 
                 <li class="list-group-item pl-3 py-2">
-                    <i class="fa fa-user-o" aria-hidden="true" >
-                        <span class="ml-2 align-middle" >친구</span></i>
+                    <a href="#">  <i class="fa fa-user-o" aria-hidden="true" >
+                        <span class="ml-2 align-middle" >친구</span></i></a>
                     <ul class="list-group flex-column d-inline-block submenu">
                          <li class="list-group-item pl-4">
-                            <a href="#" class="">Posts</a>
+                             <input type="button" value="유저 검색" onclick="searchid();">
+                             <hr/>
 
-                            <ul class="list-group flex-column d-inline-block sub-submenu">
-                                <span class="arrow"></span>
-                                <li class="list-group-item pl-4">
-                                    <a href="friend">All Posts</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Add New</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Categories</a>
-                                </li>
-                                <li class="list-group-item pl-4">
-                                    <a href="#">Tags</a>
-                                </li>
-                            </ul>
+                             <div id="friendDiv">
+                                 내 친구 목록<br/>
+                                 <hr/>
+                             </div>
                         </li> <!-- end Posts -->
-                </c:if>
-
                     </ul> <!-- /.first-menu -->
+                </li>
+                </c:if>
         </div> <!-- /.sidebar -->
     </div>
 </div>

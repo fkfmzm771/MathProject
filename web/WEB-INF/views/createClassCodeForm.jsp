@@ -6,13 +6,13 @@
 <head>
     <title>createMyClass</title>
 
-    <script src="resources/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 
 
         $(function(){
             $("#codebtn").on("click",insertMyclass);
-        })
+        });
 
         function insertMyclass(){
             var classname;

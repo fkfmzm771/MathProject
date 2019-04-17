@@ -37,7 +37,31 @@ public class UserRepository {
 		Student s = mapper.StudentSelectOne(userid);
 		return s;	
 	}
-	
+
+	/** 닉네임 중복확인 */
+	public Parents ParentsSelectOneNickname(String nickname) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+
+		Parents p = mapper.ParentsSelectOneNickname(nickname);
+		return p;
+	}
+
+	/** 닉네임 중복확인 */
+	public Teacher TeacherSelectOneNickname(String nickname) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+
+		Teacher t = mapper.TeacherSelectOneNickname(nickname);
+		return t;
+	}
+
+	/** 닉네임 중복확인 */
+	public Student StudentSelectOneNickname(String nickname) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+
+		Student s = mapper.StudentSelectOneNickname(nickname);
+		return s;
+	}
+
 	/** Regist Student */
 	public int ParentsInsert(Parents p) {
 		UserMapper mapper = session.getMapper(UserMapper.class);

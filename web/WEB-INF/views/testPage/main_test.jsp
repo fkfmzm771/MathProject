@@ -27,13 +27,15 @@
     <link rel="stylesheet" as="font"
           href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
 
+
     <!--googlechart-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
     <!--chart.js-->
-    <script src="/resources/js/chart.js"></script>
+    <script src="/resources/js/chart3.js"></script>
 
-    <!-----------------------------------도넛츠 차트 불러오기 함수 시작------------------------------------>
+
     <style>
         .chart-table  tr{
             color: #090104;
@@ -45,70 +47,6 @@
         }
     </style>
 
-    <script>
-        <c:if test="${sessionScope.type  !='teacher'}">
-            $(function(){
-                reserchchart();
-            })
-
-            function reserchchart() {
-
-                var studentId = ${sessionScope.loginId};
-                /* var Data = {studentid :'studentid'}
-                console.log(Data);*/
-                $.ajax({
-                    method: 'GET',
-                    url: 'search',
-                    data: 'studentId=' +studentId,
-                    success: drawdonutChart,
-                    error: function () {
-                        alert("실패ㅋzzzㅋ");
-                    }
-                })
-            }
-
-            google.charts.load("current", {packages: ["corechart"]});
-            google.charts.setOnLoadCallback(drawdonutChart);
-
-            function drawdonutChart(resp) {
-                var temp = [];
-                if (resp != null) {
-                    for (var i = 1; i <= 10; i++) {
-                        temp.push(eval('resp.game' + i))
-                    }
-                }
-                var num_temp1 = 0;
-                var num_temp2 = 0;
-                for (var i = 0; i < temp.length; i++) {
-                    if (temp[i] > 0) {
-                        num_temp1 += 1;
-                    } else {
-                        num_temp2 += 1;
-                    }
-                }
-                console.log(num_temp1);
-                console.log(num_temp2);
-
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['clear', num_temp1],
-                    ['noclear', num_temp2]
-                ]);
-
-                var options = {
-                    title: num_temp1,
-
-                    pieHole: 0.3,
-                    chartArea: {left: 130, top: 70},
-
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-                chart.draw(data, options);
-            }
-        </c:if>
-    </script>
-    <!------------------------------------도넛츠 차트 불러오기 함수 끝--------------------------------------->
     <%-- <style >
          *{
              border: 1px solid #000000;
@@ -349,25 +287,7 @@
                                 <li>Management</li>
                             </ul>
                         </li>
-                        <li class="col-6-12 left ae-5 fromCenter">
-                            <ul class="slider animated margin-top-4" data-slider-id="60-1">
-                                <li class="selected fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-1">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                                <li class="fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-2">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                                <li class="fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-3">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
 
@@ -423,71 +343,6 @@
     <div class="background" style="background-image:url(/resources/images/bg/bg_02.jpg)"></div>
 </section>
 
-
-<!-- Popup Video -->
-<div class="popup autoplay" data-popup-id="60-1">
-    <div class="close">
-        <svg>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-        </svg>
-    </div>
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-                <div class="fix-10-12">
-                    <div class="embedVideo popupContent">
-                        <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0" frameborder="0"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Popup Video -->
-<div class="popup autoplay" data-popup-id="60-2">
-    <div class="close">
-        <svg>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-        </svg>
-    </div>
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-                <div class="fix-10-12">
-                    <div class="embedVideo popupContent">
-                        <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0" frameborder="0"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Popup Video -->
-<div class="popup autoplay" data-popup-id="60-3">
-    <div class="close">
-        <svg>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-        </svg>
-    </div>
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-                <div class="fix-10-12">
-                    <div class="embedVideo popupContent">
-                        <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0" frameborder="0"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Slide 3 (#27) -->
@@ -547,38 +402,47 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-                <%-------------------------------------------------------------------------------------------%>
                 <div class="fix-12-12" style="width: 100%;">
                     <ul class="grid grid-83 noSpaces equal ae-2 fadeIn" style="width: 100%;">
                         <li class="col-12-12 ae-3" style="background: #F5FBFE; width: 100%; height: 500px">
-                            <table class="chart-table" style="width: 1000px; height: 400px">
-                                <tr>
-                                    <td colspan="2" style="width: 50%" >
-                                        <c:if test="${sessionScope.type !='teacher'}">
+
+                            <table class="chart-table" style="width: 1000px; height: 400px; ">
+                                <%--학생그래프 생성--%>
+                                <c:if test="${sessionScope.type =='student'}">
+                                    <tr>
+                                        <td colspan="2" style="width: 50%; ">
                                             <p>학생정보1</p>
                                             <p>학생정보2</p>
                                             <p>학생정보3</p>
                                             <p>학생정보4</p>
-                                        </c:if>
-                                        <c:if test="${sessionScope.type =='teacher'}">
-                                            <div id="table_div" style="width: 100%; height:  355px; "></div> <!--선생님(kkk) 로그인시 전체 점수 테이블 -->
-                                        </c:if>
-                                    </td>
-                                    <td colspan="2" style="width: 48%; margin-left: 2%">
-                                        <c:if test="${sessionScope.type !='teacher'}">
-                                            <div id="table_div" style="width: 100%; height:  60px; "></div> <!-- 학생 로그인시 학생 점수 테이블-->
-                                            <div id="donutchart" style= "width: 100%; height: 320px; border-color: #F5FBFE; padding-top: 20px; "></div><!--학생 로그인시 현재 진행정도를 나타내는 도넛츠 그래프-->
-                                        </c:if>
-                                        <c:if test="${sessionScope.type =='teacher'}">
-                                            <div id="curve_chart" style="width: 100%; height:  355px; transform: scale(1,1.2); background: #F5FBFE;"></div><!--선생님 로그인시 반평균과 학생의 점수 비교 막대그래프-->
-                                        </c:if>
-                                    </td
-                                </tr>
+
+                                        </td>
+                                        <td colspan="2" style="width: 48%; ">
+                                            <div id="table_div" style="width: 100%; height:  60px; "></div>
+                                            <!-- 학생 로그인시 학생 점수 테이블-->
+                                            <div id="donutchart" style="width: 100%; height: 320px; border-color: #F5FBFE; padding-top: 20px; "></div>
+                                            <!--학생 로그인시 현재 진행정도를 나타내는 도넛츠 그래프-->
+                                        </td>
+                                    </tr>
+                                </c:if>
+
+                                <%--선생 그래프 생성--%>
+                                <c:if test="${sessionScope.type =='teacher'}">
+                                    <tr >
+                                        <td colspan="2" style="width: 43%; ">
+                                            <div id="table_div" style="width: 100%; height:  400px; "></div>
+                                            <!--선생님(kkk) 로그인시 전체 점수 테이블 -->
+                                        </td>
+                                        <td colspan="2" style="width: 43%; ">
+                                            <div id="box_chart" style="width: 100%; height:  355px; transform: scale(1,1.2); background: #F5FBFE;"></div>
+                                            <!--선생님 로그인시 반평균과 학생의 점수 비교 막대그래프-->
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </table>
                         </li>
                     </ul>
                 </div>
-                <%-------------------------------------------------------------------------------------------%>
             </div>
         </div>
     </div>
@@ -590,131 +454,21 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-
                 <div class="fix-12-12 toCenter">
                     <div class="fix-7-12">
-                        <p class="margin-bottom-2 ae-1"><span class="opacity-6">Case study</span></p>
-                        <h1 class="ae-2 huge fromAbove margin-bottom-2">Discomfort is a signal of a good concept</h1>
-                        <a href="#" class="button green gradient ae-3">Purchase</a>
+                        <h1 class="ae-2 huge fromAbove margin-bottom-2">만든이</h1>
+                        <h2>임현웅</h2>
+                        <h2>민건홍</h2>
+                        <h2>이대로</h2>
+                        <h1>thanks to 이수민 송보가 감사합니다.</h1>
+
                     </div>
-                    <ul class="grid fixedSpaces left margin-top-10">
-                        <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromLeft">
-                            <h3>Inspiration</h3>
-                            <p class="tiny opacity-6">We live in a society where everybody feels guilty.</p>
-                        </li>
-                        <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromLeft">
-                            <h3>Creativity</h3>
-                            <p class="tiny opacity-6">You don’t have to be “a creative” to be creative.</p>
-                        </li>
-                        <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-6 fromLeft">
-                            <h3>Fashion</h3>
-                            <p class="tiny opacity-6">There is no such thing as simple. Simple is hard.</p>
-                        </li>
-                        <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-7 fromLeft">
-                            <h3>Photography</h3>
-                            <p class="tiny opacity-6">Design makes what was once impossible possible.</p>
-                        </li>
-                    </ul>
                 </div>
 
             </div>
         </div>
     </div>
     <div class="background" style="background-image:url(/resources/images/bg/bg_05.jpg)"></div>
-</section>
-
-<!-- Slide 6 (#83) -->
-<section class="slide fade-6 kenBurns">
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-
-                <div class="fix-10-12">
-                    <h1 class="ae-1">Pricing</h1>
-                    <ul class="grid grid-83 noSpaces equal ae-2 fadeIn">
-                        <li class="col-4-12 ae-3" style="background: #F5FBFE">
-                            <h3>Moon</h3>
-                            <div class="price ae-5"><span class="currency">$</span>0</div>
-                            <div class="ae-5">
-                                <h6 class="uppercase bold small opacity-4">No Credit Card Needed</h6>
-                            </div>
-                            <div class="margin-top-3 margin-bottom-3 equalElement ae-6">
-                                <ul class="p tiny">
-                                    <li><strong>25 Free Images</strong></li>
-                                    <li class="opacity-7">Custom Domain</li>
-                                    <li class="opacity-7">24/7 Customer Support</li>
-                                </ul>
-                            </div>
-                            <a href="#" class="button blue gradient wide cropSides cropBottom ae-7">Try Free</a>
-                        </li>
-                        <li class="col-4-12 ae-4">
-                            <h3>Planet</h3>
-                            <div class="price ae-6"><span class="currency">$</span>6</div>
-                            <div class="ae-6">
-                                <h6 class="uppercase bold small opacity-4">Billed per Month</h6>
-                            </div>
-                            <div class="margin-top-3 margin-bottom-3 equalElement ae-7">
-                                <ul class="p tiny">
-                                    <li><strong>60 Free Images</strong></li>
-                                    <li><strong>Mobile-Optimized</strong></li>
-                                    <li><strong>No Transaction Fees</strong></li>
-                                    <li class="opacity-8">Custom Domain</li>
-                                    <li class="opacity-8">24/7 Customer Support</li>
-                                </ul>
-                            </div>
-                            <a href="#" class="button green gradient wide cropSides cropBottom ae-8">Purchase</a>
-                        </li>
-                        <li class="col-4-12 ae-5">
-                            <h3>Galaxy</h3>
-                            <div class="price ae-7"><span class="currency">$</span>24</div>
-                            <div class="ae-7">
-                                <h6 class="uppercase bold small opacity-4">Billed per Month</h6>
-                            </div>
-                            <div class="margin-top-3 margin-bottom-3 equalElement ae-8">
-                                <ul class="p tiny">
-                                    <li><strong>60 Free Images</strong></li>
-                                    <li><strong>Mobile-Optimized</strong></li>
-                                    <li><strong>No Transaction Fees</strong></li>
-                                    <li><strong>Unlimited Projects</strong></li>
-                                    <li class="opacity-8">Custom Domain</li>
-                                    <li class="opacity-8">24/7 Customer Support</li>
-                                </ul>
-                            </div>
-                            <a href="#" class="button green gradient wide cropSides cropBottom ae-9">Purchase</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="background" style="background-image:url(/resources/templet/assets/img/background/img-83.jpg)"></div>
-</section>
-
-<!-- Slide 7 (#95) -->
-<section class="slide fade-6 kenBurns">
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-
-                <div class="fix-6-12">
-                    <h1 class="huge ae-1 margin-bottom-2">Download Mobile App</h1>
-                    <p class="hero ae-2 margin-bottom-3"><span
-                            class="opacity-8">Learning never exhausts the mind.</span></p>
-
-                    <form action="#" autocomplete="off" class="slides-form margin-bottom-3">
-                        <input type="email" class="ae-3" name="email" placeholder="E-mail address"/>
-                        <button type="submit" class="button blue gradient ae-4" name="submit">Try it free</button>
-                    </form>
-
-                    <a href="#" class="button hollow ae-5"><img src="/resources/templet/assets/img/appstore.jpg" height="63"/></a><a
-                        href="#" class="button hollow ae-6"><img src="/resources/templet/assets/img/googleplay.jpg" height="63"/></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="background" style="background-image:url(/resources/templet/assets/img/background/img-95.jpg)"></div>
 </section>
 
 <!-- Panel Bottom #01 -->

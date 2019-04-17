@@ -12,6 +12,12 @@ public interface UserMapper {
 	public Teacher TeacherSelectOne(String userid);
 
 	public Student StudentSelectOne(String userid);
+
+	public Parents ParentsSelectOneNickname(String nickname);
+
+	public Teacher TeacherSelectOneNickname(String nickname);
+
+	public Student StudentSelectOneNickname(String nickname);
 	
 	public int ParentsInsert(Parents p);
 	

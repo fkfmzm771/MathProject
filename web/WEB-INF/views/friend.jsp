@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Friend</title>
 	<link href="resources/main.css" rel="stylesheet" />
-	<script src="resources/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script>
 
@@ -77,12 +77,6 @@ function searchid(){
 
 </head>
 <body>
-
-<h2>[ 내 독서 노트 ]</h2>
-<div id="mybook">
-    <table id="book">
-    </table>
-</div>
 
 <input type="button" value="유저 검색" onclick="searchid();">
 

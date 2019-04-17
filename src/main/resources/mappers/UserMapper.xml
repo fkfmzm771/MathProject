@@ -72,6 +72,30 @@
 			student 
 		where student_id = #{student_id}
 	</select>
+
+	<select id="ParentsSelectOneNickname" parameterType="String" resultType="Parents">
+		select
+			*
+		from
+			parents
+		where parents_nickname = #{parents_nickname}
+	</select>
+
+	<select id="TeacherSelectOneNickname" parameterType="String" resultType="Teacher">
+		select
+			*
+		from
+			teacher
+		where teacher_nickname = #{teacher_nickname}
+	</select>
+
+	<select id="StudentSelectOneNickname" parameterType="String" resultType="Student">
+		select
+			*
+		from
+			student
+		where student_nickname = #{student_nickname}
+	</select>
 	
 	<update id="ParentsUpdate" parameterType="Parents">
 		UPDATE parents

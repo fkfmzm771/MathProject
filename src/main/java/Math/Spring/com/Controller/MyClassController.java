@@ -102,8 +102,33 @@ public class MyClassController {
         String teacher_id = (String)session.getAttribute("loginId");
 
         List<Myclass> list = dao.classNameList(teacher_id);
-
-        System.out.println("name : " + list);
         return list;
+    }
+
+    @RequestMapping(value = "classNameNCodeList" , method = RequestMethod.GET)
+    @ResponseBody
+    public List<Myclass> classNameNCodeList(HttpSession session){
+        String teacher_id = (String)session.getAttribute("loginId");
+
+        List<Myclass> list = dao.classNameNCodeList(teacher_id);
+        return list;
+    }
+
+
+    @RequestMapping(value = "/deleteClass", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteFriend(String code){
+        System.out.println(code);
+        int resultC = dao.deleteClassMyclass(code);
+        int resultS = dao.deleteClassStudent(code);
+        String message = "";
+
+        if(resultC > 0){
+            message = "success";
+        } else {
+            message = "fail";
+        }
+
+        return message;
     }
 }

@@ -27,40 +27,91 @@ public class UserController {
 		return "member/signForm";
 	}
 
-	/** 네이버로그인화면 */
-	@RequestMapping(value = "/naverInserted", method = RequestMethod.POST)
-	@ResponseBody
-	public String naverInsert(String name, String email, Model model,
-							  HttpSession session, HttpServletResponse response) {
-            System.out.println(email);
-			session.setAttribute("loginId", email);
-			session.setAttribute("loginName", name);
-			System.out.println(name + ", " + email);
+//	/** 네이버로그인화면 */
+//	@RequestMapping(value = "/naverLogined", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String naverInsert(String name, String email, Model model,
+//							  HttpSession session, HttpServletResponse response) {
+//			Parents p = dao.ParentsSelectOne(email);
+//			System.out.println("P : " + p);
+//		System.out.println("P : " + p.getParents_nickname());
+//			if (p != null) {
+//				session.setAttribute("loginId", email);
+//				session.setAttribute("loginName", name);
+//				if(p.getParents_nickname()==null){
+//				    return "fail";
+//                }
+//			} else {
+//				Teacher t = dao.TeacherSelectOne(email);
+//				System.out.println("T : " + t);
+//				System.out.println("T : " + t.getTeacher_nickname());
+//				if (t != null) {
+//					session.setAttribute("loginId", email);
+//					session.setAttribute("loginName", name);
+//                    if(t.getTeacher_nickname()==null){
+//                        return "fail";
+//                    }
+//				} else {
+//					Student s = dao.StudentSelectOne(email);
+//					System.out.println("S : " + s);
+//					System.out.println("S : " + s.getStudent_nickname());
+//					if(s != null) {
+//						session.setAttribute("loginId", email);
+//						session.setAttribute("loginName", name);
+//                        if(s.getStudent_nickname()==null){
+//                            return "fail";
+//                        }
+//					}
+//				}
+//			}
+//		return "success";
+//	}
 
-			Parents p = dao.ParentsSelectOne(email);
-			if (p != null) {
-				session.setAttribute("loginId", email);
-				session.setAttribute("loginName", name);
-			} else {
-				Teacher t = dao.TeacherSelectOne(email);
-				if (t != null) {
-					session.setAttribute("loginId", email);
-					session.setAttribute("loginName", name);
-				} else {
-					Student s = dao.StudentSelectOne(email);
-					if(s != null) {
-						session.setAttribute("loginId", email);
-						session.setAttribute("loginName", name);
-					}
-					else {
-						model.addAttribute("userid", "email");
-						model.addAttribute("name", name);
-						return "error";
-					}
-				}
-			}
-		return "success";
+    /** 처음 로그인 후 페이지 이동 */
+    @RequestMapping(value = "/insertNickName", method = RequestMethod.GET)
+    public String insertNickName() {
+        return "testPage/insertNickName";
+    }
+
+    /** 닉네임 존재 여부 */
+    @RequestMapping(value = "/nicknameCheck", method = RequestMethod.GET)
+	public String nicknameCheckPage(){
+    	return "";
 	}
+
+    /** 닉네임 중복확인 처리 요청 */
+    @RequestMapping(value = "/nicknameCheck", method = RequestMethod.POST)
+    public String nicknameCheck(String usernickname, Model model) {
+        Parents p = dao.ParentsSelectOneNickname(usernickname);
+        if (p != null) {
+            model.addAttribute("result", "success");
+            model.addAttribute("usernickname", p.getParents_id());
+        } else {
+            Teacher t = dao.TeacherSelectOneNickname(usernickname);
+            if (t != null) {
+                model.addAttribute("result", "success");
+                model.addAttribute("usernickname", t.getTeacher_nickname());
+            } else {
+                Student s = dao.StudentSelectOneNickname(usernickname);
+                if(s != null) {
+                    model.addAttribute("result", "success");
+                    model.addAttribute("usernickname", s.getStudent_id());
+                }
+                else {
+                    model.addAttribute("result", "fail");
+                    model.addAttribute("usernickname", usernickname);
+                    return "insertNickName";
+                }
+            }
+        }
+        return "insertNickName";
+    }
+
+    /** 로그인 후 페이지 이동 */
+    @RequestMapping(value = "/testPage/sidebar", method = RequestMethod.GET)
+    public String sidebar() {
+        return "testPage/sidebar";
+    }
 
 	/** 아이디 중복확인 화면 요청 */
 	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
@@ -132,10 +183,18 @@ public class UserController {
 		return "redirect:/";
 	}
 
-//	@RequestMapping(value="/googleLogin", method = RequestMethod.GET)
-//	public String googleLogin(){
-//		return "index";
-//	}
+	@RequestMapping(value="/googleLogin", method = RequestMethod.POST)
+	public String googleLogin(String id, String name, String email, HttpSession session){
+		String googleId = id + "@google.com";
+
+
+
+		session.setAttribute("loginId",googleId);
+        session.setAttribute("tempname",name);
+        session.setAttribute("tempemail",email);
+
+		return "success";
+	}
 
 	/**로그인 처리를 요청함 */
 	@RequestMapping(value="/login", method = RequestMethod.POST)
@@ -173,15 +232,13 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	/** Logout */
-	@RequestMapping(value="/naverLogout", method = RequestMethod.GET)
-	@ResponseBody
-	public String naverLogout(HttpSession session) {
-		String id = (String)session.getAttribute("loginId");
-
-		session.invalidate(); // 세션에 있는거 한방에 다 지움
-		return "redirect:/";
-	}
+//	/** Logout */
+//	@RequestMapping(value="/naverLogout", method = RequestMethod.GET)
+//	@ResponseBody
+//	public String naverLogout(HttpSession session) {
+//		session.invalidate(); // 세션에 있는거 한방에 다 지움
+//		return "redirect:/";
+//	}
 
 	@RequestMapping(value="/modify", method = RequestMethod.GET)
 	public String modify(HttpSession session, Model model) {
@@ -219,7 +276,7 @@ public class UserController {
 
 	@RequestMapping(value="/callback", method = RequestMethod.GET)
 	public String navercallback() {
-		return "callback";
+		return "chart/callback";
 	}
 	
 	@RequestMapping(value="/userUpdate", method = RequestMethod.POST)
@@ -252,6 +309,6 @@ public class UserController {
 			dao.TeacherUpdate(t);
 		}
 		
-		return "testPage_sidebar";
+		return "testPage/sidebar";
 	}
 }

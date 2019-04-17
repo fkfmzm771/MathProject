@@ -3,47 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Math.Spring.com.MapperInterface.ChartMapper">
-<insert id="regist" parameterType="Chart">
-	insert into chart(
-		studentnum
-		,studentid
-		,numberknow
-		,numberplus
-		,shapesknow
-		,lifeability
-	)values(
-		chart_seq.nextval
-		,#{studentId}
-		,#{numberKnow}
-		,#{numberPlus}
-		,#{shapesKnow}
-		,#{lifeAbility}
-	)
-</insert>
+	<select resultType="GameStage" parameterType="Student" id="doughnutSelect">
+		select
+			*
+	  	from
+	  		GameStage
+	 	 where
+	  		student_id = #{student_id}
+	 	 and
+	  		game_chapter = 1
+	</select>
 
-<select id="doughnutSelect" parameterType="Student" resultType="Doughnut">
-	select
-   	 *
-	from
-   		 gamegoing
-	where
-    student_id = #{student_id}
-</select>
-<select id="gamescorefind" resultType="Gamescore">
-	select
-	*
-	from
-	gamescore
- </select>
+	<select resultType="UserScore" id="selectClassGameScore">
+		select
+			*
+		from
+			GameScore
+	</select>
 
-<select parameterType="String" id="gamescorefind2" resultType="Gamescore">
-	select
-	*
-	fromg
-	amescore
-	where
-	student_id = #{loginId}
-</select>
-
-
+	<select resultType="UserScore" parameterType="Student" id="userGameScore">
+		select
+			*
+		from
+			GameScore
+		where
+			student_id = #{loginId}
+		</select>
 </mapper>

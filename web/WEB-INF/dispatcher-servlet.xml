@@ -24,6 +24,17 @@
 
     <context:component-scan base-package="Math.Spring.com" />
 
+    <!-- Interceptor 클래스를 빈으로 등록 -->
+    <bean id="firstLoginInterceptor" class="Math.Spring.com.Interceptor.LoginInterceptor" />
+
+    <!-- Interceptor를 경유해야하는 요청을 지정함 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/teatPage/sidebar"/>
+            <mvc:mapping path="/googleLogin"/>
+            <ref bean="firstLoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 인터셉터 경로 설정  :code here -->
     <!--<interceptors>-->
@@ -32,5 +43,4 @@
             <!--<beans:ref bean="loginInterceptor"/>-->
         <!--</interceptor>-->
     <!--</interceptors>-->
-
 </beans>
