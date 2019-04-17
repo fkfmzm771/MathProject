@@ -304,37 +304,7 @@
             <div class="wrap">
 
                 <div class="fix-12-12">
-                    <ul class="grid">
-                        <li class="col-6-12 left">
-                            <h1 class="ae-2 fromLeft">Krabi Island</h1>
-                            <p class="ae-3 fromLeft"><span class="opacity-8">An electrician isn’t an opinion former, but a graphic designer is. My argument is that all graphic designers hold high levels of responsibility in society.</span>
-                            </p>
-                            <ul class="tabs controller uppercase bold ae-4 fromCenter" data-slider-id="60-1">
-                                <li class="selected">Krabi Island</li>
-                                <li>Community</li>
-                                <li>Surfing</li>
-                            </ul>
-                        </li>
-                        <li class="col-6-12 left ae-5 fromCenter">
-                            <ul class="slider animated margin-top-4" data-slider-id="60-1">
-                                <li class="selected fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-1">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-1.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                                <li class="fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-2">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-2.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                                <li class="fromCenter">
-                                    <div class="popupTrigger videoThumbnail shadow rounded" data-popup-id="60-3">
-                                        <img class="wide" src="/resources/templet/assets/img/gallery-60-3.jpg" alt="Video Thumbnail"/>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <a href="/gamego" target="_blank">게임시작</a>
                 </div>
 
             </div>
