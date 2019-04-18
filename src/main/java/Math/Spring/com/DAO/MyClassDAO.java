@@ -68,4 +68,20 @@ public class MyClassDAO {
         int cList = mapper.deleteClassStudent(code);
         return cList;
     }
+
+    public Myclass searchclassCode(String code) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        Myclass myclass = mapper.searchclassCode(code);
+        return myclass;
+    }
+
+    public int applyClass(String student_id, String student_myclass_code) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+
+        System.out.println("dao_id : " + student_id);
+        System.out.println("dao_code : " + student_myclass_code);
+
+        int result = mapper.applyClass(student_id, student_myclass_code);
+        return result;
+    }
 }

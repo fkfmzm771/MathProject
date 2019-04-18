@@ -1,28 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
 <head>
     <title>로그인</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="341184560724-2888vrea7csuq3s4c79tedsre9cpm7kj.apps.googleusercontent.com">
+
+
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="../../../resources/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="/resources/images/icons/favicon.ico"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/util.css">
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -30,11 +34,20 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="341184560724-2888vrea7csuq3s4c79tedsre9cpm7kj.apps.googleusercontent.com">
+
+
+    <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/resources/vendor/bootstrap/js/popper.js"></script>
+    <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/resources/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/resources/js/main.js"></script>
+
+
+
 
     <script>
         function onSignIn(googleUser) {
@@ -74,7 +87,7 @@
 <body>
 
 <div class="limiter">
-    <div class="container-login100" style="background-image: url('../../../resources/images/bg/bg_04.jpg');">
+    <div class="container-login100" style="background-image: url('/resources/images/bg/bg_04.jpg');">
         <div class="wrap-login100 p-t-100 p-b-50">
             <i class="fas fa-dragon" id="drangon"  ></i>
             <form class="login100-form validate-form" action="login" method="POST">
@@ -113,7 +126,8 @@
                     <%--<a href="#" class="rounded-btn" id="rounded-btn-google"></a>--%>
                     <%--<a href="#" class="rounded-btn" id="rounded-btn-naver"></a>--%>
                 <div class="container-login100-form-btn2 p-t-10" style="padding-top: 30px;">
-                    <div class="g-signin2" data-onsuccess="onSignIn"  data-theme="dark" style="width: 350px; height: 50px; font-family: 'Roboto', sans-serif;"></div>
+                    <div class="g-signin2" data-onsuccess="onSignIn"  data-theme="dark"
+                         style="width: 350px; height: 50px; font-family: 'Roboto', sans-serif;"></div>
                 </div>
                     <%--<div class="g-signin2" data-onsuccess="onSignInSuccess"></div>--%>
                 <div class="container-login100-form-btn2 p-t-10" style="padding-top: 20px;">
@@ -129,15 +143,7 @@
         </div>
     </div>
 </div>
-<!--===============================================================================================-->
-<script src="../../../resources/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="../../../resources/vendor/bootstrap/js/popper.js"></script>
-<script src="../../../resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="../../../resources/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="../../../resources/js/main.js"></script>
+
 
 <!-- 네이버아디디로로그인 초기화 Script -->
 <%--<script type="text/javascript">--%>

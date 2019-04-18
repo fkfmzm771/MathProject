@@ -22,4 +22,8 @@ public interface MyClassMapper {
     public int deleteClassMyclass(String code);
 
     public int deleteClassStudent(String code);
+
+    Myclass searchclassCode(String code);
+
+    int applyClass(String student_id, String student_myclass_code);
 }

@@ -131,4 +131,39 @@ public class MyClassController {
 
         return message;
     }
+
+    @RequestMapping(value="searchclasscodeform", method=RequestMethod.GET)
+    public String searchclasscodeform(){
+        return "user/searchclasscodeform";
+    }
+
+    @RequestMapping(value = "searchclassCode" , method = RequestMethod.GET)
+    public String searchclassCode(String code, HttpSession session, Model model){
+        Myclass myclass = dao.searchclassCode(code);
+        String message = "찾을수 없는 반 입니다.";
+        String sessionId = (String)session.getAttribute("loginId");
+
+        if(myclass == null){
+            model.addAttribute("message", message);
+        } else {
+            model.addAttribute("id", sessionId);
+            model.addAttribute("name",myclass.getMyclass_name());
+            model.addAttribute("code", code);
+        }
+
+        return "user/searchclasscodeform";
+    }
+
+    /*
+    반 신청 기능
+     */
+    @RequestMapping(value="applyClass", method=RequestMethod.GET)
+    @ResponseBody
+    public int applyClass(String student_myclass_code, HttpSession session){
+        String student_id = (String)session.getAttribute("loginId");
+
+        int result = dao.applyClass(student_id, student_myclass_code);
+
+        return result;
+    }
 }

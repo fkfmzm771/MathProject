@@ -51,6 +51,20 @@
     <update id="deleteClassStudent" parameterType="String">
         update student set
         student_myclass_code = null
+        ,student_myclass_check = null
         where student_myclass_code = #{code}
+    </update>
+
+    <select id="searchclassCode" parameterType="String" resultType="Myclass">
+        SELECT myclass_name, myclass_teacher_name
+        FROM myclass
+        where myclass_code = #{code}
+    </select>
+
+    <update id="applyClass" parameterType="String">
+        update student set
+        student_myclass_code = #{student_myclass_code}
+        ,student_myclass_check = 0
+        where student_id = #{student_id}
     </update>
 </mapper>

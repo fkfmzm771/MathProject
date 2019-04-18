@@ -43,4 +43,11 @@
             <!--<beans:ref bean="loginInterceptor"/>-->
         <!--</interceptor>-->
     <!--</interceptors>-->
+
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-headers="Content-Type, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With, requestId, Correlation-Id"
+                     allowed-methods="GET, PUT, POST, DELETE"/>
+    </mvc:cors>
 </beans>
