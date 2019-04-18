@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <title>navbar & sidebar</title>
+    <title>プルンプルンすうがくへようこそ！！</title>
 
 
     <link rel='stylesheet'
@@ -21,7 +21,7 @@
           href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
 
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <script>
         let check;
@@ -427,11 +427,10 @@
         <%--aria-label="Toggle navigation">--%>
         <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
         <%--</button>--%>
-
         <div>
-            <a class="navbar-brand px-1"  href="#" onclick="side_call()"><img
-                    src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
-                    class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
+            <a class="navbar-brand px-1"  href="#" onclick="side_call()">
+                <img src="/resources/images/homeUI/mochi.png" data-alt-src="/resources/images/gameUi/mochi2.png"
+                     class="d-inline-block mt-1" height="40"></a>
 
             <div class="right-links float-right mr-4">
                 <a href="#" class="home"><i class="fa fa-home mr-3"></i></a>
@@ -670,17 +669,6 @@
            class="page_content"
            type="text/html"
            src="/main_test">
-
-        <%--<iframe frameborder=0--%>
-                <%--framespacing=0--%>
-                <%--marginheight=0--%>
-                <%--marginwidth=0--%>
-                <%--scrolling=no vspace=0--%>
-                <%--class="page_content"--%>
-                <%--type="text/html"--%>
-                <%--src="/main_test">--%>
-
-
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

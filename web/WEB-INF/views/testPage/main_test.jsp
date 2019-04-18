@@ -35,8 +35,12 @@
     <!--chart.js-->
     <script src="/resources/js/chart3.js"></script>
 
+    <%--구글 일본어 폰트--%>
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru" rel="stylesheet">
 
     <style>
+
+
         .chart-table  tr{
             color: #090104;
             border-color: #0f0f0f;
@@ -208,11 +212,11 @@
 
         <div class="center">
             <ul class="menu">
-                <li><a href="#section1">홈</a></li>
-                <li><a href="#section2">교육</a></li>
-                <li><a href="#section3">게임</a></li>
-                <li><a href="#section4">통계</a></li>
-                <li><a href="#section5">만든이</a></li>
+                <li><a href="#section1">ホーム</a></li>
+                <li><a href="#section2">マニュアル</a></li>
+                <li><a href="#section3">ゲーム</a></li>
+                <li><a href="#section4">かくしゅう⁺しんど</a></li>
+                <li><a href="#section5">作った人</a></li>
             </ul>
         </div>
     </div>
@@ -259,11 +263,11 @@
             </svg>
         </a>
         <ul class="mainMenu margin-top-3">
-            <li><a href="#">홈</a></li>
-            <li><a href="#">교육</a></li>
-            <li><a href="#">게임</a></li>
-            <li><a href="#">통계</a></li>
-            <li><a href="#">만든이</a></li>
+            <li><a href="#section1">ホーム</a></li>
+            <li><a href="#section2">マニュアル</a></li>
+            <li><a href="#section3">ゲーム</a></li>
+            <li><a href="#section4">かくしゅう⁺しんど</a></li>
+            <li><a href="#section5">作った人</a></li>
         </ul>
 
     </div>
