@@ -12,13 +12,14 @@ import java.util.HashMap;
 
 @Repository
 public class FriendDAO {
-	@Autowired
-	SqlSession session;
+    @Autowired
+    SqlSession session;
 
-	 public Student searchFriend(String nickname) {
+
+    public Student searchFriend(String nickname) {
         FriendMapper mapper = session.getMapper(FriendMapper.class);
 
-         Student searchFriend = mapper.searchFriend(nickname);
+        Student searchFriend = mapper.searchFriend(nickname);
         return searchFriend;
     }
 

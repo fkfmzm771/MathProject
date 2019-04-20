@@ -9,19 +9,19 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface MyClassMapper {
-    public String searchCode(String randomCode);
+    String searchCode(String randomCode);
 
-    public int insertMyclass(Myclass myclass);
+    int insertMyclass(Myclass myclass);
 
-    public ArrayList<HashMap<String, Object>> classList(String myclass_code);
+    ArrayList<HashMap<String, Object>> classList(String myclass_code);
 
-    public List<Myclass> classNameList(String teacher_id);
+    List<Myclass> classNameList(String teacher_id);
 
-    public List<Myclass> classNameNCodeList(String teacher_id);
+    List<Myclass> classNameNCodeList(String teacher_id);
 
-    public int deleteClassMyclass(String code);
+    int deleteClassMyclass(String code);
 
-    public int deleteClassStudent(String code);
+    int deleteClassStudent(String code);
 
     Myclass searchclassCode(String code);
 

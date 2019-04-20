@@ -26,17 +26,21 @@
     <script>
         let check;
         let side;
+        let mochi_menu;
 
         $(function () {
             check = true;
             side = document.getElementById("first_menu");
+            mochi_menu = document.getElementById("mochi_menu");
         });
 
         function side_call() {
             if (check) {
-                side.style.width = "160px";
+                mochi_menu.src = "/resources/images/homeUI/mochi_on.png";
+                side.style.width = "200px";
                 check = !check;
             } else {
+                mochi_menu.src = "/resources/images/homeUI/mochi_off.png";
                 side.style.width = "0px";
                 check = !check;
             }
@@ -45,7 +49,7 @@
 
     <script>
 
-        $(function(){
+        $(function () {
             init();
         });
 
@@ -53,9 +57,9 @@
         function init() {
             $.ajax({
                 url: "friendList"
-                ,type: "get"
-                ,data: {}
-                ,success: function(fList){
+                , type: "get"
+                , data: {}
+                , success: function (fList) {
                     output(fList);
                 }
             });
@@ -75,19 +79,19 @@
 
 
             data += '<table>';
-            $.each(resp, function(index, item){
-                data += '<tr class="friend_seq" data-sno="'+ item.FRIEND_SEQ +'" >';
+            $.each(resp, function (index, item) {
+                data += '<tr class="friend_seq" data-sno="' + item.FRIEND_SEQ + '" >';
                 data += '	<td class="friend_id">' + item.FRIEND_ID + '</td>';
                 data += '	<td class="friend_name">' + item.FRIEND_NAME + '</td>';
                 data += '	<td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-sno="'+item.FRIEND_SEQ +'"value="끊기" /></td>';
+                data += '	<td><input type="button"  class="delbtn" data-sno="' + item.FRIEND_SEQ + '"value="끊기" /></td>';
                 data += '</tr>';
             });
 
             data += '</table>';
 
             $("#friendDiv").append(data);
-            $(".delbtn").on("click", function(event){
+            $(".delbtn").on("click", function (event) {
                 del($(event.target));
             });
         }
@@ -98,44 +102,44 @@
             if (delno != null) {
                 alert(delno);
                 $.ajax({
-                    url:"deleteFriend"
-                    ,type : "post"
-                    ,data : {seq : delno}
-                    ,success: function(result){
+                    url: "deleteFriend"
+                    , type: "post"
+                    , data: {seq: delno}
+                    , success: function (result) {
                         $("#friendDiv").empty();
                         init();
                     }
                 });
-            } else{
+            } else {
                 alert("??");
             }
         }
 
-        function searchid(){
+        function searchid() {
             window.open("searchFriendForm", "newwin", "top=200, left=300, height=400, width=700")
         }
     </script>
 
     <script>
-        $(function(){
+        $(function () {
             // init();
             classNameNCode();
             classList();
         });
 
         //반 코드, 이름 출력
-        function classNameNCode(){
+        function classNameNCode() {
             $.ajax({
-                url : "classNameNCodeList"
-                ,type : "get"
-                ,data : {}
-                ,success : function(cnncList){
+                url: "classNameNCodeList"
+                , type: "get"
+                , data: {}
+                , success: function (cnncList) {
                     cnncoutput(cnncList);
                 }
             })
         }
 
-        function cnncoutput(resp){
+        function cnncoutput(resp) {
             var data = '<table>';
 
             data += '<tr>';
@@ -143,17 +147,17 @@
             data += '	<td>코드</td>';
             data += '</tr>';
 
-            $.each(resp, function(index, item){
-                data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
+            $.each(resp, function (index, item) {
+                data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
                 data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
                 data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" value="끊기" /></td>';
+                data += '	<td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" value="끊기" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
             $("#cnncListDiv").append(data);
 
-            $(".delbtn").on("click", function(event){
+            $(".delbtn").on("click", function (event) {
                 del($(event.target));
             });
         }
@@ -163,15 +167,15 @@
             var code = $(target).attr('data-code');
             if (code != null) {
                 $.ajax({
-                    url:"deleteClass"
-                    ,type : "post"
-                    ,data : {code : code}
-                    ,success: function(result){
+                    url: "deleteClass"
+                    , type: "post"
+                    , data: {code: code}
+                    , success: function (result) {
                         $("#cnncListDiv").empty();
                         classNameNCode();
                     }
                 });
-            } else{
+            } else {
                 alert("??");
             }
         }
@@ -180,9 +184,9 @@
         function classList() {
             $.ajax({
                 url: "classNameList"
-                ,type: "get"
-                ,data: {}
-                ,success: function(cList){
+                , type: "get"
+                , data: {}
+                , success: function (cList) {
                     nameoutput(cList);
                 }
             });
@@ -191,14 +195,14 @@
         // 반이름 출력
         function nameoutput(resp) {
             var data = '<select id="selectclass" onchange="chageLangSelect()">';
-            $.each(resp, function(index, item){
-                data += '<option class="classNameList" value="' +item.myclass_code +'">' + item.myclass_name + '</option>';
+            $.each(resp, function (index, item) {
+                data += '<option class="classNameList" value="' + item.myclass_code + '">' + item.myclass_name + '</option>';
             });
             data += '</select>';
             $("#myclassListDiv").append(data);
         }
 
-        function chageLangSelect(){
+        function chageLangSelect() {
             var target = document.getElementById("selectclass");
 
             var temp = target.options[target.selectedIndex].value;
@@ -206,9 +210,9 @@
             console.log(temp);
             $.ajax({
                 url: "classList"
-                ,type: "get"
-                ,data: {myclass_code : temp}
-                ,success: function(cList){
+                , type: "get"
+                , data: {myclass_code: temp}
+                , success: function (cList) {
                     output(cList);
                 }
             });
@@ -224,19 +228,19 @@
             data += '	<td>학생닉네임</td>';
             data += '</tr>';
 
-            $.each(resp, function(index, item){
-                data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
+            $.each(resp, function (index, item) {
+                data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
                 data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
                 data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
                 data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" data-studentid="'+item.STUDENT_ID +'" value="제외" /></td>';
+                data += '	<td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" data-studentid="' + item.STUDENT_ID + '" value="제외" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
 
             $("#myclassDivInner").html("");
             $("#myclassDivInner").append(data);
-            $(".delbtn").on("click", function(event){
+            $(".delbtn").on("click", function (event) {
                 delStu($(event.target));
             });
         }
@@ -246,24 +250,24 @@
             var code = $(target).attr('data-code');
             if (code != null) {
                 $.ajax({
-                    url:"deleteClass"
-                    ,type : "post"
-                    ,data : {code : code}
-                    ,success: function(result){
+                    url: "deleteClass"
+                    , type: "post"
+                    , data: {code: code}
+                    , success: function (result) {
                         $("#cnncListDiv").empty();
                         init();
                     }
                 });
-            } else{
+            } else {
                 alert("??");
             }
         }
 
-        function createClassCode(){
+        function createClassCode() {
             window.open("createClass", "newwin", "top=200, left=300, height=400, width=700")
         }
 
-        function searchclassCode(){
+        function searchclassCode() {
             window.open("searchclasscodeform", "newwin", "top=200, left=300, height=400, width=700")
         }
     </script>
@@ -422,15 +426,11 @@
 <div data-component="navbar">
 
     <nav class="navbar p-0 fixed-top">
-        <%--<button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"--%>
-        <%--data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false"--%>
-        <%--aria-label="Toggle navigation">--%>
-        <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
-        <%--</button>--%>
         <div>
-            <a class="navbar-brand px-1"  href="#" onclick="side_call()">
-                <img src="/resources/images/homeUI/mochi.png" data-alt-src="/resources/images/gameUi/mochi2.png"
-                     class="d-inline-block mt-1" height="40"></a>
+            <a class="navbar-brand px-1" href="#" onclick="side_call()">
+                <img src="/resources/images/homeUI/mochi_off.png" height="70px"
+                     class="d-inline-block mt-1" id="mochi_menu">
+            </a>
 
             <div class="right-links float-right mr-4">
                 <a href="#" class="home"><i class="fa fa-home mr-3"></i></a>
@@ -596,31 +596,32 @@
             <%--리스트 그룹 시작(친구 패널)--%>
             <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
-                <li class="list-group-item pl-3 py-2">
-                    <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
-                            class="ml-2 align-middle">우리반</span></i></a>
+                <li class="list-group-item" style="padding-left: 0px;">
+                    <a href="#">
+                        <img width="180px" src="/resources/images/homeUI/menu3_1.png">
+                    </a>
 
                     <ul class="list-group flex-column d-inline-block submenu">
                         <li class="list-group-item pl-4">
                             <c:if test="${sessionScope.type == 'teacher'}">
-                            <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
-                            <hr/>
+                                <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
+                                <hr/>
 
-                            <div id="cnncListDiv">
-                                우리반 목록<br/>
-                            </div>
-
-                            <hr/>
-                            <div id="myclassListDiv">
-                                반 선택<br/>
-                            </div>
-
-                            <div id="myclassDiv">
-                                반 학생들<br/>
-                                <div id="myclassDivInner">
-
+                                <div id="cnncListDiv">
+                                    우리반 목록<br/>
                                 </div>
-                            </div>
+
+                                <hr/>
+                                <div id="myclassListDiv">
+                                    반 선택<br/>
+                                </div>
+
+                                <div id="myclassDiv">
+                                    반 학생들<br/>
+                                    <div id="myclassDivInner">
+
+                                    </div>
+                                </div>
                             </c:if>
                             <c:if test="${sessionScope.type == 'student'}">
                                 <input type="button" value="반 검색" onclick="searchclassCode();">
@@ -636,24 +637,46 @@
                     </ul> <!-- /.submenu -->
                 </li> <!-- /우리반 마지막 -->
 
-                <c:if test="${sessionScope.type == 'student'}">
+                <%--<c:if test="${sessionScope.type == 'student'}">--%>
 
-                <li class="list-group-item pl-3 py-2">
-                    <a href="#">  <i class="fa fa-user-o" aria-hidden="true" >
-                        <span class="ml-2 align-middle" >친구</span></i></a>
+                <li class="list-group-item"  style="padding-left: 0px;">
+                    <a href="#">
+                        <img width="180px" src="/resources/images/homeUI/menu1_1.png">
+                    </a>
                     <ul class="list-group flex-column d-inline-block submenu">
-                         <li class="list-group-item pl-4">
-                             <input type="button" value="유저 검색" onclick="searchid();">
-                             <hr/>
+                        <li class="list-group-item pl-4">
+                            <input type="button" value="유저 검색" onclick="searchid();">
+                            <hr/>
 
-                             <div id="friendDiv">
-                                 내 친구 목록<br/>
-                                 <hr/>
-                             </div>
+                            <div id="friendDiv">
+                                내 친구 목록<br/>
+                                <hr/>
+                            </div>
                         </li> <!-- end Posts -->
                     </ul> <!-- /.first-menu -->
                 </li>
-                </c:if>
+
+                <li class="list-group-item"  style="padding-left: 0px;">
+                    <a href="#">
+                        <img width="180px" src="/resources/images/homeUI/menu2_1.png">
+                    </a>
+                    <ul class="list-group flex-column d-inline-block submenu">
+                        <li class="list-group-item pl-4">
+                            <input type="button" value="유저 검색" onclick="searchid();">
+                            <hr/>
+
+                            <div id="friendDiv">
+                                내 친구 목록<br/>
+                                <hr/>
+                            </div>
+                        </li> <!-- end Posts -->
+                    </ul> <!-- /.first-menu -->
+                </li>
+
+
+                <%--</c:if>--%>
+
+
         </div> <!-- /.sidebar -->
     </div>
 </div>

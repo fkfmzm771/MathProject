@@ -17,8 +17,8 @@
     <!-- Compressed Styles -->
     <link href="/resources/templet/css/slides.min.css" rel="stylesheet" type="text/css">
 
-    <!-- jQuery 3.3.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery 3.4.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Compressed Scripts -->
     <script src="/resources/templet/js/slides.min.js" type="text/javascript"></script>
@@ -29,8 +29,8 @@
 
 
     <!--googlechart-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
 
     <!--chart.js-->
     <script src="/resources/js/chart3.js"></script>
@@ -38,10 +38,11 @@
     <%--구글 일본어 폰트--%>
     <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru" rel="stylesheet">
 
+    <!--icon-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <style>
-
-
-        .chart-table  tr{
+        .chart-table tr {
             color: #090104;
             border-color: #0f0f0f;
             border: 1px;
@@ -49,13 +50,11 @@
             /* background-color: #00d131;*/
             margin: 10px;
         }
+        *{
+            border: 1px solid #000000;
+        }
     </style>
 
-    <%-- <style >
-         *{
-             border: 1px solid #000000;
-             }
-     </style>--%>
 </head>
 
 <body class="slides horizontal simplifiedMobile animated">
@@ -207,22 +206,20 @@
 
 </svg>
 <!-- Panel Top #051111 -->
-<nav class="panel top">
+<nav class="panel top" style="background-color:#88fff969;">
     <div class="sections desktop">
 
-        <div class="center">
-            <ul class="menu">
-                <li><a href="#section1">ホーム</a></li>
-                <li><a href="#section2">マニュアル</a></li>
-                <li><a href="#section3">ゲーム</a></li>
-                <li><a href="#section4">かくしゅう⁺しんど</a></li>
-                <li><a href="#section5">作った人</a></li>
+        <div class="center" style="height: 70px;">
+            <ul class="menu"
+                style="color: black; font-family: 'Kosugi Maru'; font: bold; font-size: 35px;  margin-top: 15px;">
+                <li><a href="#section1"><img src="/resources/images/homeUI/nav_menu1.png"> </a></li>
+                <li><a href="#section2"><img src="/resources/images/homeUI/nav_menu2.png"></a></li>
+                <li><a href="#section3"><img src="/resources/images/homeUI/nav_menu3.png"></a></li>
+                <li><a href="#section4"><img src="/resources/images/homeUI/nav_menu4.png"></a></li>
+                <li><a href="#section5"><img src="/resources/images/homeUI/nav_menu5.png"></a></li>
             </ul>
         </div>
     </div>
-
-
-
 
 
     <div class="sections compact hidden">
@@ -245,8 +242,6 @@
 </nav>
 
 <!-- HomePage Sidebar -->
-
-
 
 
 <!-- Mobile Sidebar -->
@@ -298,7 +293,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_01.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/homeUI/back1.png)"></div>
 </section>
 
 <!-- Slide 2 (#60) -->
@@ -314,13 +309,12 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_02.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/homeUI/back2.png)"></div>
 </section>
 
 
-
 <!-- Slide 3 (#27) -->
-<section  id="section3" class="slide fade-6 kenBurns">
+<section id="section3" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
             <div class="wrap">
@@ -331,10 +325,14 @@
                             <div class="fix-4-12">
                                 <ul class="slider clickable ae-1 fromAbove" data-slider-id="27-2">
                                     <li class="selected">
-                                        <img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-2.png" alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png" alt="Apple Watch Thumbnail"/></li>
+                                        <img src="/resources/templet/assets/img/watch-26-2.png"
+                                             alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
+                                             alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-2.png"
+                                             alt="Apple Watch Thumbnail"/></li>
+                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
+                                             alt="Apple Watch Thumbnail"/></li>
                                 </ul>
                                 <ul class="controller dots ae-2 fromCenter margin-top-3" data-slider-id="27-2">
                                     <li class="dot selected"></li>
@@ -351,7 +349,8 @@
                                     we reach out to brands to connect with a time when things seemed&nbsp;better.</p>
                             </div>
                             <div class="relative">
-                                <img src="/resources/templet/assets/img/icon-2.png" class="ae-3 fromCenter app-26" alt="app"/>
+                                <img src="/resources/templet/assets/img/icon-2.png" class="ae-3 fromCenter app-26"
+                                     alt="app"/>
                                 <div class="text-26">
                                     <h3 class="ae-3 fromRight">Ember for Apple Watch</h3>
                                     <div class="ae-5 fromRight">
@@ -367,8 +366,9 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_03.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/homeUI/back3.png)"></div>
 </section>
+
 
 <!-- Slide 4 (#26) -->
 <%--통계 페이지--%>
@@ -376,51 +376,179 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-                <div class="fix-12-12" style="width: 100%;">
-                    <ul class="grid grid-83 noSpaces equal ae-2 fadeIn" style="width: 100%;">
-                        <li class="col-12-12 ae-3" style="background: #F5FBFE; width: 100%; height: 500px">
+                <div class="fix-12-12" style="width: 100%;  margin: 0; ">
 
-                            <table class="chart-table" style="width: 1000px; height: 400px; ">
-                                <%--학생그래프 생성--%>
-                                <c:if test="${sessionScope.type =='student'}">
+                    <%--학생그래프 생성--%>
+                    <c:if test="${sessionScope.type =='student'}">
+                        <ul class="grid grid-83 noSpaces equal ae-2 fadeIn"
+                            style="width: 100%; height:100%;  ">
+                            <li class="col-12-12 ae-3"
+                                style="background: #FFFFFF; width: 350px; height: 600px; margin-right:20px; padding: 0px;  border-radius: 15px ">
+                                <table class="japanfont" style="width: 100%; height: 100%; margin: 0;">
+                                    <tr style="background-color: #00c6fb; height: 10%">
+                                        <td colspan="2" style="font-weight: bold; font-size: 20px">ユージャじょうほ</td>
+                                    </tr>
+                                    <tr style="height: 9%;">
+                                        <td>이름</td>
+                                        <td>아이디</td>
+                                    </tr>
+                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                        <td id="logname" value="name">ee</td>
+                                        <td id="logid" value="id">dd</td>
+                                    </tr>
+                                    <tr style="height: 77.5%">
+                                        <td colspan="2" style="text-align: center;">게임 캐릭터 위치</td>
+                                    </tr>
+
+                                </table>
+                            </li>
+                            <li class="col-12-12 ae-3"
+                                style="background: #FFFFFF; width: 350px; height: 600px;margin-right:20px; border-radius: 15px; padding: 0px;">
+                                    <%-- <div id="table_div" style="width: 100%; height:  60px; "></div>--%>
+
+                                <table class="japanfont" style="width: 100%; height: 100%; ">
+                                    <tr style="background-color: #fb8228; height: 10%">
+                                        <td colspan="3">학습 진행 정도</td>
+                                    </tr>
+                                    <tr style="height: 9%; ">
+                                        <td style="width: 40%;">공부 시간</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                        <td>
+                                            <i class="far fa-clock"></i>
+                                        </td>
+                                        <td></td>
+                                        <td>0:55</td>
+                                    </tr>
+                                    <tr style="height: 9%; ">
+                                        <td>획득한 별의 총개수</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                        <td>
+                                            <i class="fas fa-splotch"></i>
+                                        </td>
+                                        <td></td>
+                                        <td id="chartSum"></td>
+                                    </tr>
+                                    <tr style="height: 9%; ">
+                                        <td>현재 챕터</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                        <td>
+                                            <i class="fas fa-chess-king"></i>
+                                        </td>
+                                        <td></td>
+                                        <td id="nowChapter"></td>
+                                    </tr>
+                                    <tr style="height: 9%; ">
+                                        <td>현재 스테이지</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                        <td>
+                                            <i class="fas fa-chess-pawn"></i>
+                                        </td>
+                                        <td></td>
+                                        <td id="nowStage"></td>
+                                    </tr>
+
+                                </table>
+
+                            </li>
+                            <li class="col-12-12 ae-3"
+                                style="background: #FFFFFF; width: 350px; height: 600px; border-radius: 15px; padding: 0px;">
+                                    <%-- <div id="table_div" style="width: 100%; height:  60px; "></div>--%>
+                                <table class="japanfont" style="width: 100%; height: 100%; margin: 0; ">
+                                    <tr style="background-color: #74fb6b; height: 10%;">
+                                        <td colspan="3">학습 상세 정보</td>
+                                    </tr>
+                                    <tr style="height: 9%;">
+                                        <td colspan="2">각 체터별 획득 별수</td>
+                                    </tr>
+                                    <tr style="height: 8%">
+                                        <td style="">숫자 이해</td>
+                                        <td>연산 이해</td>
+                                    </tr>
+                                    <tr style="height: 10%">
+                                        <td id="num1" style="text-align: center; "></td>
+                                        <td id="num2" style="text-align: center; "></td>
+                                    </tr>
+                                    <tr style="height: 8%; ">
+                                        <td>도형 이해</td>
+                                        <td>생활 활용</td>
+                                    </tr>
+                                    <tr style="height: 10%;  border-bottom: 1px solid #000000;">
+                                        <td id="num3" style="text-align: center; "></td>
+                                        <td id="num4" style="text-align: center; "></td>
+                                    </tr>
                                     <tr>
-                                        <td colspan="2" style="width: 50%; ">
-                                            <p>학생정보1</p>
-                                            <p>학생정보2</p>
-                                            <p>학생정보3</p>
-                                            <p>학생정보4</p>
+                                        <td colspan="2" id = "now_playing"></td>
 
-                                        </td>
-                                        <td colspan="2" style="width: 48%; ">
-                                            <div id="table_div" style="width: 100%; height:  60px; "></div>
-                                            <!-- 학생 로그인시 학생 점수 테이블-->
-                                            <div id="donutchart" style="width: 100%; height: 320px; border-color: #F5FBFE; padding-top: 20px; "></div>
-                                            <!--학생 로그인시 현재 진행정도를 나타내는 도넛츠 그래프-->
-                                        </td>
                                     </tr>
-                                </c:if>
 
-                                <%--선생 그래프 생성--%>
-                                <c:if test="${sessionScope.type =='teacher'}">
-                                    <tr >
-                                        <td colspan="2" style="width: 43%; ">
-                                            <div id="table_div" style="width: 100%; height:  400px; "></div>
-                                            <!--선생님(kkk) 로그인시 전체 점수 테이블 -->
-                                        </td>
-                                        <td colspan="2" style="width: 43%; ">
-                                            <div id="box_chart" style="width: 100%; height:  355px; transform: scale(1,1.2); background: #F5FBFE;"></div>
-                                            <!--선생님 로그인시 반평균과 학생의 점수 비교 막대그래프-->
-                                        </td>
+                                    <!-- 학생 로그인시 챕터 점수 테이블-->
+                                    <tr style="height: 40%; ">
+                                        <td id="donutchart" style="width: 100%;  transform: scale(1.2); margin: 0;"
+                                            colspan="2"></td>
                                     </tr>
-                                </c:if>
-                            </table>
-                        </li>
-                    </ul>
+                                </table>
+                            </li>
+                        </ul>
+                    </c:if>
+
+                    <%--선생 그래프 생성--%>
+                    <c:if test="${sessionScope.type =='teacher'}">
+                        <ul class="grid grid-83 noSpaces equal ae-2 fadeIn" style="width: 100%;">
+                            <li class="col-12-12 ae-3"
+                                style="background: #FFFFFF; width: 45%; height: 600px; margin-right:20px; border-radius: 15px; padding: 0px;">
+                                <table class="japanfont" style="width: 100%; height: 100%; ">
+                                    <tr style="background-color: #00c6fb; height: 50px">
+                                        <td>전체 성적</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="table_div" style="width: 100%; height:  400px; "></td>
+                                    </tr>
+                                </table>
+                                <!--선생님(kkk) 로그인시 전체 점수 테이블 -->
+                            </li>
+                            <li class="col-12-12 ae-3"
+                                style="background: #FFFFFF; width: 45%; height: 600px; border-radius: 15px; padding: 0px;">
+                                <table class="japanfont" style="width: 100%; height: 100%;  margin: 0">
+                                    <tr style="background-color: #fb8228; height: 50px">
+                                        <td>반평균과 학생 점수 비교</td>
+                                    </tr>
+                                    <tr style="width: 100%; height:  400px;">
+                                        <td id="box_chart" style="background: #FFFFFF; "></td>
+                                        <!--선생님 로그인시 반평균과 학생의 점수 비교 막대그래프-->
+                                    </tr>
+                                </table>
+                            </li>
+                                <%--<li class="col-12-12 ae-3" style="background: #FFFFFF; width: 15%; height: 600px; border-radius: 15px; padding: 0px;">
+                                    <table class="japanfont" style="width: 100%; height: 10%; margin: 0">
+                                        <tr style="background-color: #74fb6b; height: 70px">
+                                            <td >전체 성적222222222</td>
+                                        </tr>
+                                        <tr>
+                                            <td id="table_div2" style="width: 100%; height:  400px; "></td>
+                                        </tr>
+                                    </table>
+
+                                </li>--%>
+                        </ul>
+                    </c:if>
+
                 </div>
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_04.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/homeUI/back4.png)"></div>
 </section>
 
 <!-- Slide 5 (#91) -->
@@ -430,11 +558,7 @@
             <div class="wrap">
                 <div class="fix-12-12 toCenter">
                     <div class="fix-7-12">
-                        <h1 class="ae-2 huge fromAbove margin-bottom-2">만든이</h1>
-                        <h2>임현웅</h2>
-                        <h2>민건홍</h2>
-                        <h2>이대로</h2>
-                        <h1>thanks to 이수민 송보가 감사합니다.</h1>
+
 
                     </div>
                 </div>
@@ -442,7 +566,7 @@
             </div>
         </div>
     </div>
-    <div class="background" style="background-image:url(/resources/images/bg/bg_05.jpg)"></div>
+    <div class="background" style="background-image:url(/resources/images/homeUI/back5.png)"></div>
 </section>
 
 <!-- Panel Bottom #01 -->

@@ -397,7 +397,7 @@ button:focus, a:focus {
 }
 [data-component='navbar'] .navbar-brand {
   background-color: #ffffff;
-  height: 60px;
+  height: 80px;
   width: 75px;
   text-align: center;
 }
@@ -517,14 +517,14 @@ button:focus, a:focus {
 
 [data-component='sidebar'] .sidebar {
   position: fixed;
+  padding: 0px;
   z-index: 9999;
 }
 [data-component='sidebar'] .first-menu {
   position: fixed;
-  background-color: #292a2c;
-  height: 100vw;
+  height: 200vw;
   width: 0px;
-  top: 60px;
+  top: 80px;
   overflow: hidden;
   transition: width .5s;
 }
@@ -562,9 +562,9 @@ button:focus, a:focus {
 }
 [data-component='sidebar'] .submenu {
   position: fixed;
-  left: 160px;
+  left: 200px;
   width: 195px;
-  top: 60px;
+  top: 80px;
   background-color: #009fff;
   height: 100vw;
   opacity: 0;

@@ -14,7 +14,7 @@
 				usernickname.focus();
 				return false;
 			} else if(!(usernickname.value.trim().length >= 3 && usernickname.value.trim().length <= 10)){
-				alert("공백을 제외한 아이디 길이는 3~10자리여야 합니다")
+				alert("공백을 제외한 아이디 길이는 3~10자리여야 합니다");
 				usernickname.focus();
 				return false;
 			}

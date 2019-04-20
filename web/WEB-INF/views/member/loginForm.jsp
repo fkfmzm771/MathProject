@@ -89,7 +89,7 @@
     <div class="container-login100" style="background-color: rgb(255,205,126);">
         <div class="wrap-login100 p-t-100 p-b-50">
             <div class="animated infinite bounce delay-2s">
-                <h1 class="login100-form-title p-t-20 p-b-45">プルンプルン<br>すうがく</h1>
+                <h1 class="login100-form-title p-t-20 p-b-45" style="font: bold">プルンプルン<br>すうがく</h1>
             </div>
             <img class="nekoImage" src="/resources/images/homeUI/neko.png" width="200px">
             <form class="login100-form validate-form" action="login" method="POST">

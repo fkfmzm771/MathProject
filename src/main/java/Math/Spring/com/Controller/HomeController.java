@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
 
@@ -15,10 +17,18 @@ public class HomeController {
 
     //메인 화면
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home() {
+    public String home(HttpSession session) {
 
+        //session.setAttribute("type", "teacher");
+
+        session.setAttribute("type", "student");
+        session.setAttribute("loginId", "aaa");
+
+        System.out.println("메인 화면 도착");
+        System.out.println(session.getAttribute("type"));
         return "member/loginForm";
     }
+
 
     //??
     @RequestMapping(value = "index", method = RequestMethod.GET)
