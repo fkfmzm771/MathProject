@@ -12,8 +12,11 @@ public class GameController {
     public String game(){
 
 
-        return "game/gametest";
+        return "game/index";
     }
+
+
+
 
 
 

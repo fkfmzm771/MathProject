@@ -41,19 +41,19 @@
     <!--icon-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <style>
-        .chart-table tr {
-            color: #090104;
-            border-color: #0f0f0f;
-            border: 1px;
+<%--    <style>--%>
+<%--        .chart-table tr {--%>
+<%--            color: #090104;--%>
+<%--            border-color: #0f0f0f;--%>
+<%--            border: 1px;--%>
 
-            /* background-color: #00d131;*/
-            margin: 10px;
-        }
-        *{
-            border: 1px solid #000000;
-        }
-    </style>
+<%--            /* background-color: #00d131;*/--%>
+<%--            margin: 10px;--%>
+<%--        }--%>
+<%--        *{--%>
+<%--            border: 1px solid #000000;--%>
+<%--        }--%>
+<%--    </style>--%>
 
 </head>
 
@@ -370,6 +370,7 @@
 </section>
 
 
+
 <!-- Slide 4 (#26) -->
 <%--통계 페이지--%>
 <section id="section4" class="slide fade-6 kenBurns">
@@ -393,11 +394,17 @@
                                         <td>아이디</td>
                                     </tr>
                                     <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td id="logname" value="name">ee</td>
-                                        <td id="logid" value="id">dd</td>
+                                        <td id="logname" value="name">name</td>
+                                        <td id="logid" value="id">id</td>
                                     </tr>
                                     <tr style="height: 77.5%">
                                         <td colspan="2" style="text-align: center;">게임 캐릭터 위치</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center;">
+                                            <img src="#" id="cha_image">
+
+                                        </td>
                                     </tr>
 
                                 </table>
@@ -489,7 +496,7 @@
                                         <td id="num4" style="text-align: center; "></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" id = "now_playing"></td>
+                                        <td colspan="2" id="now_playing"></td>
 
                                     </tr>
 

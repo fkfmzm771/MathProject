@@ -52,6 +52,14 @@ function selectChapterScore2(resp) {
     setHtml("num4",resp.score4);
     setHtml("chartSum",chartSum);
 
+    $("#cha_image").src = '/resources/images/card/' + resp.play_Character + '.png';
+
+    let chaImg = document.getElementById("cha_image");
+    chaImg.src = '/resources/images/card/' + resp.play_Character + '.png';
+
+
+
+
 }
 
 

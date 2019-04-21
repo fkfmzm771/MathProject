@@ -31,12 +31,12 @@ body, html, img {
     white-space: nowrap
 }
 
-/*a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
     border: 0;
     vertical-align: baseline;
     margin: 0;
     padding: 0
-}*/
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block
@@ -1177,7 +1177,7 @@ small .small {
     position: fixed;
     background: #202020;
     color: #fff;
-    z-index: 10
+    z-index: 0
 }
 
 .slide.active {

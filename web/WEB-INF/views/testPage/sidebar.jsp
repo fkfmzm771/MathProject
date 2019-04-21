@@ -433,35 +433,7 @@
             </a>
 
             <div class="right-links float-right mr-4">
-                <a href="#" class="home"><i class="fa fa-home mr-3"></i></a>
 
-                <div class="d-inline dropdown rounded-0 mx-3">
-                    <a class="dropdown-toggle" id="tools" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" href="#"><i class="fa fa-wrench" aria-hidden="true"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right rounded-0 text-center" aria-labelledby="tools">
-                        <a class="dropdown-item px-2" href="#">Recompile CSS</a>
-                    </div>
-                </div> <!-- /.dropdown -->
-
-                <div class="d-inline dropdown mr-3">
-                    <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" href="#"><span>10</span><i class="fa fa-bell"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right rounded-0 pt-0" aria-labelledby="notifications">
-                        <div class="list-group">
-                            <div class="lg">
-
-                            </div> <!-- /.lg -->
-                        </div> <!-- /.list group -->
-                    </div> <!-- /.dropdown-menu -->
-                </div> <!-- /.dropdown -->
-
-                <div class="d-inline dropdown mr-3">
-                    <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" href="#"><i class="fa fa-envelope"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right rounded-0 text-center" aria-labelledby="messages">
-                        <a class="dropdown-item">There are no new messages</a>
-                    </div> <!-- /.dropdown-menu -->
-                </div> <!-- /.dropdown -->
 
                 <div class="d-inline dropdown">
                     <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true"
