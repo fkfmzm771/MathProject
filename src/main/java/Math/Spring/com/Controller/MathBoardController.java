@@ -1,6 +1,5 @@
 package Math.Spring.com.Controller;
 
-import Math.Spring.com.DAO.ChartRepository;
 import Math.Spring.com.DAO.MathBoardDAO;
 import Math.Spring.com.VO.MathBoard;
 import org.springframework.beans.factory.annotation.Autowired;
