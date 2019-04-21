@@ -22,15 +22,34 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		String loginId = (String) session.getAttribute("loginId");
 
+		System.out.println("START INTERCEPTOR");
+		System.out.println(loginId);
+
 		Teacher t = userDao.TeacherSelectOne(loginId);
 		Parents p = userDao.ParentsSelectOne(loginId);
 		Student s = userDao.StudentSelectOne(loginId);
 
-		if(t == null && p == null && s == null){
-			response.sendRedirect(request.getContextPath()+"/testPage/insertNickName");
-			return false;
+		System.out.println("INTERCEPTOR t: " + t);
+		System.out.println("INTERCEPTOR p: " + p);
+		System.out.println("INTERCEPTOR s: " + s);
+
+		if(t != null){
+			if(t.getTeacher_nickname() == null){
+				response.sendRedirect(request.getContextPath()+"/insertNickName");
+				return false;
+			}
+		} else if(p != null){
+			if(p.getParents_nickname() == null){
+				response.sendRedirect(request.getContextPath()+"/insertNickName");
+				return false;
+			}
+		} else if(s != null){
+			if(s.getStudent_nickname() == null){
+				response.sendRedirect(request.getContextPath()+"/insertNickName");
+				return false;
+			}
 		}
-		
+
 		if(loginId == null) {
 			response.sendRedirect(request.getContextPath()+"/");
 			return false;

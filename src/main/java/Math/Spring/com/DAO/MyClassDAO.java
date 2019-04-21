@@ -45,6 +45,14 @@ public class MyClassDAO {
         return cList;
     }
 
+    public List<Student> classListByStudent(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+
+        List<Student> cList = mapper.classListByStudent(student_id);
+
+        return cList;
+    }
+
     public List<Myclass> classNameList(String teacher_id) {
         MyClassMapper mapper = session.getMapper(MyClassMapper.class);
         List<Myclass> cList = mapper.classNameList(teacher_id);
@@ -75,13 +83,46 @@ public class MyClassDAO {
         return myclass;
     }
 
-    public int applyClass(String student_id, String student_myclass_code) {
+    public String classyon(String sessionId) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        String classname = mapper.classyon(sessionId);
+        return classname;
+    }
+
+    public int applyClass(Student student) {
         MyClassMapper mapper = session.getMapper(MyClassMapper.class);
 
-        System.out.println("dao_id : " + student_id);
-        System.out.println("dao_code : " + student_myclass_code);
+        int result = mapper.applyClass(student);
+        return result;
+    }
 
-        int result = mapper.applyClass(student_id, student_myclass_code);
+    public ArrayList<HashMap<String, Object>> applyClassStudentList(String teacher_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        ArrayList<HashMap<String, Object>> cList = mapper.applyClassStudentList(teacher_id);
+        return cList;
+    }
+
+    public int applyInClass(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        int result = mapper.applyInClass(student_id);
+        return result;
+    }
+
+    public int rejectInClass(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        int result = mapper.rejectInClass(student_id);
+        return result;
+    }
+
+    public List<Myclass> applyingClass(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        List<Myclass> cList = mapper.applyingClass(student_id);
+        return cList;
+    }
+
+    public int canselApplyClass(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        int result = mapper.canselApplyClass(student_id);
         return result;
     }
 }

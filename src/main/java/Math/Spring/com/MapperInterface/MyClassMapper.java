@@ -9,21 +9,35 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface MyClassMapper {
-    String searchCode(String randomCode);
+    public String searchCode(String randomCode);
 
-    int insertMyclass(Myclass myclass);
+    public int insertMyclass(Myclass myclass);
 
-    ArrayList<HashMap<String, Object>> classList(String myclass_code);
+    public ArrayList<HashMap<String, Object>> classList(String myclass_code);
 
-    List<Myclass> classNameList(String teacher_id);
+    List<Student> classListByStudent(String student_id);
 
-    List<Myclass> classNameNCodeList(String teacher_id);
+    public List<Myclass> classNameList(String teacher_id);
 
-    int deleteClassMyclass(String code);
+    public List<Myclass> classNameNCodeList(String teacher_id);
 
-    int deleteClassStudent(String code);
+    public int deleteClassMyclass(String code);
+
+    public int deleteClassStudent(String code);
 
     Myclass searchclassCode(String code);
 
-    int applyClass(String student_id, String student_myclass_code);
+    String classyon(String sessionId);
+
+    int applyClass(Student student);
+
+    ArrayList<HashMap<String, Object>> applyClassStudentList(String teacher_id);
+
+    int applyInClass(String student_id);
+
+    int rejectInClass(String student_id);
+
+    List<Myclass> applyingClass(String student_id);
+
+    int canselApplyClass(String student_id);
 }

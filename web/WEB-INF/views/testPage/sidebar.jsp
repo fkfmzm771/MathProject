@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <title>プルンプルンすうがくへようこそ！！</title>
+    <title>navbar & sidebar</title>
 
 
     <link rel='stylesheet'
@@ -21,45 +21,40 @@
           href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
 
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
         let check;
         let side;
-        let mochi_menu;
 
         $(function () {
+
             check = true;
             side = document.getElementById("first_menu");
-            mochi_menu = document.getElementById("mochi_menu");
+
+            init();
+
         });
 
         function side_call() {
             if (check) {
-                mochi_menu.src = "/resources/images/homeUI/mochi_on.png";
-                side.style.width = "200px";
+                side.style.width = "160px";
                 check = !check;
             } else {
-                mochi_menu.src = "/resources/images/homeUI/mochi_off.png";
                 side.style.width = "0px";
                 check = !check;
             }
         }
-    </script>
 
-    <script>
 
-        $(function () {
-            init();
-        });
-
-        //모든 데이터 읽어옴
+        //친구 데이터 읽어옴
         function init() {
+
             $.ajax({
                 url: "friendList"
-                , type: "get"
-                , data: {}
-                , success: function (fList) {
+                ,type: "get"
+                ,data: {}
+                ,success: function(fList){
                     output(fList);
                 }
             });
@@ -77,23 +72,31 @@
             data += '</table>';
             data += '<hr/>';
 
-
             data += '<table>';
-            $.each(resp, function (index, item) {
-                data += '<tr class="friend_seq" data-sno="' + item.FRIEND_SEQ + '" >';
+            $.each(resp, function(index, item){
+                data += '<tr class="friend_seq" data-sno="'+ item.FRIEND_SEQ +'" >';
                 data += '	<td class="friend_id">' + item.FRIEND_ID + '</td>';
                 data += '	<td class="friend_name">' + item.FRIEND_NAME + '</td>';
                 data += '	<td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-sno="' + item.FRIEND_SEQ + '"value="끊기" /></td>';
+                data += '	<td><input type="button"  class="boardbtn" data-stu_id="'+item.FRIEND_ID +'"value="방명록작성하러가기" /></td>';
+                data += '	<td><input type="button"  class="delbtn" data-sno="'+item.FRIEND_SEQ +'"value="끊기" /></td>';
                 data += '</tr>';
             });
 
             data += '</table>';
 
             $("#friendDiv").append(data);
-            $(".delbtn").on("click", function (event) {
+            $(".boardbtn").on("click", function(event){
+                boardbtn($(event.target));
+            });
+            $(".delbtn").on("click", function(event){
                 del($(event.target));
             });
+        }
+
+        function boardbtn(target){
+            var student_id = $(target).attr('data-stu_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         // 팔로우 삭제
@@ -102,80 +105,224 @@
             if (delno != null) {
                 alert(delno);
                 $.ajax({
-                    url: "deleteFriend"
-                    , type: "post"
-                    , data: {seq: delno}
-                    , success: function (result) {
+                    url:"deleteFriend"
+                    ,type : "post"
+                    ,data : {seq : delno}
+                    ,success: function(result){
                         $("#friendDiv").empty();
                         init();
                     }
                 });
-            } else {
+            } else{
                 alert("??");
             }
         }
 
-        function searchid() {
+        function searchid(){
             window.open("searchFriendForm", "newwin", "top=200, left=300, height=400, width=700")
         }
     </script>
 
     <script>
-        $(function () {
-            // init();
+        $(function(){
             classNameNCode();
+            applyClassStudentList();
             classList();
+            applyingClass();
+            classListByStudent();
         });
 
-        //반 코드, 이름 출력
-        function classNameNCode() {
+        function applyingClass(){
             $.ajax({
-                url: "classNameNCodeList"
-                , type: "get"
-                , data: {}
-                , success: function (cnncList) {
+                url : "applyingClass"
+                ,type : "get"
+                ,data : {}
+                ,success : function(applyingClassList){
+                    if(applyingClassList.length != 0){
+                        applyingClassOutput(applyingClassList);
+                    }
+                }
+            })
+        }
+
+        function applyingClassOutput(applyingClassList){
+            var data = '신청중인 반 현황';
+
+            data += '<table>';
+            data += '<tr>';
+            data += '	<td>반명</td>';
+            data += '	<td>선생님</td>';
+            data += '</tr>';
+
+            $.each(applyingClassList, function(index, item){
+                data += '<tr>';
+                data += '	<td class="myclass_name">' + item.myclass_name + '</td>';
+                data += '	<td class="myclass_teacher_name">' + item.myclass_teacher_name + '</td>';
+                data += '	<td><input type="button"  class="canselbtn" value="신청 취소" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+            $("#applyingClass").append(data);
+
+            $(".canselbtn").on("click", function(event){
+                var result = confirm("정말로 해당 반 신청을 취소하시겠습니까?");
+                if(result){
+                    canseldel($(event.target));
+                }
+            });
+        }
+
+        function canseldel() {
+            $.ajax({
+                url:"canselApplyClass"
+                ,type : "get"
+                ,data : {}
+                ,success: function(){
+                    $("#applyingClass").empty();
+                    applyingClass();
+                }
+            });
+        }
+
+        //반 코드, 이름 출력
+        function classNameNCode(){
+            $.ajax({
+                url : "classNameNCodeList"
+                ,type : "get"
+                ,data : {}
+                ,success : function(cnncList){
                     cnncoutput(cnncList);
                 }
             })
         }
 
-        function cnncoutput(resp) {
-            var data = '<table>';
+        function cnncoutput(resp){
+            var data = '우리반 목록';
 
+            data += '<table>';
             data += '<tr>';
             data += '	<td>반명</td>';
             data += '	<td>코드</td>';
             data += '</tr>';
 
-            $.each(resp, function (index, item) {
-                data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
+            $.each(resp, function(index, item){
+                data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
                 data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
                 data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" value="끊기" /></td>';
+                data += '	<td><input type="button"  class="cdelbtn" data-code="'+item.MYCLASS_CODE +'" value="반 정보 삭제" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
             $("#cnncListDiv").append(data);
 
-            $(".delbtn").on("click", function (event) {
-                del($(event.target));
+            $(".cdelbtn").on("click", function(event){
+                var result = confirm("정말로 반 정보를 삭제하시겠습니까? 해당 반에 있는 학생정보도 같이 삭제됩니다.");
+                if(result){
+                    cdel($(event.target));
+                }
             });
         }
 
         // 반 삭제
-        function del(target) {
+        function cdel(target) {
             var code = $(target).attr('data-code');
             if (code != null) {
                 $.ajax({
-                    url: "deleteClass"
-                    , type: "post"
-                    , data: {code: code}
-                    , success: function (result) {
+                    url:"deleteClass"
+                    ,type : "post"
+                    ,data : {code : code}
+                    ,success: function(result){
                         $("#cnncListDiv").empty();
                         classNameNCode();
                     }
                 });
-            } else {
+            }
+        }
+
+        function applyClassStudentList(){
+            $.ajax({
+                url : "applyClassStudentList"
+                ,type : "get"
+                ,data : {}
+                ,success : function(aList){
+                    if(aList.length != 0)
+                        applyListoutput(aList);
+                }
+            })
+        }
+
+        function applyListoutput(aList){
+            var data = '반 신청 학생';
+            data += '<table>';
+            data += '<tr>';
+            data += '	<td>신청 반</td>';
+            data += '	<td>신청 반 코드</td>';
+            data += '	<td>학생아이디</td>';
+            data += '	<td>학생이름</td>';
+            data += '	<td>학생닉네임</td>';
+            data += '</tr>';
+
+            $.each(aList, function(index, item){
+                data += '<tr>';
+                data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
+                data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
+                data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
+                data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
+                data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
+                data += '	<td><input type="button"  class="applybtn" data-studentid="'+item.STUDENT_ID +'" value="수락" /></td>';
+                data += '	<td><input type="button"  class="rejectbtn" data-studentid="'+item.STUDENT_ID +'" value="거절" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#applyClassStudentList").html("");
+            $("#applyClassStudentList").append(data);
+            $(".applybtn").on("click", function(event){
+                var result = confirm("정말로 해당학생의 신청을 수락하시겠습니까?");
+                if(result){
+                    applybtn($(event.target));
+                }
+            });
+            $(".rejectbtn").on("click", function(event){
+                var result = confirm("정말로 해당학생의 신청을 거절하시겠습니까?");
+                if(result){
+                    rejectbtn($(event.target));
+                }
+            });
+        }
+
+        // 신청 학생 수락
+        function applybtn(target) {
+            var student_id = $(target).attr('data-studentid');
+            if (student_id != null) {
+                $.ajax({
+                    url:"applyInClass"
+                    ,type : "get"
+                    ,data : {student_id : student_id}
+                    ,success: function(result){
+                        $("#applyListoutput").empty();
+                        applyClassStudentList();
+                    }
+                });
+            } else{
+                alert("??");
+            }
+        }
+
+        // 신청 학생 거절
+        function rejectbtn(target) {
+            var student_id = $(target).attr('data-studentid');
+            if (student_id != null) {
+                $.ajax({
+                    url:"rejectInClass"
+                    ,type : "get"
+                    ,data : {student_id : student_id}
+                    ,success: function(result){
+                        $("#applyListoutput").empty();
+                        applyClassStudentList();
+                    }
+                });
+            } else{
                 alert("??");
             }
         }
@@ -184,9 +331,9 @@
         function classList() {
             $.ajax({
                 url: "classNameList"
-                , type: "get"
-                , data: {}
-                , success: function (cList) {
+                ,type: "get"
+                ,data: {}
+                ,success: function(cList){
                     nameoutput(cList);
                 }
             });
@@ -195,31 +342,30 @@
         // 반이름 출력
         function nameoutput(resp) {
             var data = '<select id="selectclass" onchange="chageLangSelect()">';
-            $.each(resp, function (index, item) {
-                data += '<option class="classNameList" value="' + item.myclass_code + '">' + item.myclass_name + '</option>';
+                data += '<option class="classNameList" value="-선택-">-선택-</option>';
+            $.each(resp, function(index, item){
+                data += '<option class="classNameList" value="' +item.myclass_code +'">' + item.myclass_name + '</option>';
             });
             data += '</select>';
             $("#myclassListDiv").append(data);
         }
 
-        function chageLangSelect() {
+        function chageLangSelect(){
             var target = document.getElementById("selectclass");
 
             var temp = target.options[target.selectedIndex].value;
-
-            console.log(temp);
             $.ajax({
                 url: "classList"
-                , type: "get"
-                , data: {myclass_code: temp}
-                , success: function (cList) {
-                    output(cList);
+                ,type: "get"
+                ,data: {myclass_code : temp}
+                ,success: function(cList){
+                    studentoutput(cList);
                 }
             });
         }
 
-        // 출력
-        function output(resp) {
+        // 선생님 용 출력
+        function studentoutput(resp) {
             var data = '<table>';
 
             data += '<tr>';
@@ -228,20 +374,23 @@
             data += '	<td>학생닉네임</td>';
             data += '</tr>';
 
-            $.each(resp, function (index, item) {
-                data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
+            $.each(resp, function(index, item){
+                data += '<tr class="myclass_code" data-sno="'+ item.MYCLASS_CODE +'" >';
                 data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
                 data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
                 data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" data-studentid="' + item.STUDENT_ID + '" value="제외" /></td>';
+                data += '	<td><input type="button"  class="delbtn" data-code="'+item.MYCLASS_CODE +'" data-studentid="'+item.STUDENT_ID +'" value="제외" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
 
             $("#myclassDivInner").html("");
             $("#myclassDivInner").append(data);
-            $(".delbtn").on("click", function (event) {
-                delStu($(event.target));
+            $(".delbtn").on("click", function(event){
+                var result = confirm("정말로 해당학생을 반에서 제외하시겠습니까?");
+                if(result){
+                    delStu($(event.target));
+                }
             });
         }
 
@@ -250,28 +399,196 @@
             var code = $(target).attr('data-code');
             if (code != null) {
                 $.ajax({
-                    url: "deleteClass"
-                    , type: "post"
-                    , data: {code: code}
-                    , success: function (result) {
+                    url:"deleteClass"
+                    ,type : "post"
+                    ,data : {code : code}
+                    ,success: function(result){
                         $("#cnncListDiv").empty();
                         init();
                     }
                 });
-            } else {
+            } else{
                 alert("??");
             }
         }
 
-        function createClassCode() {
+        // 학생용 반 출력
+        function classListByStudent(){
+            $.ajax({
+                url: "classListByStudent"
+                ,type: "get"
+                ,data: {}
+                ,success: function(cList){
+                    listbystudentoutput(cList);
+                }
+            });
+        }
+
+        function listbystudentoutput(resp) {
+            var data = '<table>';
+
+            data += '<tr>';
+            data += '	<td>아이디</td>';
+            data += '	<td>이름</td>';
+            data += '	<td>닉네임</td>';
+            data += '</tr>';
+
+            $.each(resp, function(index, item){
+                data += '<tr>';
+                data += '	<td class="student_id">' + item.student_id + '</td>';
+                data += '	<td class="student_name">' + item.student_name + '</td>';
+                data += '	<td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#classStudent").html("");
+            $("#classStudent").append(data);
+        }
+
+        function createClassCode(){
             window.open("createClass", "newwin", "top=200, left=300, height=400, width=700")
         }
 
-        function searchclassCode() {
-            window.open("searchclasscodeform", "newwin", "top=200, left=300, height=400, width=700")
+        function searchStudentIdByParents(){
+            window.open("searchStudentIdByParents", "newwin", "top=200, left=300, height=400, width=700")
+        }
+
+        function searchclassCode(){
+            $.ajax({
+                url : "classarundesuka"
+                ,type : "get"
+                ,data : {}
+                ,success : function(resp){
+                    if(resp.length != 0){
+                        alert("이미 반에 속해있거나, 신청한 반이 있습니다. 먼저 해당반을 취소하여주십시요.");
+                    } else {
+                        window.open("searchclasscodeform", "newwin", "top=200, left=300, height=400, width=700")
+                    }
+                }
+            })
         }
     </script>
 
+
+    <script>
+        $(function(){
+            applyFamilyList();
+            FamilyList();
+        });
+
+        function applyFamilyList(){
+            $.ajax({
+                url : "applyFamilyList"
+                ,type : "get"
+                ,data : {}
+                ,success : function(pList){
+                    if(pList.length != 0)
+                        applyFamilyListoutput(pList);
+                }
+            })
+        }
+
+        function applyFamilyListoutput(pList){
+            var data = '가족 신청 유저';
+            data += '<table>';
+            data += '<tr>';
+            data += '	<td>아이디</td>';
+            data += '	<td>이름</td>';
+            data += '	<td>닉네임</td>';
+            data += '</tr>';
+
+            $.each(pList, function(index, item){
+                data += '<tr>';
+                data += '	<td class="parents_id">' + item.parents_id + '</td>';
+                data += '	<td class="parents_name">' + item.parents_name + '</td>';
+                data += '	<td class="parents_nickname">' + item.parents_nickname + '</td>';
+                data += '	<td><input type="button"  class="applybtn" value="수락" /></td>';
+                data += '	<td><input type="button"  class="rejectbtn" value="거절" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#familyApplying").html("");
+            $("#familyApplying").append(data);
+
+            $(".applybtn").on("click", function(event){
+                var result = confirm("정말로 해당유저의 가족신청을 수락하시겠습니까?");
+                if(result){
+                    applyFamilybtn($(event.target));
+                }
+            });
+            $(".rejectbtn").on("click", function(event){
+                var result = confirm("정말로 해당유저의 가족신청을 거절하시겠습니까?");
+                if(result){
+                    rejectFamilybtn($(event.target));
+                }
+            });
+        }
+
+        // 신청 가족 수락
+        function applyFamilybtn(target) {
+            $.ajax({
+                url:"applyInFamily"
+                ,type : "get"
+                ,data : {}
+                ,success: function(result){
+                    $("#familyApplying").empty();
+                    applyFamilyList();
+                }
+            });
+        }
+
+        // 신청 가족 거절
+        function rejectFamilybtn(target) {
+            $.ajax({
+                url:"rejectInFamily"
+                ,type : "get"
+                ,data : {}
+                ,success: function(result){
+                    $("#familyApplying").empty();
+                    applyFamilyList();
+                }
+            });
+        }
+
+        // 가족 유저 출력 학생페이지
+        function FamilyList(){
+            $.ajax({
+                url : "FamilyList"
+                ,type : "get"
+                ,data : {}
+                ,success : function(resp){
+                    console.log(resp);
+                    if (resp != null)
+                        FamilyListOutput(resp);
+                }
+            })
+        }
+
+        function FamilyListOutput(resp){
+            var data = '가족 유저';
+            data += '<table>';
+
+            data += '<tr>';
+            data += '	<td>아이디</td>';
+            data += '	<td>이름</td>';
+            data += '	<td>닉네임</td>';
+            data += '</tr>';
+
+            $.each(resp, function(index, item){
+                data += '<tr>';
+                data += '	<td class="student_id">' + item.student_id + '</td>';
+                data += '	<td class="student_name">' + item.student_name + '</td>';
+                data += '	<td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#familyList").html("");
+            $("#familyList").append(data);
+        }
+    </script>
 </head>
 
 <body class="slides horizontal simplifiedMobile animated">
@@ -426,11 +743,16 @@
 <div data-component="navbar">
 
     <nav class="navbar p-0 fixed-top">
+        <%--<button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"--%>
+        <%--data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false"--%>
+        <%--aria-label="Toggle navigation">--%>
+        <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
+        <%--</button>--%>
+
         <div>
-            <a class="navbar-brand px-1" href="#" onclick="side_call()">
-                <img src="/resources/images/homeUI/mochi_off.png" height="70px"
-                     class="d-inline-block mt-1" id="mochi_menu">
-            </a>
+            <a class="navbar-brand px-1"  href="#" onclick="side_call()"><img
+                    src="http://kris.agentfire2.com/wp-content/mu-plugins/agentfire-shared-library/img/agentfire.svg"
+                    class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
 
             <div class="right-links float-right mr-4">
 
@@ -568,40 +890,64 @@
             <%--리스트 그룹 시작(친구 패널)--%>
             <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
-                <li class="list-group-item" style="padding-left: 0px;">
-                    <a href="#">
-                        <img width="180px" src="/resources/images/homeUI/menu3_1.png">
-                    </a>
+                <li class="list-group-item pl-3 py-2">
+                    <a href="#"><i class="fa fa-user-o" aria-hidden="true">
+                        <span class="ml-2 align-middle">
+                            <c:if test="${sessionScope.type == 'teacher' || sessionScope.type == 'student'}">
+                                우리반
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'parents'}">
+                                가족
+                            </c:if>
+                        </span></i></a>
 
                     <ul class="list-group flex-column d-inline-block submenu">
                         <li class="list-group-item pl-4">
                             <c:if test="${sessionScope.type == 'teacher'}">
-                                <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
-                                <hr/>
+                            <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
+                            <hr/>
 
-                                <div id="cnncListDiv">
-                                    우리반 목록<br/>
+                            <div id="cnncListDiv">
+
+                            </div>
+                                <br/><br/>
+
+                            <div id="applyClassStudentList">
+
+                            </div>
+                                <br/><br/>
+
+                            <hr/>
+                            <div id="myclassListDiv">
+                                반 선택<br/>
+                            </div>
+
+                                <br/><br/>
+
+                            <div id="myclassDiv">
+                                반 학생들<br/>
+                                <div id="myclassDivInner">
+
                                 </div>
-
-                                <hr/>
-                                <div id="myclassListDiv">
-                                    반 선택<br/>
-                                </div>
-
-                                <div id="myclassDiv">
-                                    반 학생들<br/>
-                                    <div id="myclassDivInner">
-
-                                    </div>
-                                </div>
+                            </div>
                             </c:if>
                             <c:if test="${sessionScope.type == 'student'}">
                                 <input type="button" value="반 검색" onclick="searchclassCode();">
                                 <hr/>
 
+                                <div id="applyingClass">
+
+                                </div>
+
                                 <div id="classStudent">
-                                    우리반 친구들<br/>
-                                    <hr/>
+
+                                </div>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'parents'}">
+                                <input type="button" value="자녀 검색" onclick="searchStudentIdByParents();">
+
+                                <div id="familyList">
+
                                 </div>
                             </c:if>
                         </li>
@@ -609,46 +955,37 @@
                     </ul> <!-- /.submenu -->
                 </li> <!-- /우리반 마지막 -->
 
-                <%--<c:if test="${sessionScope.type == 'student'}">--%>
+                <c:if test="${sessionScope.type == 'student'}">
 
-                <li class="list-group-item"  style="padding-left: 0px;">
-                    <a href="#">
-                        <img width="180px" src="/resources/images/homeUI/menu1_1.png">
-                    </a>
+                <li class="list-group-item pl-3 py-2">
+                    <a href="#">  <i class="fa fa-user-o" aria-hidden="true" >
+                        <span class="ml-2 align-middle" >친구</span></i></a>
                     <ul class="list-group flex-column d-inline-block submenu">
-                        <li class="list-group-item pl-4">
-                            <input type="button" value="유저 검색" onclick="searchid();">
-                            <hr/>
+                         <li class="list-group-item pl-4">
+                             <input type="button" value="유저 검색" onclick="searchid();">
+                             <hr/>
 
-                            <div id="friendDiv">
-                                내 친구 목록<br/>
-                                <hr/>
-                            </div>
+                             <div id="friendDiv">
+                                 내 친구 목록<br/>
+                                 <hr/>
+                             </div>
                         </li> <!-- end Posts -->
                     </ul> <!-- /.first-menu -->
                 </li>
 
-                <li class="list-group-item"  style="padding-left: 0px;">
-                    <a href="#">
-                        <img width="180px" src="/resources/images/homeUI/menu2_1.png">
-                    </a>
+                <li class="list-group-item pl-3 py-2">
+                    <a href="#"><i class="fa fa-user-o"><span
+                            class="ml-2 align-middle">가족</span></i></a>
                     <ul class="list-group flex-column d-inline-block submenu">
                         <li class="list-group-item pl-4">
-                            <input type="button" value="유저 검색" onclick="searchid();">
-                            <hr/>
+                            <div id="familyApplying">
 
-                            <div id="friendDiv">
-                                내 친구 목록<br/>
-                                <hr/>
                             </div>
-                        </li> <!-- end Posts -->
-                    </ul> <!-- /.first-menu -->
+
+                        </li>
+                    </ul>
                 </li>
-
-
-                <%--</c:if>--%>
-
-
+                </c:if>
         </div> <!-- /.sidebar -->
     </div>
 </div>
@@ -664,6 +1001,17 @@
            class="page_content"
            type="text/html"
            src="/main_test">
+
+        <%--<iframe frameborder=0--%>
+                <%--framespacing=0--%>
+                <%--marginheight=0--%>
+                <%--marginwidth=0--%>
+                <%--scrolling=no vspace=0--%>
+                <%--class="page_content"--%>
+                <%--type="text/html"--%>
+                <%--src="/main_test">--%>
+
+
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

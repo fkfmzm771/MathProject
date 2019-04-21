@@ -6,7 +6,6 @@ public class Parents {
     private String parents_name;        //학부모 이름
     private String parents_email;        //학부모 이메일
     private String parents_nickname;    //학부모 닉네임(생략)
-    private String parents_phone;        //학부모 폰(생략)
 
     public Parents() {
 
@@ -18,14 +17,12 @@ public class Parents {
             , String parents_name
             , String parents_email
             , String parents_nickname
-            , String parents_phone
     ) {
         this.parents_id = parents_id;
         this.parents_pw = parents_pw;
         this.parents_name = parents_name;
         this.parents_email = parents_email;
         this.parents_nickname = parents_nickname;
-        this.parents_phone = parents_phone;
     }
 
     public String getParents_id() {
@@ -68,14 +65,6 @@ public class Parents {
         this.parents_nickname = parents_nickname;
     }
 
-    public String getParents_phone() {
-        return parents_phone;
-    }
-
-    public void setParents_phone(String parents_phone) {
-        this.parents_phone = parents_phone;
-    }
-
     @Override
     public String toString() {
         return "parents [parents_id=" + parents_id
@@ -83,7 +72,6 @@ public class Parents {
                 + ", parents_name=" + parents_name
                 + ", parents_email=" + parents_email
                 + ", parents_nickname=" + parents_nickname
-                + ", parents_phone=" + parents_phone
                 + "]";
     }
 }
