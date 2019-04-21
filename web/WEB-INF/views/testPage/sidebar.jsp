@@ -753,7 +753,7 @@
                         </c:if>
 
                         <c:if test="${sessionScope.type == 'parents'}">
-                            <img width="180px" src="/resources/images/gameUi/menu4_1.png">
+                            <img width="180px" src="/resources/images/homeUI/menu4_1.png">
                         </c:if>
 
                     <ul class="list-group flex-column d-inline-block submenu">
@@ -831,7 +831,7 @@
 
                 <li class="list-group-item" style="padding-left: 0px;">
                     <a href="#">
-                        <img width="180px" src="/resources/images/gameUi/menu4_1.png">
+                        <img width="180px" src="/resources/images/homeUI/menu4_1.png">
                     </a>
                     <ul class="list-group flex-column d-inline-block submenu">
                         <li class="list-group-item pl-4">
