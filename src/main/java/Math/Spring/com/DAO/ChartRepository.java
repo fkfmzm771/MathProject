@@ -1,8 +1,8 @@
 package Math.Spring.com.DAO;
 
 import Math.Spring.com.MapperInterface.ChartMapper;
-import Math.Spring.com.VO.GameChapter;
 import Math.Spring.com.VO.GameScore;
+import Math.Spring.com.VO.GameStage;
 import Math.Spring.com.VO.Student;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ public class ChartRepository {
     SqlSession session;
 
     // 학생 도넛츠 차트 검색
-    public GameChapter selectDonutChart(Student student) {
+    public GameStage selectDonutChart(Student student) {
         ChartMapper mapper = session.getMapper(ChartMapper.class);
-        GameChapter doughnut = mapper.selectDonutChart(student);
+        GameStage doughnut = mapper.selectDonutChart(student);
         return doughnut;
     }
 

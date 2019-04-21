@@ -1,7 +1,7 @@
 package Math.Spring.com.Controller;
 
 import Math.Spring.com.DAO.ChartRepository;
-import Math.Spring.com.VO.GameChapter;
+import Math.Spring.com.VO.GameStage;
 import Math.Spring.com.VO.GameScore;
 import Math.Spring.com.VO.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class GraphController {
     // 학생 도넛츠 차트 검색
     @RequestMapping(value = "selectDonutChart", method = RequestMethod.GET)
     @ResponseBody
-    public GameChapter userGameScore(HttpSession session) {
+    public GameStage userGameScore(HttpSession session) {
 //        String type = (String)session.getAttribute("type");
 
         String loginId = (String)session.getAttribute("loginId");
@@ -30,7 +30,7 @@ public class GraphController {
         Student student = new Student();
         student.setStudent_id(loginId);
 
-        GameChapter doughnut = rep.selectDonutChart(student);
+        GameStage doughnut = rep.selectDonutChart(student);
         System.out.println(doughnut);
 
         return doughnut;
@@ -79,7 +79,7 @@ public class GraphController {
         if(list.size()==0) System.out.println("비어있음");
         else {
             for ( GameScore k:list){
-                System.out.println(k.getStudent_name());
+                System.out.println(k.getNick_name());
             }
         }
         return list;

@@ -2,7 +2,7 @@ package Math.Spring.com.VO;
 
 public class GameScore {
     private String student_id;
-    private String student_name;
+    private String nick_name;
     private int score1;  //숫자 이해
     private int score2;  //연산
     private int score3;  //도형
@@ -13,9 +13,9 @@ public class GameScore {
     public GameScore() {
     }
 
-    public GameScore(String student_id, String student_name, int score1, int score2, int score3, int score4, String play_time, String play_Character) {
+    public GameScore(String student_id, String nick_name, int score1, int score2, int score3, int score4, String play_time, String play_Character) {
         this.student_id = student_id;
-        this.student_name = student_name;
+        this.nick_name = nick_name;
         this.score1 = score1;
         this.score2 = score2;
         this.score3 = score3;
@@ -32,12 +32,12 @@ public class GameScore {
         this.student_id = student_id;
     }
 
-    public String getStudent_name() {
-        return student_name;
+    public String getNick_name() {
+        return nick_name;
     }
 
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
     }
 
     public int getScore1() {
@@ -92,7 +92,7 @@ public class GameScore {
     public String toString() {
         return "GameScore{" +
                 "student_id='" + student_id + '\'' +
-                ", student_name='" + student_name + '\'' +
+                ", nick_name='" + nick_name + '\'' +
                 ", score1=" + score1 +
                 ", score2=" + score2 +
                 ", score3=" + score3 +

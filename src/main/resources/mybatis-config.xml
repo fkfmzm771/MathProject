@@ -9,7 +9,7 @@
 		<typeAlias type="Math.Spring.com.VO.Teacher" alias="Teacher"/>
 		<typeAlias type="Math.Spring.com.VO.Friend" alias="Friend"/>
 		<typeAlias type="Math.Spring.com.VO.Myclass" alias="Myclass"/>
-		<typeAlias type="Math.Spring.com.VO.UserScore" alias="UserScore"/>
+		<typeAlias type="Math.Spring.com.VO.GameScore" alias="GameScore"/>
 		<typeAlias type="Math.Spring.com.VO.GameStage"  alias="GameStage"/>
 		<typeAlias type="Math.Spring.com.VO.MathBoard"  alias="MathBoard"/>
 	</typeAliases>

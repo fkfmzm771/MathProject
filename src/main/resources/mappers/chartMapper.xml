@@ -5,11 +5,11 @@
 <mapper namespace="Math.Spring.com.MapperInterface.ChartMapper">
 
 
-<select id="selectDonutChart" parameterType="Student" resultType="GameChapter">
+<select id="selectDonutChart" parameterType="Student" resultType="GameStage">
 	select * from
-		gamechapter
+		GameStage
 	where
-		stage5 != 2
+		stage10 != 2
 		and
 		student_id = #{student_id}
 </select>
