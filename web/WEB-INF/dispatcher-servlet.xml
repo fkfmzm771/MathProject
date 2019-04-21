@@ -30,19 +30,10 @@
     <!-- Interceptor를 경유해야하는 요청을 지정함 -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/teatPage/sidebar"/>
-            <mvc:mapping path="/googleLogin"/>
+            <mvc:mapping path="/gamego"/>
             <ref bean="firstLoginInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
-
-    <!-- 인터셉터 경로 설정  :code here -->
-    <!--<interceptors>-->
-        <!--<interceptor>-->
-            <!--<mapping path="/goBook"/>-->
-            <!--<beans:ref bean="loginInterceptor"/>-->
-        <!--</interceptor>-->
-    <!--</interceptors>-->
 
     <mvc:cors>
         <mvc:mapping path="/**"

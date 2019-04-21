@@ -33,7 +33,14 @@
                ,c.myclass_name AS myclass_name
         FROM student s, myclass c
         WHERE s.STUDENT_MYCLASS_CODE = c.MYCLASS_CODE
+          and s.STUDENT_MYCLASS_CHECK = 2
         AND c.MYCLASS_CODE = #{myclass_code}
+    </select>
+
+    <select id="classListByStudent" parameterType="String" resultType="Student">
+        select student_id, student_name, student_nickname
+        from student
+        where student_myclass_code = (select student_myclass_code from student where student_id = #{student_id})
     </select>
 
     <select id="classNameNCodeList" parameterType="String" resultType="map">
@@ -61,10 +68,59 @@
         where myclass_code = #{code}
     </select>
 
-    <update id="applyClass" parameterType="String">
+    <select id="classyon" parameterType="String" resultType="String">
+        SELECT student_myclass_code
+        FROM student
+        where student_id = #{sessionId}
+    </select>
+
+    <update id="applyClass" parameterType="Student">
         update student set
         student_myclass_code = #{student_myclass_code}
         ,student_myclass_check = 0
+        where student_id = #{student_id}
+    </update>
+
+    <select id="applyClassStudentList" parameterType="String" resultType="Map">
+        select
+          s.student_id AS student_id
+          ,s.student_name AS student_name
+          ,s.student_nickname AS student_nickname
+          ,m.myclass_name AS myclass_name
+          ,m.myclass_code AS myclass_code
+        from student s, myclass m
+        where m.myclass_teacher_name = #{teacher_id}
+          and m.myclass_code = s.student_myclass_code
+          and s.student_myclass_check = 0
+        ORDER BY myclass_code DESC
+    </select>
+
+    <update id="applyInClass" parameterType="String">
+        update student set
+        student_myclass_check = 2
+        where student_id = #{student_id}
+    </update>
+
+    <update id="rejectInClass" parameterType="String">
+        update student set
+        student_myclass_code = null
+        ,student_myclass_check = null
+        where student_id = #{student_id}
+    </update>
+
+    <select id="applyingClass" parameterType="String" resultType="Myclass">
+        select m.myclass_name AS myclass_name
+              ,m.myclass_teacher_name AS myclass_teacher_name
+        from student s, myclass m
+        where m.myclass_code = s.student_myclass_code
+          and s.student_myclass_check = 0
+          and s.student_id = #{student_id}
+    </select>
+
+    <update id="canselApplyClass" parameterType="String">
+        UPDATE student SET
+        student_myclass_code = null
+        ,student_myclass_check = null
         where student_id = #{student_id}
     </update>
 </mapper>

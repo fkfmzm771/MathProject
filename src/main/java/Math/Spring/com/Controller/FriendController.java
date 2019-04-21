@@ -51,7 +51,6 @@ public class FriendController {
         ArrayList<HashMap<String, Object>> fList = dao.friendList(sessionId);
 
         for(int i=0; i < fList.size(); i++){
-            System.out.println("fList " + i + "번째 : "  + fList.get(i));
             if (fList.get(i).get("FRIEND_NICKNAME").equals(nickname)){
                 message = "이미 친구로 등록되어있는 유저입니다.";
                 student = null;
@@ -96,9 +95,6 @@ public class FriendController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        System.out.println(fList);
-
         return fList;
     }
 
@@ -108,7 +104,6 @@ public class FriendController {
     @RequestMapping(value = "/deleteFriend", method = RequestMethod.POST)
     @ResponseBody
     public String deleteFriend(int seq){
-        System.out.println("seq : " +seq);
         int result = dao.deleteFriend(seq);
         String message = "";
 

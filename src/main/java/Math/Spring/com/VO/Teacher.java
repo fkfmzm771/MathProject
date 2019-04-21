@@ -6,7 +6,6 @@ public class Teacher {
     private String teacher_name;
     private String teacher_email;
     private String teacher_nickname;
-    private String teacher_phone;
 
     public Teacher() {
 
@@ -18,14 +17,12 @@ public class Teacher {
             , String teacher_name
             , String teacher_email
             , String teacher_nickname
-            , String teacher_phone
     ) {
         this.teacher_id = teacher_id;
         this.teacher_pw = teacher_pw;
         this.teacher_name = teacher_name;
         this.teacher_email = teacher_email;
         this.teacher_nickname = teacher_nickname;
-        this.teacher_phone = teacher_phone;
     }
 
     public String getTeacher_id() {
@@ -68,14 +65,6 @@ public class Teacher {
         this.teacher_nickname = teacher_nickname;
     }
 
-    public String getTeacher_phone() {
-        return teacher_phone;
-    }
-
-    public void setTeacher_phone(String teacher_phone) {
-        this.teacher_phone = teacher_phone;
-    }
-
     @Override
     public String toString() {
         return "teacher [teacher_id=" + teacher_id
@@ -83,7 +72,6 @@ public class Teacher {
                 + ", teacher_name=" + teacher_name
                 + ", teacher_email=" + teacher_email
                 + ", teacher_nickname=" + teacher_nickname
-                + ", teacher_phone=" + teacher_phone
                 + "]";
     }
 }

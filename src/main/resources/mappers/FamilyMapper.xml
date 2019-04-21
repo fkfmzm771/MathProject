@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Math.Spring.com.MapperInterface.FamilyMapper">
+    <select id="searchCodomo" parameterType="String" resultType="Student">
+    select
+        student_id
+        ,student_name
+        ,student_nickname
+    from
+        student
+    where
+        student_id = #{id}
+    </select>
+
+    <select id="codomoList" parameterType="String" resultType="Student">
+    select
+        student_id
+        ,student_name
+        ,student_nickname
+    from
+        student
+    where
+        student_parents_id = #{id}
+    </select>
+
+    <update id="FamilyApply" parameterType="Student">
+        UPDATE student SET
+          student_parents_id = #{student_parents_id}
+          ,student_family_check = 0
+        WHERE student_id = #{student_id}
+    </update>
+
+    <select id="applyFamilyList" parameterType="String" resultType="Parents">
+        SELECT p.parents_id
+              ,p.parents_name
+              ,p.parents_nickname
+        FROM student s, parents p
+        WHERE s.student_parents_id = p.parents_id
+        AND s.student_id = #{student_id}
+        AND s.student_family_check = 0
+    </select>
+
+    <update id="applyInFamily" parameterType="String">
+        update student set
+        student_family_check = 2
+        where student_id = #{student_id}
+    </update>
+
+    <update id="rejectInFamily" parameterType="String">
+        update student set
+        student_parents_id = null
+        ,student_family_check = null
+        where student_id = #{student_id}
+    </update>
+
+    <select id="FamilyList" parameterType="String" resultType="Student">
+        SELECT student_id
+              ,student_name
+              ,student_nickname
+        FROM student
+        WHERE student_parents_id = #{parents_id}
+        AND student_family_check = 2
+    </select>
+</mapper>

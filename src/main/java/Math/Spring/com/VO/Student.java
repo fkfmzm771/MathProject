@@ -8,12 +8,14 @@ public class Student {
     private String student_nickname;
     private String student_myclass_code;
     private String student_myclass_check;
+    private String student_parents_id;
+    private String student_family_check;
 
     public Student() {
 
     }
 
-    public Student(String student_id, String student_pw, String student_name, String student_email, String student_nickname, String student_myclass_code, String student_myclass_check) {
+    public Student(String student_id, String student_pw, String student_name, String student_email, String student_nickname, String student_myclass_code, String student_myclass_check, String student_parents_id, String student_family_check) {
         this.student_id = student_id;
         this.student_pw = student_pw;
         this.student_name = student_name;
@@ -21,6 +23,8 @@ public class Student {
         this.student_nickname = student_nickname;
         this.student_myclass_code = student_myclass_code;
         this.student_myclass_check = student_myclass_check;
+        this.student_parents_id = student_parents_id;
+        this.student_family_check = student_family_check;
     }
 
     public String getStudent_id() {
@@ -77,6 +81,22 @@ public class Student {
 
     public void setStudent_myclass_check(String student_myclass_check) {
         this.student_myclass_check = student_myclass_check;
+    }
+
+    public String getStudent_parents_id() {
+        return student_parents_id;
+    }
+
+    public void setStudent_parents_id(String student_parents_id) {
+        this.student_parents_id = student_parents_id;
+    }
+
+    public String getStudent_family_check() {
+        return student_family_check;
+    }
+
+    public void setStudent_family_check(String student_family_check) {
+        this.student_family_check = student_family_check;
     }
 
     @Override
