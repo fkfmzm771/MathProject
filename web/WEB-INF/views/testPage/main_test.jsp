@@ -39,21 +39,123 @@
     <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru" rel="stylesheet">
 
     <!--icon-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<%--    <style>--%>
-<%--        .chart-table tr {--%>
-<%--            color: #090104;--%>
-<%--            border-color: #0f0f0f;--%>
-<%--            border: 1px;--%>
 
-<%--            /* background-color: #00d131;*/--%>
-<%--            margin: 10px;--%>
-<%--        }--%>
-<%--        *{--%>
-<%--            border: 1px solid #000000;--%>
-<%--        }--%>
-<%--    </style>--%>
+
+    <style>
+        .chart-table tr {
+            color: #090104;
+            border-color: #0f0f0f;
+            border: 1px;
+
+            /* background-color: #00d131;*/
+            margin: 10px;
+        }
+        /**{
+                border: 1px solid #000000;
+            }*/
+
+
+
+        .dropdownMenu {
+
+            display: inline-block;
+            margin-top: 20px;
+            padding: 0;
+            height: 50px;
+            width: 100%;
+        }
+
+        .dropbtn {
+            background-color: #97cbd3;
+            margin: 0;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+
+        #dropdownMenu-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        #dropdownMenu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdownMenu-content a:hover {background-color: #f1a7d6
+        }
+
+        .dropdownMenu:hover #dropdownMenu-content {
+            display: block;
+        }
+
+        .dropdownMenu:hover .dropbtn {
+            background-color: #8e795a;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+
+            $("#dropdownMenu-content2").hide();
+            $("#dropdownMenu-content3").hide();
+            $("#dropdownMenu-content4").hide();
+
+            $("#numberStd").click(function(){
+                $("#dropdownMenu-content1").show(500);
+                $("#dropdownMenu-content2").hide();
+                $("#dropdownMenu-content3").hide();
+                $("#dropdownMenu-content4").hide();
+            });
+            $("#pluminStd").click(function(){
+                $("#dropdownMenu-content2").show(500);
+                $("#dropdownMenu-content1").hide();
+                $("#dropdownMenu-content3").hide();
+                $("#dropdownMenu-content4").hide();
+            });
+            $("#figureStd").click(function(){
+                $("#dropdownMenu-content3").show(500);
+                $("#dropdownMenu-content1").hide();
+                $("#dropdownMenu-content2").hide();
+                $("#dropdownMenu-content4").hide();
+            });
+            $("#lifeStd").click(function(){
+                $("#dropdownMenu-content4").show(500);
+                $("#dropdownMenu-content1").hide();
+                $("#dropdownMenu-content2").hide();
+                $("#dropdownMenu-content3").hide();
+            });
+            // $("#calculation").click(function(){
+            //     document.getElementById("edu_menu").src =  "/calculation";
+            // });
+            $("#clock").click(function(){
+                document.getElementById("edu_menu").src =  "/clock";
+            });
+            $("#money").click(function(){
+                document.getElementById("edu_menu").src =  "/money";
+            });
+
+        });
+    </script>
+
+
+
+
 
 </head>
 
@@ -125,23 +227,32 @@
 <section id="section1" class="slide fade-6 kenBurns">
     <div class="content">
         <div class="container">
-            <div class="wrap">
+            <div class="wrap" style="color: #0f0f0f">
+                <h1 class="ae-2 fromLeft" style=" font-family: 'Kosugi Maru'; font: bold; font-size: 35px;">
+                    ようこそ！! プルンプルン　すうがくへ
+                </h1>
+                <br>
+                <br>
 
                 <div class="fix-12-12">
-                    <ul class="grid">
-                        <li class="col-6-12 left">
-                            <h1 class="ae-2 fromLeft">이대로 수학에 오신것을 환영합니다!</h1>
-                            <p class="ae-3 fromLeft"><span class="opacity-8">어쩌구 저쩌구</span>
-                            </p>
-                            <ul class="tabs controller uppercase bold ae-4 fromCenter" data-slider-id="60-1">
-                                <li class="selected">Education</li>
-                                <li>Game</li>
-                                <li>Management</li>
-                            </ul>
-                        </li>
+                    <ul class="flex verticalCenter">
+                        <li class="col-5-12 cell-27">
+                            <div class="fix-6-12">
+                                <img src="/resources/images/bg/mainBack.png">
 
+                            </div>
+                        </li>
+                        <li class="col-7-12 left">
+                            <h1 class="ae-2 fromRight">Be creative</h1>
+                            <div class="ae-3 fromRight">
+                                <p class="opacity-8">When we feel less secure, with less control over our daily lives,
+                                    we reach out to brands to connect with a time when things seemed&nbsp;better.</p>
+                            </div>
+
+                        </li>
                     </ul>
                 </div>
+
 
             </div>
         </div>
@@ -154,9 +265,52 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-
                 <div class="fix-12-12">
-                    <a href="/gamego" target="_blank">게임시작</a>
+                    <ul class="grid">
+
+                        <li class="col-3-12 left" style="background-color: #cbd1cc;height: 500px; border-radius: 15px;">
+                            <h2 style="text-align: center; background-color: #ccb7d3; ">数学教室</h2>
+
+                            <ul class="dropdownMenu"  style="background-color:  #cbd1cc;">
+                                <a href="javascript:void(0)" class="dropbtn" style="text-align: center;  margin-left: 30px; ">授業を選んでください。</a>
+
+                                <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content" <%-- data-slider-id="60-1"--%> style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 50px; " >
+                                    <li class="selected" style="text-align: center" id="numberStd">数字学習</li>
+                                    <li style="text-align: center;" id="pluminStd">足し算と引き算</li>
+                                    <li style="text-align: center;" id="figureStd">図形学習</li>
+                                    <li style="text-align: center;" id="lifeStd" >生活数学</li>
+                                </ul>
+                            </ul>
+
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content1" data-slider-id="60-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
+                                <li class="selected" style="text-align: center" id="ddd" >11</li>
+                                <li style="text-align: center;" >11</li>
+                            </ul>
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content2" data-slider-id="70-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
+                                <li id="calculation" class="selected" style="text-align: center" >계산</li>
+                                <li style="text-align: center;" >22</li>
+                            </ul>
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content3" data-slider-id="80-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
+                                <li class="selected" style="text-align: center" >기초도형</li>
+                                <li style="text-align: center;">33</li>
+                            </ul>
+                            <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content4" data-slider-id="90-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
+                                <li id="clock" class="selected" style="text-align: center" >時計</li>
+                                <li id="money" style="text-align: center;" >金</li>
+                            </ul>
+                        </li>
+
+                        <li class="col-8-12 " style="background-color: #f5b5ff; height: 500px; border-radius: 15px;">
+                            <embed frameborder=0 framespacing=0 marginheight=0
+                                   marginwidth=0 scrolling=no vspace=0
+                                   width="100%" height="500px"
+                                   id="edu_menu"
+                                   class="page_content"
+                                   type="text/html"
+                                   src="/clock">
+
+                        </li>
+                    </ul>
                 </div>
 
             </div>
@@ -176,23 +330,15 @@
                     <ul class="flex verticalCenter">
                         <li class="col-5-12 cell-27">
                             <div class="fix-4-12">
-                                <ul class="slider clickable ae-1 fromAbove" data-slider-id="27-2">
-                                    <li class="selected">
-                                        <img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-2.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                    <li><img src="/resources/templet/assets/img/watch-26-1.png"
-                                             alt="Apple Watch Thumbnail"/></li>
-                                </ul>
-                                <ul class="controller dots ae-2 fromCenter margin-top-3" data-slider-id="27-2">
-                                    <li class="dot selected"></li>
-                                    <li class="dot"></li>
-                                    <li class="dot"></li>
-                                    <li class="dot"></li>
-                                </ul>
+
+
+                                <a href="https://wizardly-wing-6a8007.netlify.com" target="_blank">
+                                <img src="/resources/images/bg/home_button1.png"
+                                     onmouseover="this.src='/resources/images/bg/home_button2.png';"
+                                     onmouseout="this.src='/resources/images/bg/home_button1.png';"
+                                     alt="start"/>
+                                </a>
+
                             </div>
                         </li>
                         <li class="col-7-12 left">
@@ -221,7 +367,6 @@
     </div>
     <div class="background" style="background-image:url(/resources/images/homeUI/back3.png)"></div>
 </section>
-
 
 
 <!-- Slide 4 (#26) -->

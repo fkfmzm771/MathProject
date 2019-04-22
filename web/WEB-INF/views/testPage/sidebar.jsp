@@ -599,21 +599,12 @@
 <div data-component="navbar">
 
     <nav class="navbar p-0 fixed-top">
-        <%--<button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"--%>
-        <%--data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false"--%>
-        <%--aria-label="Toggle navigation">--%>
-        <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
-        <%--</button>--%>
-
         <div>
             <a class="navbar-brand px-1" href="#" onclick="side_call()">
                 <img src="/resources/images/homeUI/mochi_off.png" height="70px"
                      class="d-inline-block mt-1" id="mochi_menu">
             </a>
-
             <div class="right-links float-right mr-4">
-
-
                 <div class="d-inline dropdown">
                     <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" href="#">
@@ -816,7 +807,7 @@
                     <a href="#">
                         <img width="180px" src="/resources/images/homeUI/menu2_1.png">
                     </a>
-                    <ul class="list-group flex-column d-inline-block submenu">
+                    <ul class="list-group flex-column d-inline-block submenu" style="width: 400px">
                         <li class="list-group-item pl-4">
                             <input type="button" value="유저 검색" onclick="searchid();">
                             <hr/>
