@@ -124,4 +124,20 @@ public class FamilyController {
 
         return sList;
     }
+
+    @RequestMapping(value = "familyListByStudent" , method = RequestMethod.GET)
+    @ResponseBody
+    public List<Student> familyListByStudent(HttpSession session){
+        String student_id = (String)session.getAttribute("loginId");
+
+        List<Student> sList = dao.FamilyStudentList(student_id);
+
+        for(int i=0; i<sList.size(); i++){
+            if(sList.get(i).getStudent_id().equals(student_id)){
+                sList.remove(i);
+            }
+        }
+
+        return sList;
+    }
 }

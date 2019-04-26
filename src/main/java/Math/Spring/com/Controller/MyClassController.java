@@ -216,13 +216,20 @@ public class MyClassController {
         return result;
     }
 
+    @RequestMapping(value = "studentClass" , method = RequestMethod.GET)
+    @ResponseBody
+    public List<Myclass> studentClass(HttpSession session){
+        String student_id = (String)session.getAttribute("loginId");
+        List<Myclass> list = dao.studentClass(student_id);
+
+        return list;
+    }
+
     @RequestMapping(value = "applyingClass" , method = RequestMethod.GET)
     @ResponseBody
     public List<Myclass> applyingClass(HttpSession session){
         String student_id = (String)session.getAttribute("loginId");
         List<Myclass> list = dao.applyingClass(student_id);
-
-        System.out.println("apllying : " + list);
 
         return list;
     }

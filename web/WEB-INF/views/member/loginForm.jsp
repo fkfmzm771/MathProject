@@ -121,13 +121,13 @@
                 </div>
 
 
-                <div class="container-login100-form-btn2 p-t-10" style="padding-top: 30px;">
-                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
-                         style="width: 350px; height: 50px; font-family: 'Roboto', sans-serif;"></div>
-                </div>
-                <div class="container-login100-form-btn2 p-t-10" style="padding-top: 20px;">
-                    <a href="#" onclick="signOut();">Sign out</a>
-                </div>
+                <%--<div class="container-login100-form-btn2 p-t-10" style="padding-top: 30px;">--%>
+                    <%--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"--%>
+                         <%--style="width: 350px; height: 50px; font-family: 'Roboto', sans-serif;"></div>--%>
+                <%--</div>--%>
+                <%--<div class="container-login100-form-btn2 p-t-10" style="padding-top: 20px;">--%>
+                    <%--<a href="#" onclick="signOut();">Sign out</a>--%>
+                <%--</div>--%>
             </form>
         </div>
     </div>

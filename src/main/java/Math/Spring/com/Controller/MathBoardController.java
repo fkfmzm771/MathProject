@@ -19,14 +19,25 @@ public class MathBoardController {
     MathBoardDAO dao;
 
     @RequestMapping(value = "boardDetail", method = RequestMethod.GET)
-    public String boardDetail(String host_id, Model model){
+    public String boardDetail(String host_id, Model model, HttpSession session){
+        if(host_id.equals("")){
+            host_id = (String)session.getAttribute("loginId");
+        }
         model.addAttribute("host_id", host_id);
+
+
+
         return "BoardForm";
     }
 
     @RequestMapping(value = "boardList", method = RequestMethod.POST)
     @ResponseBody
-    public List<MathBoard> boardList(String host_id){
+    public List<MathBoard> boardList(String host_id, HttpSession session){
+
+        if(host_id.equals("")){
+            host_id = (String)session.getAttribute("loginId");
+        }
+
         List<MathBoard> list = dao.BoardList(host_id);
 
         return list;
@@ -36,6 +47,10 @@ public class MathBoardController {
     @ResponseBody
     public int boardDetail(String contents, String host_id, HttpSession session, MathBoard board){
         String guest_id = (String) session.getAttribute("loginId");
+
+        if(host_id.equals("")){
+            host_id = (String)session.getAttribute("loginId");
+        }
 
         board.setGuest_id(guest_id);
         board.setHost_id(host_id);

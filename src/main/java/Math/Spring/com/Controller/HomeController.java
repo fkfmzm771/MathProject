@@ -16,15 +16,7 @@ public class HomeController {
 
     //메인 화면
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(HttpSession session) {
-
-        //session.setAttribute("type", "teacher");
-
-        session.setAttribute("type", "student");
-        session.setAttribute("loginId", "aaa");
-
-        System.out.println("메인 화면 도착");
-        System.out.println(session.getAttribute("type"));
+    public String home() {
         return "member/loginForm";
     }
 
@@ -35,7 +27,4 @@ public class HomeController {
 
         return "selectwindow";
     }
-
-
-
 }

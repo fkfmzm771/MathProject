@@ -22,4 +22,6 @@ public interface FamilyMapper {
     int rejectInFamily(String student_id);
 
     List<Student> FamilyList(String parents_id);
+
+    List<Student> FamilyStudentList(String student_id);
 }

@@ -4,6 +4,7 @@ import Math.Spring.com.DAO.ChartRepository;
 import Math.Spring.com.VO.GameStage;
 import Math.Spring.com.VO.GameScore;
 import Math.Spring.com.VO.Student;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class GraphController {
@@ -31,64 +35,37 @@ public class GraphController {
         student.setStudent_id(loginId);
 
         GameStage doughnut = rep.selectDonutChart(student);
-        System.out.println(doughnut);
+        System.out.println(doughnut+"11111111111");
 
         return doughnut;
     }
 
+
+
     //학생 스코어 총합
     @RequestMapping(value= "selectChapterScore", method=RequestMethod.GET)
     @ResponseBody
-    public GameScore selectChapterScore(HttpSession session){
+    public HashMap<String, Object> selectChapterScore(HttpSession session){
+        String student_id = (String)session.getAttribute("loginId");
 
-//        String type = (String)session.getAttribute("type");
+        HashMap<String, Object> GameScore = rep.selectChapterScore(student_id);
 
-        String loginId = (String)session.getAttribute("loginId");
-
-        Student student = new Student();
-        student.setStudent_id(loginId);
-
-        GameScore gameScore = rep.selectChapterScore(student);
-
-        System.out.println(gameScore + "dsssssssss");
-
-        return gameScore;
+        System.out.println("개인 : " + GameScore);
+        return GameScore;
     }
 
 
 
 
-
-
-
-    //로그인 학생 챕터별 별 갯수 로드
+    //전체 학생 챕터별 점수 로드
     @RequestMapping(value= "selectClassGameScore", method=RequestMethod.GET)
     @ResponseBody
-    public ArrayList<GameScore> selectClassGameScore(HttpSession session){
+    public ArrayList<HashMap<String, Object>> selectClassGameScore(){
 
-        String type = (String)session.getAttribute("type");
-        String loginId = (String)session.getAttribute("loginId");
+        ArrayList<HashMap<String, Object>> list = rep.selectClassGameScore();
 
-        System.out.println(type);
-        System.out.println(loginId);
+        System.out.println("전체 : " + list);
 
-        ArrayList<GameScore> list = new ArrayList<GameScore>();
-
-        list = rep.selectClassGameScore();
-
-        if(list.size()==0) System.out.println("비어있음");
-        else {
-            for ( GameScore k:list){
-                System.out.println(k.getNick_name());
-            }
-        }
         return list;
     }
-
-
-
-
-
-
-
 }

@@ -6,24 +6,44 @@
 
 
 <select id="selectDonutChart" parameterType="Student" resultType="GameStage">
-	select * from
+	select
+		*
+	from
 		GameStage
 	where
-		stage10 != 2
-		and
 		student_id = #{student_id}
 </select>
 
-<select id="selectChapterScore" parameterType="Student" resultType="GameScore">
-	select * from GameScore
-	where student_id = #{student_id}
+<select id="selectChapterScore" parameterType="String" resultType="Map">
+	SELECT s.student_id AS student_id
+    ,s.student_name AS student_name
+    ,s.student_nickname AS student_nickname
+    ,g.score1 AS score1
+    ,g.score2 AS score2
+    ,g.score3 AS score3
+    ,g.score4 AS score4
+    ,g.blue_star as blue_star
+    ,g.yellow_star as yellow_star
+    ,g.play_time AS play_time
+    ,g.play_character AS play_character
+	FROM gamescore g, student s
+	where s.student_id = #{student_id}
+	AND s.student_id = g.student_id
 </select>
 
 
-
-
-<select id="selectClassGameScore" resultType="GameScore">
-	select * from GameScore
+<select id="selectClassGameScore" resultType="Map">
+	SELECT s.student_id AS student_id
+    ,s.student_name AS student_name
+    ,s.student_nickname AS student_nickname
+    ,g.score1 AS score1
+    ,g.score2 AS score2
+    ,g.score3 AS score3
+    ,g.score4 AS score4
+    ,g.play_time AS play_time
+    ,g.play_character AS play_character
+	FROM gamescore g, student s
+	where s.student_id = g.student_id
 </select>
 
 

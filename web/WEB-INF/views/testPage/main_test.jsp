@@ -53,10 +53,10 @@
             /* background-color: #00d131;*/
             margin: 10px;
         }
-        /**{
+       /* *{
                 border: 1px solid #000000;
-            }*/
-
+            }
+*/
 
 
         .dropdownMenu {
@@ -105,7 +105,36 @@
         .dropdownMenu:hover .dropbtn {
             background-color: #8e795a;
         }
+        .bigTable{
+            height: 780px;
+            width: 1425px;
+            padding: 5px;
 
+        }
+        /*.smallTable{
+            border: 1px solid #000000;
+        }*/
+        #smallTable1 {
+            height: 440px;
+            width: 500px;
+            font-size: 20px;
+        }
+
+        #smallTable2  {
+            height: 440px;
+            width: 900px;
+            font-size: 20px;
+        }
+        #smallTable3{
+            height: 330px;
+            width: 500px;
+            font-size: 20px;
+        }
+        #smallTable4{
+            height: 330px;
+            width: 900px;
+            font-size: 20px;
+        }
     </style>
 
     <script>
@@ -115,42 +144,60 @@
             $("#dropdownMenu-content2").hide();
             $("#dropdownMenu-content3").hide();
             $("#dropdownMenu-content4").hide();
+            document.getElementById("edu_menu").src =  "/number";
 
             $("#numberStd").click(function(){
                 $("#dropdownMenu-content1").show(500);
                 $("#dropdownMenu-content2").hide();
                 $("#dropdownMenu-content3").hide();
                 $("#dropdownMenu-content4").hide();
+                document.getElementById("edu_menu").src =  "/number";
+
             });
             $("#pluminStd").click(function(){
                 $("#dropdownMenu-content2").show(500);
                 $("#dropdownMenu-content1").hide();
                 $("#dropdownMenu-content3").hide();
                 $("#dropdownMenu-content4").hide();
+                document.getElementById("edu_menu").src =  "/calculation";
             });
             $("#figureStd").click(function(){
                 $("#dropdownMenu-content3").show(500);
                 $("#dropdownMenu-content1").hide();
                 $("#dropdownMenu-content2").hide();
                 $("#dropdownMenu-content4").hide();
+                document.getElementById("edu_menu").src =  "/shape";
             });
             $("#lifeStd").click(function(){
                 $("#dropdownMenu-content4").show(500);
                 $("#dropdownMenu-content1").hide();
                 $("#dropdownMenu-content2").hide();
                 $("#dropdownMenu-content3").hide();
+                document.getElementById("edu_menu").src =  "/clock";
             });
-            // $("#calculation").click(function(){
-            //     document.getElementById("edu_menu").src =  "/calculation";
-            // });
+
+            $("#number").click(function(){
+                document.getElementById("edu_menu").src =  "/number";
+
+            });
+            $("#calculation").click(function(){
+                document.getElementById("edu_menu").src =  "/calculation";
+            });
+            $("#calculation2").click(function(){
+                document.getElementById("edu_menu").src =  "/calculation2";
+            });
+            $("#shape").click(function(){
+                document.getElementById("edu_menu").src =  "/shape";
+            });
             $("#clock").click(function(){
                 document.getElementById("edu_menu").src =  "/clock";
             });
             $("#money").click(function(){
                 document.getElementById("edu_menu").src =  "/money";
             });
-
         });
+
+
     </script>
 
 
@@ -242,14 +289,14 @@
 
                             </div>
                         </li>
-                        <li class="col-7-12 left">
+                        <%--<li class="col-7-12 left">
                             <h1 class="ae-2 fromRight">Be creative</h1>
                             <div class="ae-3 fromRight">
                                 <p class="opacity-8">When we feel less secure, with less control over our daily lives,
                                     we reach out to brands to connect with a time when things seemed&nbsp;better.</p>
                             </div>
 
-                        </li>
+                        </li>--%>
                     </ul>
                 </div>
 
@@ -268,14 +315,14 @@
                 <div class="fix-12-12">
                     <ul class="grid">
 
-                        <li class="col-3-12 left" style="background-color: #cbd1cc;height: 500px; border-radius: 15px;">
+                        <li class="col-3-12 left" style="background-color: #cbd1cc;height: 700px; border-radius: 15px;">
                             <h2 style="text-align: center; background-color: #ccb7d3; ">数学教室</h2>
 
                             <ul class="dropdownMenu"  style="background-color:  #cbd1cc;">
-                                <a href="javascript:void(0)" class="dropbtn" style="text-align: center;  margin-left: 30px; ">授業を選んでください。</a>
+                                <a href="javascript:void(0)" class="dropbtn" style="text-align: center;  margin-left: 30px;  ">授業を選んでください。</a>
 
                                 <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content" <%-- data-slider-id="60-1"--%> style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 50px; " >
-                                    <li class="selected" style="text-align: center" id="numberStd">数字学習</li>
+                                    <li class="selected" style="text-align: center" id="numberStd">数字カウント</li>
                                     <li style="text-align: center;" id="pluminStd">足し算と引き算</li>
                                     <li style="text-align: center;" id="figureStd">図形学習</li>
                                     <li style="text-align: center;" id="lifeStd" >生活数学</li>
@@ -283,31 +330,28 @@
                             </ul>
 
                             <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content1" data-slider-id="60-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
-                                <li class="selected" style="text-align: center" id="ddd" >11</li>
-                                <li style="text-align: center;" >11</li>
+                                <li id="number" class="selected" style="text-align: center; font-size: 30px"  >数字カウント</li>
                             </ul>
                             <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content2" data-slider-id="70-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
-                                <li id="calculation" class="selected" style="text-align: center" >계산</li>
-                                <li style="text-align: center;" >22</li>
+                                <li id="calculation" class="selected" style="text-align: center; font-size: 30px" >数字演算</li>
                             </ul>
                             <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content3" data-slider-id="80-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
-                                <li class="selected" style="text-align: center" >기초도형</li>
-                                <li style="text-align: center;">33</li>
+                                <li id="shape" class="selected" style="text-align: center; font-size: 30px" >基礎図形</li>
                             </ul>
                             <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content4" data-slider-id="90-1" style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 10px; " >
-                                <li id="clock" class="selected" style="text-align: center" >時計</li>
-                                <li id="money" style="text-align: center;" >金</li>
+                                <li id="clock" class="selected" style="text-align: center; font-size: 30px" >時計</li>
+                                <li id="money" style="text-align: center; font-size: 30px" >金</li>
                             </ul>
                         </li>
 
-                        <li class="col-8-12 " style="background-color: #f5b5ff; height: 500px; border-radius: 15px;">
+                        <li class="col-8-12 " style="background-color: #f5b5ff; height: 700px; border-radius: 15px;">
                             <embed frameborder=0 framespacing=0 marginheight=0
                                    marginwidth=0 scrolling=no vspace=0
-                                   width="100%" height="500px"
+                                   width="100%" height="700px"
                                    id="edu_menu"
                                    class="page_content"
                                    type="text/html"
-                                   src="/clock">
+                                   src="/number">
 
                         </li>
                     </ul>
@@ -332,7 +376,7 @@
                             <div class="fix-4-12">
 
 
-                                <a href="https://wizardly-wing-6a8007.netlify.com" target="_blank">
+                                <a href="https://wizardly-wing-6a8007.netlify.com/" target="_blank">
                                 <img src="/resources/images/bg/home_button1.png"
                                      onmouseover="this.src='/resources/images/bg/home_button2.png';"
                                      onmouseout="this.src='/resources/images/bg/home_button1.png';"
@@ -341,9 +385,9 @@
 
                             </div>
                         </li>
-                        <li class="col-7-12 left">
+                        <%--<li class="col-7-12 left">
                             <h1 class="ae-2 fromRight">Be creative</h1>
-                            <div class="ae-3 fromRight">
+                           <div class="ae-3 fromRight">
                                 <p class="opacity-8">When we feel less secure, with less control over our daily lives,
                                     we reach out to brands to connect with a time when things seemed&nbsp;better.</p>
                             </div>
@@ -358,7 +402,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>--%>
                     </ul>
                 </div>
 
@@ -382,21 +426,164 @@
                         <ul class="grid grid-83 noSpaces equal ae-2 fadeIn"
                             style="width: 100%; height:100%;  ">
                             <li class="col-12-12 ae-3"
-                                style="background: #FFFFFF; width: 350px; height: 600px; margin-right:20px; padding: 0px;  border-radius: 15px ">
-                                <table class="japanfont" style="width: 100%; height: 100%; margin: 0;">
+                                style="background: #FFFFFF; width: 1410px; height: 800px;  padding: 0px;  border-radius: 15px ">
+
+                                <table class="bigTable"> <%--전체테이블--%>
+                                    <tr>
+                                        <td>
+                                            <table class="smallTable" id="smallTable1"> <%--유저정보 부분 테이블--%>
+                                                <tr>
+                                                    <td rowspan="5">
+                                                        <img src="#" id="cha_image">
+                                                    </td>
+                                                    <td style="width: 180px; height: 60px; border-radius: 5px; background-color: #d3d07c; font-size: 30px; ">
+                                                        ユーザ情報
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        ID
+                                                    </td>
+                                                </tr>
+                                                <tr style="border-bottom: 1px solid #000000;">
+                                                    <td id="logid" value="id">name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        ニックネーム
+                                                    </td>
+                                                </tr>
+                                                <tr >
+                                                    <td id="nickname" value="nickname"></td>
+                                                </tr>
+
+
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table class="smallTable"  id="smallTable2" style="margin-top:-2px "> <%--학습상세 정보 부분 테이블--%>
+                                                <tr>
+                                                    <td colspan="3" style="height: 60px; border-radius: 5px;  background-color: #76d2d3; font-size: 30px;">
+                                                        学習詳細情報
+                                                    </td>
+                                                </tr>
+                                                <tr >
+                                                    <td style="width: 20%">数字理解</td>
+                                                    <td  style="width: 20%">演算理解</td>
+                                                    <td rowspan="4" id="donutchart" style="width: 100px; height: 110px;  background-color: #ffffff; ">
+                                                    </td><!-- 학생 로그인시 챕터 점수 테이블-->
+                                                </tr>
+                                                <tr >
+                                                    <td id="num1" style="text-align: center; "></td>
+                                                    <td id="num2" style="text-align: center; "></td>
+                                                </tr>
+                                                <tr >
+                                                    <td>図形理解</td>
+                                                    <td>生活活用</td>
+                                                </tr>
+                                                <tr >
+                                                    <td id="num3" style="text-align: center; "></td>
+                                                    <td id="num4" style="text-align: center; "></td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table class="smallTable" id="smallTable3"><%--학습 진행 정도 부분 테이블--%>
+                                                <tr >
+                                                    <td colspan="3" style=" height: 60px; border-radius: 5px; background-color: #f5b5ff; font-size: 30px;">
+                                                        学習進行程度
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 9%; ">
+                                                    <td style="width: 40%;">勉強時間</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                                    <td>
+                                                        <i class="far fa-clock"></i>
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="playtime"></td>
+                                                </tr>
+                                                <tr style="height: 9%; ">
+                                                    <td>獲得した星の個数</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                                    <td>
+                                                        <i class="fas fa-splotch"></i>
+                                                    </td>
+                                                    <td id="bluestar"></td>
+                                                    <td id="yellowstar"></td>
+                                                </tr>
+                                                <tr style="height: 9%; ">
+                                                    <td>現在 Chapter</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
+                                                    <td>
+                                                        <i class="fas fa-chess-king"></i>
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="nowChapter"></td>
+                                                </tr>
+                                                <tr style="height: 9%; ">
+                                                    <td>現在 Stage</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr style="height: 13.5%;">
+                                                    <td>
+                                                        <i class="fas fa-chess-pawn"></i>
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="nowStage"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table class="smallTable" id="smallTable4"><%--방명록 부분 테이블--%>
+                                                <tr>
+                                                    <td style=" height: 60px; border-radius: 10px; background-color: #9ed3a8; font-size: 30px;">
+                                                        芳名録
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <embed frameborder=0 framespacing=0 marginheight=0
+                                                               marginwidth=0 scrolling=no vspace=0
+                                                               width="100%" height="250px"
+                                                               id="edu_menu"
+                                                               class="page_content"
+                                                               type="text/html"
+                                                               src="/boardform">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                               <%-- <table class="japanfont" style="width: 100%; height: 100%; margin: 0;">
                                     <tr style="background-color: #00c6fb; height: 10%">
-                                        <td colspan="2" style="font-weight: bold; font-size: 20px">ユージャじょうほ</td>
+                                        <td colspan="2" style="font-weight: bold; font-size: 20px; padding-top: 10px">ユージャじょうほ</td>
                                     </tr>
                                     <tr style="height: 9%;">
-                                        <td>이름</td>
                                         <td>아이디</td>
+                                        <td>닉네임</td>
                                     </tr>
                                     <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td id="logname" value="name">name</td>
-                                        <td id="logid" value="id">id</td>
+                                        <td id="logid" value="id">name</td>
+                                        <td id="nickname" value="nickname"></td>
                                     </tr>
                                     <tr style="height: 77.5%">
-                                        <td colspan="2" style="text-align: center;">게임 캐릭터 위치</td>
+                                        <td colspan="2" style="text-align: center;"></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center;">
@@ -409,11 +596,11 @@
                             </li>
                             <li class="col-12-12 ae-3"
                                 style="background: #FFFFFF; width: 350px; height: 600px;margin-right:20px; border-radius: 15px; padding: 0px;">
-                                    <%-- <div id="table_div" style="width: 100%; height:  60px; "></div>--%>
+                                    &lt;%&ndash; <div id="table_div" style="width: 100%; height:  60px; "></div>&ndash;%&gt;
 
                                 <table class="japanfont" style="width: 100%; height: 100%; ">
-                                    <tr style="background-color: #fb8228; height: 10%">
-                                        <td colspan="3">학습 진행 정도</td>
+                                    <tr style="background-color: #fb8228; height: 10% ; ">
+                                        <td colspan="3" style="font-weight: bold; font-size: 20px; padding-top: 10px;"> 학습 진행 정도</td>
                                     </tr>
                                     <tr style="height: 9%; ">
                                         <td style="width: 40%;">공부 시간</td>
@@ -425,10 +612,10 @@
                                             <i class="far fa-clock"></i>
                                         </td>
                                         <td></td>
-                                        <td>0:55</td>
+                                        <td id="playtime"></td>
                                     </tr>
                                     <tr style="height: 9%; ">
-                                        <td>획득한 별의 총개수</td>
+                                        <td>획득한 별의 개수</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -436,8 +623,8 @@
                                         <td>
                                             <i class="fas fa-splotch"></i>
                                         </td>
-                                        <td></td>
-                                        <td id="chartSum"></td>
+                                        <td id="bluestar"></td>
+                                        <td id="yellowstar"></td>
                                     </tr>
                                     <tr style="height: 9%; ">
                                         <td>현재 챕터</td>
@@ -469,13 +656,13 @@
                             </li>
                             <li class="col-12-12 ae-3"
                                 style="background: #FFFFFF; width: 350px; height: 600px; border-radius: 15px; padding: 0px;">
-                                    <%-- <div id="table_div" style="width: 100%; height:  60px; "></div>--%>
+                                    &lt;%&ndash; <div id="table_div" style="width: 100%; height:  60px; "></div>&ndash;%&gt;
                                 <table class="japanfont" style="width: 100%; height: 100%; margin: 0; ">
-                                    <tr style="background-color: #74fb6b; height: 10%;">
-                                        <td colspan="3">학습 상세 정보</td>
+                                    <tr style="background-color: #74fb6b; height: 10%; padding-top: 10px;">
+                                        <td colspan="3" style="font-weight: bold; font-size: 20px; padding-top: 10px">학습 상세 정보</td>
                                     </tr>
                                     <tr style="height: 9%;">
-                                        <td colspan="2">각 체터별 획득 별수</td>
+                                        <td colspan="2"> chapter 점수</td>
                                     </tr>
                                     <tr style="height: 8%">
                                         <td style="">숫자 이해</td>
@@ -505,7 +692,7 @@
                                     </tr>
                                 </table>
                             </li>
-                        </ul>
+                        </ul>--%>
                     </c:if>
 
                     <%--선생 그래프 생성--%>
@@ -515,7 +702,7 @@
                                 style="background: #FFFFFF; width: 45%; height: 600px; margin-right:20px; border-radius: 15px; padding: 0px;">
                                 <table class="japanfont" style="width: 100%; height: 100%; ">
                                     <tr style="background-color: #00c6fb; height: 50px">
-                                        <td>전체 성적</td>
+                                        <td>全体成績</td>
                                     </tr>
                                     <tr>
                                         <td id="table_div" style="width: 100%; height:  400px; "></td>
@@ -527,7 +714,7 @@
                                 style="background: #FFFFFF; width: 45%; height: 600px; border-radius: 15px; padding: 0px;">
                                 <table class="japanfont" style="width: 100%; height: 100%;  margin: 0">
                                     <tr style="background-color: #fb8228; height: 50px">
-                                        <td>반평균과 학생 점수 비교</td>
+                                        <td>半平均と生徒の点数の比較</td>
                                     </tr>
                                     <tr style="width: 100%; height:  400px;">
                                         <td id="box_chart" style="background: #FFFFFF; "></td>

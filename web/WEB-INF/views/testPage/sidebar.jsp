@@ -48,6 +48,9 @@
             }
         }
 
+        $(function(){
+            init();
+        });
 
         //친구 데이터 읽어옴
         function init() {
@@ -57,6 +60,7 @@
                 , type: "get"
                 , data: {}
                 , success: function (fList) {
+                    console.log(fList);
                     output(fList);
                 }
             });
@@ -67,9 +71,9 @@
             var data = '<table>';
 
             data += '<tr>';
-            data += '	<td>ID</td>';
-            data += '	<td>NAME</td>';
-            data += '	<td>NICKNAME</td>';
+            data += '   <td>ID</td>';
+            data += '   <td>NAME</td>';
+            data += '   <td>NICKNAME</td>';
             data += '</tr>';
             data += '</table>';
             data += '<hr/>';
@@ -77,26 +81,26 @@
             data += '<table>';
             $.each(resp, function (index, item) {
                 data += '<tr class="friend_seq" data-sno="' + item.FRIEND_SEQ + '" >';
-                data += '	<td class="friend_id">' + item.FRIEND_ID + '</td>';
-                data += '	<td class="friend_name">' + item.FRIEND_NAME + '</td>';
-                data += '	<td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="boardbtn" data-stu_id="' + item.FRIEND_ID + '"value="방명록작성하러가기" /></td>';
-                data += '	<td><input type="button"  class="delbtn" data-sno="' + item.FRIEND_SEQ + '"value="끊기" /></td>';
+                data += '   <td class="friend_id">' + item.FRIEND_ID + '</td>';
+                data += '   <td class="friend_name">' + item.FRIEND_NAME + '</td>';
+                data += '   <td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
+                data += '   <td><input type="button" class="boardfrbtn" data-stu_id="' + item.FRIEND_ID + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button" class="delbtn" data-sno="' + item.FRIEND_SEQ + '"value="끊기" /></td>';
                 data += '</tr>';
             });
 
             data += '</table>';
 
             $("#friendDiv").append(data);
-            $(".boardbtn").on("click", function (event) {
-                boardbtn($(event.target));
+            $(".boardfrbtn").on("click", function (event) {
+                boardfrbtn($(event.target));
             });
             $(".delbtn").on("click", function (event) {
                 del($(event.target));
             });
         }
 
-        function boardbtn(target) {
+        function boardfrbtn(target) {
             var student_id = $(target).attr('data-stu_id');
             window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
@@ -132,7 +136,80 @@
             classList();
             applyingClass();
             classListByStudent();
+            studentClass();
         });
+
+        function studentClass(){
+            $.ajax({
+                url:"studentClass"
+                ,tpye:"GET"
+                ,data:{}
+                ,success:function(resp){
+                    if(resp.length != 0){
+                        studentClassOutput(resp);
+                    }
+                }
+            })
+        }
+
+        function studentClassOutput(resp){
+            var data = '우리반';
+            data += '<table>';
+            data += '<tr>';
+            data += '   <td>반명</td>';
+            data += '   <td>반코드</td>';
+            data += '   <td>선생님</td>';
+            data += '</tr>';
+
+            $.each(resp, function (index, item) {
+                data += '<tr>';
+                data += '   <td class="myclass_name">' + item.myclass_name + '</td>';
+                data += '   <td class="myclass_code">' + item.myclass_code + '</td>';
+                data += '   <td class="myclass_teacher_name">' + item.myclass_teacher_name + '</td>';
+                data += '   <td><input type="button"  class="boardclstbtn" data-myclass_code="' + item.myclass_code + '"value="반 방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="boardtebtn" data-myclass_teacher_name="' + item.myclass_teacher_name + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="classdetebtn" value="반 탈퇴" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#studentClass").append(data);
+
+            $(".classdetebtn").on("click", function (event) {
+                var result = confirm("정말로 해당 반을 탈퇴 하시겠습니까?");
+                if (result) {
+                    classdetebtn($(event.target));
+                }
+            });
+            $(".boardclstbtn").on("click", function (event) {
+                boardclstbtn($(event.target));
+            });
+            $(".boardtebtn").on("click", function (event) {
+                boardtebtn($(event.target));
+            });
+        }
+
+        function boardclstbtn(target) {
+            var myclass_code = $(target).attr('data-myclass_code');
+            window.open("boardDetail?host_id=" + myclass_code, "newwin", "top=200, left=300, height=400, width=700");
+        }
+
+        function boardtebtn(target) {
+            var myclass_teacher_name = $(target).attr('data-myclass_teacher_name');
+            window.open("boardDetail?host_id=" + myclass_teacher_name, "newwin", "top=200, left=300, height=400, width=700");
+        }
+
+        function classdetebtn() {
+            $.ajax({
+                url: "canselApplyClass"
+                , type: "get"
+                , data: {}
+                , success: function () {
+                    $("#classStudent").empty();
+                    studentClassOutput();
+                }
+            });
+        }
 
         function applyingClass() {
             $.ajax({
@@ -152,15 +229,16 @@
 
             data += '<table>';
             data += '<tr>';
-            data += '	<td>반명</td>';
-            data += '	<td>선생님</td>';
+            data += '   <td>반명</td>';
+            data += '   <td>선생님</td>';
             data += '</tr>';
 
             $.each(applyingClassList, function (index, item) {
                 data += '<tr>';
-                data += '	<td class="myclass_name">' + item.myclass_name + '</td>';
-                data += '	<td class="myclass_teacher_name">' + item.myclass_teacher_name + '</td>';
-                data += '	<td><input type="button"  class="canselbtn" value="신청 취소" /></td>';
+                data += '   <td class="myclass_name">' + item.myclass_name + '</td>';
+                data += '   <td class="myclass_teacher_name">' + item.myclass_teacher_name + '</td>';
+                data += '   <td><input type="button"  class="boardtebtn" data-myclass_teacher_name="' + item.myclass_teacher_name + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="canselbtn" value="신청 취소" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -172,6 +250,14 @@
                     canseldel($(event.target));
                 }
             });
+            $(".boardtebtn").on("click", function (event) {
+                boardtebtn($(event.target));
+            });
+        }
+
+        function boardtebtn(target) {
+            var myclass_teacher_name = $(target).attr('data-myclass_teacher_name');
+            window.open("boardDetail?host_id=" + myclass_teacher_name, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         function canseldel() {
@@ -203,15 +289,16 @@
 
             data += '<table>';
             data += '<tr>';
-            data += '	<td>반명</td>';
-            data += '	<td>코드</td>';
+            data += '   <td>반명</td>';
+            data += '   <td>코드</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
-                data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
-                data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
-                data += '	<td><input type="button"  class="cdelbtn" data-code="' + item.MYCLASS_CODE + '" value="반 정보 삭제" /></td>';
+                data += '   <td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
+                data += '   <td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
+                data += '   <td><input type="button"  class="boardclassbtn" data-myclass_code="' + item.MYCLASS_CODE + '"value="반 방명록 작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="cdelbtn" data-code="' + item.MYCLASS_CODE + '" value="반 정보 삭제" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -223,6 +310,15 @@
                     cdel($(event.target));
                 }
             });
+
+            $(".boardclassbtn").on("click", function (event) {
+                boardclassbtn($(event.target));
+            });
+        }
+
+        function boardclassbtn(target) {
+            var student_id = $(target).attr('data-myclass_code');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         // 반 삭제
@@ -257,22 +353,23 @@
             var data = '반 신청 학생';
             data += '<table>';
             data += '<tr>';
-            data += '	<td>신청 반</td>';
-            data += '	<td>신청 반 코드</td>';
-            data += '	<td>학생아이디</td>';
-            data += '	<td>학생이름</td>';
-            data += '	<td>학생닉네임</td>';
+            data += '   <td>신청 반</td>';
+            data += '   <td>신청 반 코드</td>';
+            data += '   <td>학생아이디</td>';
+            data += '   <td>학생이름</td>';
+            data += '   <td>학생닉네임</td>';
             data += '</tr>';
 
             $.each(aList, function (index, item) {
                 data += '<tr>';
-                data += '	<td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
-                data += '	<td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
-                data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
-                data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
-                data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="applybtn" data-studentid="' + item.STUDENT_ID + '" value="수락" /></td>';
-                data += '	<td><input type="button"  class="rejectbtn" data-studentid="' + item.STUDENT_ID + '" value="거절" /></td>';
+                data += '   <td class="myclass_name">' + item.MYCLASS_NAME + '</td>';
+                data += '   <td class="myclass_code">' + item.MYCLASS_CODE + '</td>';
+                data += '   <td class="student_id">' + item.STUDENT_ID + '</td>';
+                data += '   <td class="student_name">' + item.STUDENT_NAME + '</td>';
+                data += '   <td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
+                data += '   <td><input type="button"  class="boardclbtn" data-student_id="' + item.STUDENT_ID + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="applybtn" data-studentid="' + item.STUDENT_ID + '" value="수락" /></td>';
+                data += '   <td><input type="button"  class="rejectbtn" data-studentid="' + item.STUDENT_ID + '" value="거절" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -291,6 +388,15 @@
                     rejectbtn($(event.target));
                 }
             });
+
+            $(".boardclbtn").on("click", function (event) {
+                boardclbtn($(event.target));
+            });
+        }
+
+        function boardclbtn(target) {
+            var student_id = $(target).attr('data-student_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         // 신청 학생 수락
@@ -302,7 +408,7 @@
                     , type: "get"
                     , data: {student_id: student_id}
                     , success: function (result) {
-                        $("#applyListoutput").empty();
+                        $("#applyClassStudentList").empty();
                         applyClassStudentList();
                     }
                 });
@@ -320,7 +426,7 @@
                     , type: "get"
                     , data: {student_id: student_id}
                     , success: function (result) {
-                        $("#applyListoutput").empty();
+                        $("#applyClassStudentList").empty();
                         applyClassStudentList();
                     }
                 });
@@ -371,17 +477,18 @@
             var data = '<table>';
 
             data += '<tr>';
-            data += '	<td>학생아이디</td>';
-            data += '	<td>학생이름</td>';
-            data += '	<td>학생닉네임</td>';
+            data += '   <td>학생아이디</td>';
+            data += '   <td>학생이름</td>';
+            data += '   <td>학생닉네임</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr class="myclass_code" data-sno="' + item.MYCLASS_CODE + '" >';
-                data += '	<td class="student_id">' + item.STUDENT_ID + '</td>';
-                data += '	<td class="student_name">' + item.STUDENT_NAME + '</td>';
-                data += '	<td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
-                data += '	<td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" data-studentid="' + item.STUDENT_ID + '" value="제외" /></td>';
+                data += '   <td class="student_id">' + item.STUDENT_ID + '</td>';
+                data += '   <td class="student_name">' + item.STUDENT_NAME + '</td>';
+                data += '   <td class="student_nickname">' + item.STUDENT_NICKNAME + '</td>';
+                data += '   <td><input type="button"  class="boardbtn" data-student_id="' + item.STUDENT_ID + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="delbtn" data-code="' + item.MYCLASS_CODE + '" data-studentid="' + item.STUDENT_ID + '" value="제외" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -394,6 +501,15 @@
                     delStu($(event.target));
                 }
             });
+
+            $(".boardbtn").on("click", function (event) {
+                boardteclbtn($(event.target));
+            });
+        }
+
+        function boardteclbtn(target) {
+            var student_id = $(target).attr('data-student_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         // 반에서 학생 제외
@@ -430,22 +546,32 @@
             var data = '<table>';
 
             data += '<tr>';
-            data += '	<td>아이디</td>';
-            data += '	<td>이름</td>';
-            data += '	<td>닉네임</td>';
+            data += '   <td>아이디</td>';
+            data += '   <td>이름</td>';
+            data += '   <td>닉네임</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr>';
-                data += '	<td class="student_id">' + item.student_id + '</td>';
-                data += '	<td class="student_name">' + item.student_name + '</td>';
-                data += '	<td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '   <td class="student_id">' + item.student_id + '</td>';
+                data += '   <td class="student_name">' + item.student_name + '</td>';
+                data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '   <td><input type="button"  class="boardbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
 
             $("#classStudent").html("");
             $("#classStudent").append(data);
+
+            $(".boardbtn").on("click", function (event) {
+                boardstststbtn($(event.target));
+            });
+        }
+
+        function boardstststbtn(target) {
+            var student_id = $(target).attr('data-student_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
 
         function createClassCode() {
@@ -472,11 +598,11 @@
         }
     </script>
 
-
     <script>
         $(function () {
             applyFamilyList();
             FamilyList();
+            FamilyListByStudent();
         });
 
         function applyFamilyList() {
@@ -495,18 +621,18 @@
             var data = '가족 신청 유저';
             data += '<table>';
             data += '<tr>';
-            data += '	<td>아이디</td>';
-            data += '	<td>이름</td>';
-            data += '	<td>닉네임</td>';
+            data += '   <td>아이디</td>';
+            data += '   <td>이름</td>';
+            data += '   <td>닉네임</td>';
             data += '</tr>';
 
             $.each(pList, function (index, item) {
                 data += '<tr>';
-                data += '	<td class="parents_id">' + item.parents_id + '</td>';
-                data += '	<td class="parents_name">' + item.parents_name + '</td>';
-                data += '	<td class="parents_nickname">' + item.parents_nickname + '</td>';
-                data += '	<td><input type="button"  class="applybtn" value="수락" /></td>';
-                data += '	<td><input type="button"  class="rejectbtn" value="거절" /></td>';
+                data += '   <td class="parents_id">' + item.parents_id + '</td>';
+                data += '   <td class="parents_name">' + item.parents_name + '</td>';
+                data += '   <td class="parents_nickname">' + item.parents_nickname + '</td>';
+                data += '   <td><input type="button"  class="applybtn" value="수락" /></td>';
+                data += '   <td><input type="button"  class="rejectbtn" value="거절" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -573,22 +699,76 @@
             data += '<table>';
 
             data += '<tr>';
-            data += '	<td>아이디</td>';
-            data += '	<td>이름</td>';
-            data += '	<td>닉네임</td>';
+            data += '   <td>아이디</td>';
+            data += '   <td>이름</td>';
+            data += '   <td>닉네임</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr>';
-                data += '	<td class="student_id">' + item.student_id + '</td>';
-                data += '	<td class="student_name">' + item.student_name + '</td>';
-                data += '	<td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '   <td class="student_id">' + item.student_id + '</td>';
+                data += '   <td class="student_name">' + item.student_name + '</td>';
+                data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '   <td><input type="button"  class="boardfapbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
 
             $("#familyList").html("");
             $("#familyList").append(data);
+
+            $(".boardfapbtn").on("click", function (event) {
+                boardfapbtn($(event.target));
+            });
+        }
+
+        function boardfapbtn(target) {
+            var student_id = $(target).attr('data-student_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
+        }
+
+        function FamilyListByStudent(){
+            $.ajax({
+                url : "familyListByStudent"
+                ,type : "GET"
+                ,data : {}
+                ,success : function(resp){
+                    FamilyListByStudentOutput(resp);
+                }
+            })
+        }
+
+        function FamilyListByStudentOutput(resp){
+            var data = '가족 유저';
+            data += '<table>';
+
+            data += '<tr>';
+            data += '   <td>아이디</td>';
+            data += '   <td>이름</td>';
+            data += '   <td>닉네임</td>';
+            data += '</tr>';
+
+            $.each(resp, function (index, item) {
+                data += '<tr>';
+                data += '   <td class="student_id">' + item.student_id + '</td>';
+                data += '   <td class="student_name">' + item.student_name + '</td>';
+                data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
+                data += '   <td><input type="button"  class="boardfasbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
+                data += '</tr>';
+            });
+            data += '</table>';
+
+            $("#familyStdentList").html("");
+            $("#familyStdentList").append(data);
+
+            $(".boardfasbtn").on("click", function (event) {
+                boardfasbtn($(event.target));
+            });
+        }
+
+        function boardfasbtn(target) {
+            var student_id = $(target).attr('data-student_id');
+            window.open("boardDetail?host_id=" + student_id, "newwin", "top=200, left=300, height=400, width=700");
         }
     </script>
 </head>
@@ -599,12 +779,21 @@
 <div data-component="navbar">
 
     <nav class="navbar p-0 fixed-top">
+        <%--<button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"--%>
+        <%--data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false"--%>
+        <%--aria-label="Toggle navigation">--%>
+        <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
+        <%--</button>--%>
+
         <div>
             <a class="navbar-brand px-1" href="#" onclick="side_call()">
                 <img src="/resources/images/homeUI/mochi_off.png" height="70px"
                      class="d-inline-block mt-1" id="mochi_menu">
             </a>
+
             <div class="right-links float-right mr-4">
+
+
                 <div class="d-inline dropdown">
                     <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" href="#">
@@ -739,15 +928,15 @@
             <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
                 <%--우리반--%>
                 <li class="list-group-item" style="padding-left: 0px;">
-                        <c:if test="${sessionScope.type == 'teacher' || sessionScope.type == 'student'}">
-                            <img width="180px" src="/resources/images/homeUI/menu1_1.png">
-                        </c:if>
+                    <c:if test="${sessionScope.type == 'teacher' || sessionScope.type == 'student'}">
+                        <img width="180px" src="/resources/images/homeUI/menu1_1.png">
+                    </c:if>
 
-                        <c:if test="${sessionScope.type == 'parents'}">
-                            <img width="180px" src="/resources/images/homeUI/menu4_1.png">
-                        </c:if>
+                    <c:if test="${sessionScope.type == 'parents'}">
+                        <img width="180px" src="/resources/images/homeUI/menu4_1.png">
+                    </c:if>
 
-                    <ul class="list-group flex-column d-inline-block submenu">
+                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
                         <li class="list-group-item pl-4">
                             <c:if test="${sessionScope.type == 'teacher'}">
                                 <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
@@ -777,15 +966,19 @@
                                     </div>
                                 </div>
                             </c:if>
+
                             <c:if test="${sessionScope.type == 'student'}">
                                 <input type="button" value="반 검색" onclick="searchclassCode();">
-                                <hr/>
 
-                                <div id="applyingClass">
+                                <div id="classStudent">
 
                                 </div>
 
-                                <div id="classStudent">
+                                <div id="studentClass">
+
+                                </div>
+
+                                <div id="applyingClass">
 
                                 </div>
                             </c:if>
@@ -807,7 +1000,7 @@
                     <a href="#">
                         <img width="180px" src="/resources/images/homeUI/menu2_1.png">
                     </a>
-                    <ul class="list-group flex-column d-inline-block submenu" style="width: 400px">
+                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
                         <li class="list-group-item pl-4">
                             <input type="button" value="유저 검색" onclick="searchid();">
                             <hr/>
@@ -824,12 +1017,15 @@
                     <a href="#">
                         <img width="180px" src="/resources/images/homeUI/menu4_1.png">
                     </a>
-                    <ul class="list-group flex-column d-inline-block submenu">
+                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
                         <li class="list-group-item pl-4">
                             <div id="familyApplying">
 
                             </div>
 
+                            <div id="familyStdentList">
+
+                            </div>
                         </li>
                     </ul>
                 </li>

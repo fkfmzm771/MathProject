@@ -243,34 +243,30 @@ public class UserController {
 	@RequestMapping(value="/modify", method = RequestMethod.GET)
 	public String modify(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("loginId");
+		String type = (String) session.getAttribute("type");
 
-		Parents p = dao.ParentsSelectOne(id);
-		if (p != null) {
+		if(type.equals("student")){
+			Student s = dao.StudentSelectOne(id);
+			model.addAttribute("type", "Student");
+			model.addAttribute("userid", s.getStudent_id());
+			model.addAttribute("email", s.getStudent_email());
+			model.addAttribute("name", s.getStudent_name());
+			model.addAttribute("nickname", s.getStudent_nickname());
+		} else if(type.equals("teacher")){
+			Teacher t = dao.TeacherSelectOne(id);
+			model.addAttribute("type", "Teacher");
+			model.addAttribute("userid", t.getTeacher_id());
+			model.addAttribute("email", t.getTeacher_email());
+			model.addAttribute("name", t.getTeacher_name());
+			model.addAttribute("nickname", t.getTeacher_nickname());
+		} else {
+			Parents p = dao.ParentsSelectOne(id);
 			model.addAttribute("type", "Parents");
 			model.addAttribute("userid", p.getParents_id());
 			model.addAttribute("email", p.getParents_email());
 			model.addAttribute("name", p.getParents_name());
 			model.addAttribute("nickname", p.getParents_nickname());
-		} else {
-			Teacher t = dao.TeacherSelectOne(id);
-			if (t != null) {
-				model.addAttribute("type", "Teacher");
-				model.addAttribute("userid", t.getTeacher_id());
-				model.addAttribute("email", t.getTeacher_email());
-				model.addAttribute("name", t.getTeacher_name());
-				model.addAttribute("nickname", t.getTeacher_nickname());
-			} else {
-				Student s = dao.StudentSelectOne(id);
-				if(s != null) {
-					model.addAttribute("type", "Student");
-					model.addAttribute("userid", s.getStudent_id());
-					model.addAttribute("email", s.getStudent_email());
-					model.addAttribute("name", s.getStudent_name());
-					model.addAttribute("nickname", s.getStudent_nickname());
-				}
-			}
 		}
-		
 		return "user/updateForm_temp";
 	}
 

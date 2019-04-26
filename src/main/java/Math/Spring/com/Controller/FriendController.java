@@ -43,7 +43,10 @@ public class FriendController {
      */
     @RequestMapping(value = "searchFriend" , method = RequestMethod.GET)
     public String searchFriend(String nickname, HttpSession session, Model model){
+        System.out.println(nickname);
         Student student = dao.searchFriend(nickname);
+        System.out.println(student);
+
         String message = "찾을수 없는 닉네임 입니다.";
         String sessionId = (String)session.getAttribute("loginId");
 

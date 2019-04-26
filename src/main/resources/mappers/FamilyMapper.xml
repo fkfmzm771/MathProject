@@ -64,4 +64,11 @@
         WHERE student_parents_id = #{parents_id}
         AND student_family_check = 2
     </select>
+
+    <select id="FamilyStudentList" parameterType="String" resultType="Student">
+        select student_id, student_name, student_nickname
+        from student
+        where student_parents_id = (select student_parents_id from student where student_id = #{student_id})
+        and student_family_check = 2
+    </select>
 </mapper>

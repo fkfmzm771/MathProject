@@ -65,4 +65,11 @@ public class FamilyDAO {
         List<Student> sList = mapper.FamilyList(parents_id);
         return sList;
     }
+
+    public List<Student> FamilyStudentList(String student_id) {
+        FamilyMapper mapper = session.getMapper(FamilyMapper.class);
+
+        List<Student> sList = mapper.FamilyStudentList(student_id);
+        return sList;
+    }
 }

@@ -26,7 +26,7 @@
         };
 
         function output(resp){
-            var data = '댓글';
+            var data = 'コメント';
             data += '<table>';
 
             data += '<tr>';
@@ -78,13 +78,13 @@
     <form action="" method="POST">
         <table>
             <tr>
-                <th>내용 : </th>
+                <th>内容 : </th>
                 <td>
                     <input type="text" id="contents" name="contents"/>
                     <input type="hidden" id="host_id" name="host_id" value="${host_id}"/>
                 </td>
                 <td colspan="2">
-                    <input type="button" id="searchbtn" onclick="insertbtn();" value="등록" />
+                    <input type="button" id="searchbtn" onclick="insertbtn();" value="登録" />
                 </td>
             </tr>
         </table>

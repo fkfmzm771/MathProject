@@ -40,4 +40,6 @@ public interface MyClassMapper {
     List<Myclass> applyingClass(String student_id);
 
     int canselApplyClass(String student_id);
+
+    List<Myclass> studentClass(String student_id);
 }

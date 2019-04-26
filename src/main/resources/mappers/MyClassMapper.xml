@@ -117,6 +117,13 @@
           and s.student_id = #{student_id}
     </select>
 
+    <select id="studentClass" parameterType="String" resultType="Myclass">
+        SELECT * FROM myclass
+        WHERE myclass_code = (SELECT student_myclass_code
+        from student
+        where student_id = #{student_id})
+    </select>
+
     <update id="canselApplyClass" parameterType="String">
         UPDATE student SET
         student_myclass_code = null

@@ -16,9 +16,10 @@ function selectChapterScore() {
     $.ajax({
         method: 'GET'
         , url: 'selectChapterScore'
-        , success: selectChapterScore2
+        , success: function(resp){
+            selectChapterScore2(resp)
+        }
         , error: function () {
-            alert("별 총합 아작스 에러")
         }
     })
 }
@@ -27,38 +28,48 @@ function selectChapterScore() {
 function setHtml(item_id, item_html)
 {
     obj = document.getElementById(item_id);
-    if (obj == null) {
+   /* if (obj == null) {
         alert(item_id + ' 찾기 오류');
         return;
-    }
+    }*/
     obj.innerHTML = item_html;
 }
 
 
 function selectChapterScore2(resp) {
-    console.log(resp.score1);
+    console.log(resp);
 
-    let chartSum =
+    /*let chartSum =
         resp.score1
         + resp.score2
         + resp.score3
-        + resp.score4; //별 갯수 총합
+        + resp.score4; //별 갯수 총합*/
 
-    setHtml("logid",resp.student_id);
-    setHtml("logname",resp.student_name);
-    setHtml("num1",resp.score1);
-    setHtml("num2",resp.score2);
-    setHtml("num3",resp.score3);
-    setHtml("num4",resp.score4);
-    setHtml("chartSum",chartSum);
+    var secondTime = resp.PLAY_TIME;
+    var h = parseInt(secondTime/3600); //시각
+    var hr =  secondTime%3600;
+    var m =parseInt(hr/60);     //분
+    var s = hr%60;          //초
+    var time = h +"時"+m+"分"+s+"秒";
 
-    $("#cha_image").src = '/resources/images/card/' + resp.play_Character + '.png';
+    setHtml("logid",resp.STUDENT_ID);
+    setHtml("nickname",resp.STUDENT_NICKNAME);
+    setHtml("num1",resp.SCORE1);
+    setHtml("num2",resp.SCORE2);
+    setHtml("num3",resp.SCORE3);
+    setHtml("num4",resp.SCORE4);
+    setHtml("bluestar","青星 "+resp.BLUE_STAR+"個");
+    setHtml("yellowstar","黄色の星 "+resp.YELLOW_STAR+"個");
+    setHtml("playtime",time);
+
+
+
+    /*setHtml("chartSum",chartSum);*/
+
+   /* $("#cha_image").src = '/resources/images/card/' + resp.PLAY_CHARACTER + '.png';*/
 
     let chaImg = document.getElementById("cha_image");
-    chaImg.src = '/resources/images/card/' + resp.play_Character + '.png';
-
-
-
+    chaImg.src = '/resources/images/card/' + resp.PLAY_CHARACTER + '.png';
 
 }
 
@@ -71,7 +82,7 @@ function selectDonutChart() {
         url: 'selectDonutChart',
         success: drawDonutChart,
         error: function () {
-            alert("selectDonutChart실패");
+           /* alert("selectDonutChart실패");*/
         }
     })
 }
@@ -87,29 +98,21 @@ function drawDonutChart(resp) {
     score.push(resp.stage4);
 
 
-    let total_clearStage = (resp.chapter - 1) * 5 ;//클리어 스테이지 수 누적
-    let playing_Stage = 0;//현재 스테이지
+    let total_clearStage = (resp.game_chapter - 1) * 10 +resp.game_stage ;//클리어 스테이지 수 누적
 
 
-    for (let i = 0; i < score.length; i++) {
-        if (score[i] === 1) playing_Stage = i + 1;
-
-        if (score[i] === 2) total_clearStage++;
-    }
-
-
-    setHtml("nowChapter",resp.chapter + '/7');
-    setHtml("nowStage",playing_Stage + '/5');
+    setHtml("nowChapter",resp.game_chapter + '/4');
+    setHtml("nowStage",resp.game_stage + '/10');
 
     let data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Day'],
-        ['완료', total_clearStage],
-        ['비완료', 35 - total_clearStage]
+        ['完了', total_clearStage],
+        ['非完了', 50- total_clearStage]
     ]);
     // title: '총 스테이지' + total_clearStage * 100/35 + '% 진행중',
     let options = {
         pieHole: 0.2,
-        chartArea: {left: 100, top: 30},
+        chartArea: {left: 60, top: 60},
 
     };
 
@@ -118,14 +121,14 @@ function drawDonutChart(resp) {
 }
 
 
-//교사 학생들 별 갯수 테이블 로드========================================================================================
+//교사 전체 학생 CHAPTER 점수 테이블 로드========================================================================================
 function gamescorefind() {
     $.ajax({
         method: 'GET'
         , url: 'selectClassGameScore'
         , success: drawBoxTable
         , error: function () {
-            alert("실패");
+            /*alert("실패");*/
         }
     })
 }
@@ -133,28 +136,31 @@ function gamescorefind() {
 //구글 표 테이블 생성
 function drawBoxTable(resp) {
     //전체 테이블 Array 생성
+
     table_data = [];
     {
         for (key in resp) {
             table_data.push([
-                resp[key].student_id,
-                resp[key].score1,
-                resp[key].score2,
-                resp[key].score3,
-                resp[key].score4,
-                resp[key].play_time,
-                resp[key].play_Character
+                resp[key].STUDETN_ID,
+                resp[key].STUDENT_NAME,
+                resp[key].SCORE1,
+                resp[key].SCORE2,
+                resp[key].SCORE3,
+                resp[key].SCORE4,
+               /* resp[key].play_time,
+                resp[key].play_Character*/
             ]);
         }
     }
+    console.log(table_data );
 
     let data = new google.visualization.DataTable();
-    data.addColumn('string', '아이디');
-    data.addColumn('string', '학생이름');
-    data.addColumn('number', '숫자이해');
-    data.addColumn('number', '연산이해');
-    data.addColumn('number', '도형이해');
-    data.addColumn('number', '생활활용');
+    data.addColumn('string', 'ID');
+    data.addColumn('string', '学生名');
+    data.addColumn('number', '数字理解');
+    data.addColumn('number', '演算理解');
+    data.addColumn('number', '図形理解');
+    data.addColumn('number', '生活活用');
 
     data.addRows(table_data);
 
@@ -217,18 +223,18 @@ function drawBoxChart(array) {
 
     //개인 값과 평균값을 테이블에 대입
     let data = google.visualization.arrayToDataTable([
-        ['평가항목', '반평균', String(array[0])],
-        ['숫자이해', aver1, Number(array[1])],
-        ['연산이해', aver2, Number(array[2])],
-        ['도형이해', aver3, Number(array[3])],
-        ['생활활용', aver4, Number(array[4])]
+        ['評価項目', '半平均', String(array[0])],
+        ['数字理解', aver1, Number(array[1])],
+        ['演算理解', aver2, Number(array[2])],
+        ['図形理解', aver3, Number(array[3])],
+        ['生活活用', aver4, Number(array[4])]
     ]);
 
     //테이블 옵션 추가
     let options = {
-        title: '반평균과 학생점수 비교',
+        title: 'クラス平均と生徒点数の比較',
         vAxis: {
-            title: '반평균점수'
+            title: '半平均点数'
         }
     };
 

@@ -114,6 +114,12 @@ public class MyClassDAO {
         return result;
     }
 
+    public List<Myclass> studentClass(String student_id) {
+        MyClassMapper mapper = session.getMapper(MyClassMapper.class);
+        List<Myclass> cList = mapper.studentClass(student_id);
+        return cList;
+    }
+
     public List<Myclass> applyingClass(String student_id) {
         MyClassMapper mapper = session.getMapper(MyClassMapper.class);
         List<Myclass> cList = mapper.applyingClass(student_id);

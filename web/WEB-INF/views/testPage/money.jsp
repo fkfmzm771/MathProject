@@ -124,7 +124,7 @@
             </td>
             <td>
                 1000円 X <input type=hidden name="sell_price1000" value="1000">
-                <input type="text" name="amount1000" value="1" size="3" onchange="change();">
+                <input type="text" name="amount1000" value="0" size="3" onchange="change();">
                 <input type="button" value=" + " onclick="add1000();"><input type="button" value=" - "
                                                                              onclick="del1000();">
                 <div>=
@@ -138,7 +138,7 @@
             </td>
             <td>
                 5000円 X <input type=hidden name="sell_price5000" value="5000">
-                <input type="text" name="amount5000" value="1" size="3" onchange="change();">
+                <input type="text" name="amount5000" value="0" size="3" onchange="change();">
                 <input type="button" value=" + " onclick="add5000();"><input type="button" value=" - "
                                                                              onclick="del5000();">
                 <div>=
@@ -152,7 +152,7 @@
             </td>
             <td>
                 10000円 X <input type=hidden name="sell_price10000" value="10000">
-                <input type="text" name="amount10000" value="1" size="3" onchange="change();">
+                <input type="text" name="amount10000" value="0" size="3" onchange="change();">
                 <input type="button" value=" + " onclick="add10000();"><input type="button" value=" - "
                                                                               onclick="del10000();">
                 <div>=

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 @Repository
@@ -23,22 +24,22 @@ public class ChartRepository {
         return doughnut;
     }
 
-    //학생 챕터별 별 갯수 로드
-    public GameScore selectChapterScore(Student student) {
+    //학생 챕터별 점수 로드
+    public HashMap<String, Object> selectChapterScore(String student_id) {
 
         ChartMapper mapper = session.getMapper(ChartMapper.class);
-        GameScore GameScore = mapper.selectChapterScore(student);
+        HashMap<String, Object> GameScore = mapper.selectChapterScore(student_id);
 
         return GameScore;
     }
 
 
 
-
-    public ArrayList<GameScore> selectClassGameScore() {
+    //전체 학생 챕터별 점수 로드
+    public ArrayList<HashMap<String, Object>> selectClassGameScore() {
 
         ChartMapper mapper = session.getMapper(ChartMapper.class);
-        ArrayList<GameScore> list = mapper.selectClassGameScore();
+        ArrayList<HashMap<String, Object>> list = mapper.selectClassGameScore();
         if (list.size() == 0){
             System.out.println("비어있넹");
         }
