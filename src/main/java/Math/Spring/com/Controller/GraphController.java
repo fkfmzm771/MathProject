@@ -1,6 +1,6 @@
 package Math.Spring.com.Controller;
 
-import Math.Spring.com.DAO.ChartRepository;
+import Math.Spring.com.Repository.ChartRepository;
 import Math.Spring.com.VO.GameStage;
 import Math.Spring.com.VO.GameScore;
 import Math.Spring.com.VO.Student;

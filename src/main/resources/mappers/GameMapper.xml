@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="Math.Spring.com.MapperInterface.GameMapper">
+
+
+ <select id="selectGameStage" parameterType="Student" resultType="GameStage">
+	select * from
+		GameStage
+	where
+		student_id = #{student_id}
+</select>
+
+ <select id="selectGameScore" parameterType="Student" resultType="GameScore">
+	select * from
+	GameScore
+	where
+	student_id = #{student_id}
+</select>
+
+ <select id="selectA_Card" parameterType="Student" resultType="GameCard">
+	select * from
+	game_card
+	where
+	student_id = #{student_id}
+</select>
+
+	<select id="GameStudentSelectOne" parameterType="String" resultType="Student">
+		select
+			*
+		from
+			student
+		where student_id = #{student_id}
+	</select>
+
+
+
+</mapper>

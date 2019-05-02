@@ -1,9 +1,8 @@
 package Math.Spring.com.Controller;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Math.Spring.com.DAO.UserRepository;
+import Math.Spring.com.Repository.UserRepository;
 import Math.Spring.com.VO.Parents;
 import Math.Spring.com.VO.Student;
 import Math.Spring.com.VO.Teacher;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller

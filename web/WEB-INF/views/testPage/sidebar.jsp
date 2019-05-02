@@ -60,37 +60,28 @@
                 , type: "get"
                 , data: {}
                 , success: function (fList) {
-                    console.log(fList);
                     output(fList);
                 }
             });
         }
 
-        // 출력
+        // 친구 목록 출력
         function output(resp) {
-            var data = '<table>';
+            var data = '<table class="table" style="width: 100%">';
 
-            data += '<tr>';
-            data += '   <td>ID</td>';
-            data += '   <td>NAME</td>';
-            data += '   <td>NICKNAME</td>';
-            data += '</tr>';
-            data += '</table>';
-            data += '<hr/>';
 
-            data += '<table>';
             $.each(resp, function (index, item) {
                 data += '<tr class="friend_seq" data-sno="' + item.FRIEND_SEQ + '" >';
-                data += '   <td class="friend_id">' + item.FRIEND_ID + '</td>';
-                data += '   <td class="friend_name">' + item.FRIEND_NAME + '</td>';
-                data += '   <td class="friend_nickname">' + item.FRIEND_NICKNAME + '</td>';
-                data += '   <td><input type="button" class="boardfrbtn" data-stu_id="' + item.FRIEND_ID + '"value="방명록작성하러가기" /></td>';
-                data += '   <td><input type="button" class="delbtn" data-sno="' + item.FRIEND_SEQ + '"value="끊기" /></td>';
+                data += '   <td class="friend_nickname" style="text-align:left; width: 100px"><h6>' + item.FRIEND_NICKNAME + '</h6></td>';
+                data += '   <td><input type="button" class="boardfrbtn btn btn-primary" data-stu_id="' + item.FRIEND_ID + '"value="メモる" /></td>';
+                data += '   <td><input type="button" class="delbtn btn btn-danger" data-sno="' + item.FRIEND_SEQ + '"value="X" /></td>';
                 data += '</tr>';
             });
 
+            data += '</tbody>';
             data += '</table>';
 
+            // 태그에 목록 추가
             $("#friendDiv").append(data);
             $(".boardfrbtn").on("click", function (event) {
                 boardfrbtn($(event.target));
@@ -546,15 +537,11 @@
             var data = '<table>';
 
             data += '<tr>';
-            data += '   <td>아이디</td>';
-            data += '   <td>이름</td>';
             data += '   <td>닉네임</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr>';
-                data += '   <td class="student_id">' + item.student_id + '</td>';
-                data += '   <td class="student_name">' + item.student_name + '</td>';
                 data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
                 data += '   <td><input type="button"  class="boardbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
                 data += '</tr>';
@@ -641,13 +628,13 @@
             $("#familyApplying").append(data);
 
             $(".applybtn").on("click", function (event) {
-                var result = confirm("정말로 해당유저의 가족신청을 수락하시겠습니까?");
+                var result = confirm("해당유저의 가족신청을 수락하시겠습니까?");
                 if (result) {
                     applyFamilybtn($(event.target));
                 }
             });
             $(".rejectbtn").on("click", function (event) {
-                var result = confirm("정말로 해당유저의 가족신청을 거절하시겠습니까?");
+                var result = confirm("해당유저의 가족신청을 거절하시겠습니까?");
                 if (result) {
                     rejectFamilybtn($(event.target));
                 }
@@ -709,7 +696,7 @@
                 data += '   <td class="student_id">' + item.student_id + '</td>';
                 data += '   <td class="student_name">' + item.student_name + '</td>';
                 data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
-                data += '   <td><input type="button"  class="boardfapbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="boardfapbtn" data-student_id="' + item.student_id + '"value="방명록작성" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -743,17 +730,13 @@
             data += '<table>';
 
             data += '<tr>';
-            data += '   <td>아이디</td>';
-            data += '   <td>이름</td>';
             data += '   <td>닉네임</td>';
             data += '</tr>';
 
             $.each(resp, function (index, item) {
                 data += '<tr>';
-                data += '   <td class="student_id">' + item.student_id + '</td>';
-                data += '   <td class="student_name">' + item.student_name + '</td>';
                 data += '   <td class="student_nickname">' + item.student_nickname + '</td>';
-                data += '   <td><input type="button"  class="boardfasbtn" data-student_id="' + item.student_id + '"value="방명록작성하러가기" /></td>';
+                data += '   <td><input type="button"  class="boardfasbtn" data-student_id="' + item.student_id + '"value="방명록작성" /></td>';
                 data += '</tr>';
             });
             data += '</table>';
@@ -779,11 +762,6 @@
 <div data-component="navbar">
 
     <nav class="navbar p-0 fixed-top">
-        <%--<button class="navbar-toggler navbar-toggler-left rounded-0 border-0" type="button" data-toggle="collapse"--%>
-        <%--data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false"--%>
-        <%--aria-label="Toggle navigation">--%>
-        <%--<i class="fa fa-bars"></i><span class="ml-3">Advanced</span>--%>
-        <%--</button>--%>
 
         <div>
             <a class="navbar-brand px-1" href="#" onclick="side_call()">
@@ -800,8 +778,8 @@
                         <img src="http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="messages">
-                        <a class="dropdown-item" href="modify">Edit my profile</a>
-                        <a class="dropdown-item" href="logout">Log Out</a>
+                        <a class="dropdown-item" href="modify">プロフィール</a>
+                        <a class="dropdown-item" href="logout">ログアウト</a>
                     </div> <!-- /.dropdown-menu -->
                 </div> <!-- /.dropdown -->
 
@@ -925,7 +903,7 @@
         <div class="sidebar">
 
             <%--리스트 그룹 시작(친구 패널)--%>
-            <ul class="list-group flex-column d-inline-block first-menu" id="first_menu">
+            <ul class="list-group flex-column d-inline-block first-menu" id="first_menu" style=" text-align: center;">
                 <%--우리반--%>
                 <li class="list-group-item" style="padding-left: 0px;">
                     <c:if test="${sessionScope.type == 'teacher' || sessionScope.type == 'student'}">
@@ -936,7 +914,16 @@
                         <img width="180px" src="/resources/images/homeUI/menu4_1.png">
                     </c:if>
 
-                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
+                    <ul class="list-group flex-column d-inline-block submenu"
+                        style="width: 350px;
+                        border-radius:15px;
+                        margin-top: 15px;
+                        border: solid;
+                        margin-top: 15px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        border-color: #FFFFFF;
+                        background-color: #ffccdd">
                         <li class="list-group-item pl-4">
                             <c:if test="${sessionScope.type == 'teacher'}">
                                 <input type="button" value="반 코드 생성하러 하기" onclick="createClassCode();">
@@ -968,7 +955,9 @@
                             </c:if>
 
                             <c:if test="${sessionScope.type == 'student'}">
-                                <input type="button" value="반 검색" onclick="searchclassCode();">
+                                <input class="btn btn-outline-primary"
+                                       type="button" value="けんさく"
+                                       onclick="searchclassCode();" style="width: 100%">
 
                                 <div id="classStudent">
 
@@ -997,35 +986,44 @@
                 <c:if test="${sessionScope.type == 'student'}">
 
                 <li class="list-group-item" style="padding-left: 0px;">
-                    <a href="#">
-                        <img width="180px" src="/resources/images/homeUI/menu2_1.png">
-                    </a>
-                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
+                    <a href="#"><img width="180px" src="/resources/images/homeUI/menu2_1.png"></a>
+                    <ul class="list-group flex-column d-inline-block submenu"
+                        style="width: 350px;
+                        border-radius:15px;
+                        margin-top: 15px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        border: solid;
+                        border-color: #FFFFFF;
+                        background-color: #BEECFF">
                         <li class="list-group-item pl-4">
-                            <input type="button" value="유저 검색" onclick="searchid();">
+                            <input class="btn btn-outline-primary" type="button"
+                                   value="けんさく" onclick="searchid();" style="width: 100%">
                             <hr/>
 
                             <div id="friendDiv">
-                                내 친구 목록<br/>
-                                <hr/>
+
                             </div>
                         </li> <!-- end Posts -->
                     </ul> <!-- /.first-menu -->
                 </li>
 
+                <%-- 사이드바 가족 패널  --%>
                 <li class="list-group-item" style="padding-left: 0px;">
-                    <a href="#">
-                        <img width="180px" src="/resources/images/homeUI/menu4_1.png">
-                    </a>
-                    <ul class="list-group flex-column d-inline-block submenu" style="width: 200px">
+                    <a href="#"><img width="180px" src="/resources/images/homeUI/menu4_1.png"></a>
+                    <ul class="list-group flex-column d-inline-block submenu"
+                        style="width: 350px;
+                        border-radius:15px;
+                        margin-top: 15px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        border: solid;
+                        border-color: #FFFFFF;
+                        background-color: #cad1ff">
                         <li class="list-group-item pl-4">
-                            <div id="familyApplying">
+                            <div id="familyApplying"> </div>
 
-                            </div>
-
-                            <div id="familyStdentList">
-
-                            </div>
+                            <div id="familyStdentList"></div>
                         </li>
                     </ul>
                 </li>
@@ -1045,16 +1043,6 @@
            class="page_content"
            type="text/html"
            src="/main_test">
-
-    <%--<iframe frameborder=0--%>
-    <%--framespacing=0--%>
-    <%--marginheight=0--%>
-    <%--marginwidth=0--%>
-    <%--scrolling=no vspace=0--%>
-    <%--class="page_content"--%>
-    <%--type="text/html"--%>
-    <%--src="/main_test">--%>
-
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

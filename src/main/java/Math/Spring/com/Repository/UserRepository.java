@@ -1,4 +1,4 @@
-package Math.Spring.com.DAO;
+package Math.Spring.com.Repository;
 
 import Math.Spring.com.MapperInterface.UserMapper;
 import Math.Spring.com.VO.Parents;

@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Math.Spring.com.DAO.UserRepository;
+import Math.Spring.com.Repository.UserRepository;
 import Math.Spring.com.VO.Parents;
 import Math.Spring.com.VO.Student;
 import Math.Spring.com.VO.Teacher;

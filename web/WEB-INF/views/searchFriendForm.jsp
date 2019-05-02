@@ -3,8 +3,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+
+
 <head>
     <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(function(){
@@ -49,12 +58,12 @@
     <form action="searchFriend" method="GET">
         <table>
             <tr>
-                <th>닉네임 : </th>
+                <th>ニックネーム : </th>
                 <td>
                     <input type="text" id="nickname" name="nickname"/>
                 </td>
                 <td colspan="2">
-                    <input type="submit" id="searchbtn" value="검색" />
+                    <input class="btn btn-success" type="submit" id="searchbtn" value="けんさく" />
                 </td>
             </tr>
         </table>
@@ -68,7 +77,7 @@
                 <tr>
                     <td>ID</td>
                     <td></td>
-                    <td>닉네임</td>
+                    <td>ニックネーム</td>
                     <td></td>
                     <td></td>
                 </tr>

@@ -135,6 +135,7 @@
             width: 900px;
             font-size: 20px;
         }
+
     </style>
 
     <script>
@@ -312,16 +313,24 @@
     <div class="content">
         <div class="container">
             <div class="wrap">
-                <div class="fix-12-12">
-                    <ul class="grid">
+                <div class="fix-12-12" >
+                    <ul class="grid" >
 
-                        <li class="col-3-12 left" style="background-color: #cbd1cc;height: 700px; border-radius: 15px;">
-                            <h2 style="text-align: center; background-color: #ccb7d3; ">数学教室</h2>
+                        <li class="col-3-12 left" style="background-color: #ffcd7e;height: 700px; border-radius: 15px;">
+                            <h2 style="text-align: center;
+                             background-color: #ff6844;
+                            border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;
+                            padding:10px;
+                            margin:0px">
+                                しらべましょう
+                            </h2>
 
                             <ul class="dropdownMenu"  style="background-color:  #cbd1cc;">
-                                <a href="javascript:void(0)" class="dropbtn" style="text-align: center;  margin-left: 30px;  ">授業を選んでください。</a>
+                                <a href="javascript:void(0)" class="dropbtn" style="text-align: center;">MENU</a>
 
-                                <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content" <%-- data-slider-id="60-1"--%> style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 50px; " >
+                                <ul class="tabs controller uppercase bold ae-4 fromCenter" id ="dropdownMenu-content" <%-- data-slider-id="60-1"--%>
+                                    style="background-color: #ccb7d3; padding-left: 0; margin-top: 20px;margin-left: 50px; " >
                                     <li class="selected" style="text-align: center" id="numberStd">数字カウント</li>
                                     <li style="text-align: center;" id="pluminStd">足し算と引き算</li>
                                     <li style="text-align: center;" id="figureStd">図形学習</li>
@@ -428,7 +437,7 @@
                             <li class="col-12-12 ae-3"
                                 style="background: #FFFFFF; width: 1410px; height: 800px;  padding: 0px;  border-radius: 15px ">
 
-                                <table class="bigTable"> <%--전체테이블--%>
+                                <table class="bigTable" style="margin-left: 5px;"> <%--전체테이블--%>
                                     <tr>
                                         <td>
                                             <table class="smallTable" id="smallTable1"> <%--유저정보 부분 테이블--%>
@@ -551,7 +560,7 @@
                                             <table class="smallTable" id="smallTable4"><%--방명록 부분 테이블--%>
                                                 <tr>
                                                     <td style=" height: 60px; border-radius: 10px; background-color: #9ed3a8; font-size: 30px;">
-                                                        芳名録
+                                                        Guest Book
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -570,129 +579,6 @@
                                     </tr>
                                 </table>
 
-                               <%-- <table class="japanfont" style="width: 100%; height: 100%; margin: 0;">
-                                    <tr style="background-color: #00c6fb; height: 10%">
-                                        <td colspan="2" style="font-weight: bold; font-size: 20px; padding-top: 10px">ユージャじょうほ</td>
-                                    </tr>
-                                    <tr style="height: 9%;">
-                                        <td>아이디</td>
-                                        <td>닉네임</td>
-                                    </tr>
-                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td id="logid" value="id">name</td>
-                                        <td id="nickname" value="nickname"></td>
-                                    </tr>
-                                    <tr style="height: 77.5%">
-                                        <td colspan="2" style="text-align: center;"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: center;">
-                                            <img src="#" id="cha_image">
-
-                                        </td>
-                                    </tr>
-
-                                </table>
-                            </li>
-                            <li class="col-12-12 ae-3"
-                                style="background: #FFFFFF; width: 350px; height: 600px;margin-right:20px; border-radius: 15px; padding: 0px;">
-                                    &lt;%&ndash; <div id="table_div" style="width: 100%; height:  60px; "></div>&ndash;%&gt;
-
-                                <table class="japanfont" style="width: 100%; height: 100%; ">
-                                    <tr style="background-color: #fb8228; height: 10% ; ">
-                                        <td colspan="3" style="font-weight: bold; font-size: 20px; padding-top: 10px;"> 학습 진행 정도</td>
-                                    </tr>
-                                    <tr style="height: 9%; ">
-                                        <td style="width: 40%;">공부 시간</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td>
-                                            <i class="far fa-clock"></i>
-                                        </td>
-                                        <td></td>
-                                        <td id="playtime"></td>
-                                    </tr>
-                                    <tr style="height: 9%; ">
-                                        <td>획득한 별의 개수</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td>
-                                            <i class="fas fa-splotch"></i>
-                                        </td>
-                                        <td id="bluestar"></td>
-                                        <td id="yellowstar"></td>
-                                    </tr>
-                                    <tr style="height: 9%; ">
-                                        <td>현재 챕터</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td>
-                                            <i class="fas fa-chess-king"></i>
-                                        </td>
-                                        <td></td>
-                                        <td id="nowChapter"></td>
-                                    </tr>
-                                    <tr style="height: 9%; ">
-                                        <td>현재 스테이지</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr style="height: 13.5%; border-bottom: 1px solid #000000;">
-                                        <td>
-                                            <i class="fas fa-chess-pawn"></i>
-                                        </td>
-                                        <td></td>
-                                        <td id="nowStage"></td>
-                                    </tr>
-
-                                </table>
-
-                            </li>
-                            <li class="col-12-12 ae-3"
-                                style="background: #FFFFFF; width: 350px; height: 600px; border-radius: 15px; padding: 0px;">
-                                    &lt;%&ndash; <div id="table_div" style="width: 100%; height:  60px; "></div>&ndash;%&gt;
-                                <table class="japanfont" style="width: 100%; height: 100%; margin: 0; ">
-                                    <tr style="background-color: #74fb6b; height: 10%; padding-top: 10px;">
-                                        <td colspan="3" style="font-weight: bold; font-size: 20px; padding-top: 10px">학습 상세 정보</td>
-                                    </tr>
-                                    <tr style="height: 9%;">
-                                        <td colspan="2"> chapter 점수</td>
-                                    </tr>
-                                    <tr style="height: 8%">
-                                        <td style="">숫자 이해</td>
-                                        <td>연산 이해</td>
-                                    </tr>
-                                    <tr style="height: 10%">
-                                        <td id="num1" style="text-align: center; "></td>
-                                        <td id="num2" style="text-align: center; "></td>
-                                    </tr>
-                                    <tr style="height: 8%; ">
-                                        <td>도형 이해</td>
-                                        <td>생활 활용</td>
-                                    </tr>
-                                    <tr style="height: 10%;  border-bottom: 1px solid #000000;">
-                                        <td id="num3" style="text-align: center; "></td>
-                                        <td id="num4" style="text-align: center; "></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" id="now_playing"></td>
-
-                                    </tr>
-
-                                    <!-- 학생 로그인시 챕터 점수 테이블-->
-                                    <tr style="height: 40%; ">
-                                        <td id="donutchart" style="width: 100%;  transform: scale(1.2); margin: 0;"
-                                            colspan="2"></td>
-                                    </tr>
-                                </table>
-                            </li>
-                        </ul>--%>
                     </c:if>
 
                     <%--선생 그래프 생성--%>
@@ -722,17 +608,7 @@
                                     </tr>
                                 </table>
                             </li>
-                                <%--<li class="col-12-12 ae-3" style="background: #FFFFFF; width: 15%; height: 600px; border-radius: 15px; padding: 0px;">
-                                    <table class="japanfont" style="width: 100%; height: 10%; margin: 0">
-                                        <tr style="background-color: #74fb6b; height: 70px">
-                                            <td >전체 성적222222222</td>
-                                        </tr>
-                                        <tr>
-                                            <td id="table_div2" style="width: 100%; height:  400px; "></td>
-                                        </tr>
-                                    </table>
 
-                                </li>--%>
                         </ul>
                     </c:if>
 
